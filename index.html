@@ -9,7 +9,7 @@
   <meta name="description" content="Code Cortex - Leading software house in Attock, Pakistan. We provide custom web development, mobile apps, AI solutions, and IT services for businesses worldwide.">
   <meta name="keywords" content="software house Pakistan, web development, mobile app development, AI solutions, IT services Pakistan, custom software, responsive websites, React development, Android iOS apps">
   <meta name="author" content="Code Cortex (SMC-Pvt.) Ltd.">
-  <link rel="canonical" href="https://codecortexdigital.github.io/com/">
+  <link rel="canonical" href="https://codecortexdigital.github.io/codecortexdigital/">
   <meta name="theme-color" content="#2b2e3d">
   <meta name="robots" content="index, follow">
 
@@ -17,15 +17,15 @@
   <meta property="og:title" content="Code Cortex | Software House in Pakistan | IT & AI Solutions">
   <meta property="og:description" content="Professional web & mobile app development, AI solutions, and IT services. Transforming ideas into scalable digital solutions.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://codecortexdigital.github.io/com/">
-  <meta property="og:image" content="https://codecortexdigital.github.io/com/code_logo.png">
+  <meta property="og:url" content="https://codecortexdigital.github.io/codecortexdigital/">
+  <meta property="og:image" content="https://codecortexdigital.github.io/codecortexdigital/code_logo.png">
   <meta property="og:site_name" content="Code Cortex">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Code Cortex | Software House in Pakistan">
   <meta name="twitter:description" content="Web & Mobile App Development, AI solutions, and IT services by Code Cortex in Pakistan.">
-  <meta name="twitter:image" content="https://codecortexdigital.github.io/comk/code_logo.png">
+  <meta name="twitter:image" content="https://codecortexdigital.github.io/codecortexdigital/code_logo.png">
 
   <!-- Preload Critical Resources -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -43,8 +43,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Code Cortex (SMC-Pvt.) Ltd.",
-    "url": "https://codecortexdigital.github.io/com/",
-    "logo": "https://codecortexdigital.github.io/com/code_logo.png",
+    "url": "https://codecortexdigital.github.io/codecortexdigital/",
+    "logo": "https://codecortexdigital.github.io/codecortexdigital/code_logo.png",
     "description": "Leading software house in Pakistan providing web development, mobile apps, AI solutions, and IT services.",
     "address": {
       "@type": "PostalAddress",
@@ -231,11 +231,17 @@
       width: 80%;
     }
 
-    /* Hiring Button */
+    /* Header Buttons Container */
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Hiring Button - Updated for mobile */
     .hiring-btn { 
       border: none; 
       padding: 10px 20px; 
-      margin-left: 10px; 
       border-radius: 8px; 
       cursor: pointer; 
       font-weight: 600; 
@@ -245,20 +251,53 @@
       white-space: nowrap;
       transition: all 0.3s ease;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hiring-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .hiring-btn:hover::before {
+      left: 100%;
     }
     
     .hiring-btn:hover,
     .hiring-btn:focus { 
       background-color: #0d9c6d; 
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
     }
 
     .login-btn { 
       border: none; 
       padding: 10px 20px; 
-      margin-left: 10px; 
       border-radius: 8px; 
       cursor: pointer; 
       font-weight: 600; 
@@ -267,6 +306,9 @@
       color: #000; 
       white-space: nowrap;
       transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .login-btn:hover,
@@ -300,7 +342,11 @@
     }
     
     @media (max-width: 800px) {
-      .nav-toggle { display: block; }
+      .nav-toggle { 
+        display: block; 
+        order: 2;
+      }
+      
       .nav-links { 
         display: none; 
         flex-direction: column; 
@@ -322,6 +368,48 @@
       
       header {
         padding: 1rem;
+      }
+      
+      .header-buttons {
+        order: 3;
+        margin-left: auto;
+      }
+      
+      .hiring-btn, .login-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+      }
+      
+      .hiring-btn {
+        animation: mobilePulse 2s infinite;
+      }
+      
+      @keyframes mobilePulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 5px rgba(16, 185, 129, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+        }
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-buttons {
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .hiring-btn, .login-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+      }
+      
+      .header-left h1 {
+        font-size: 1.2rem;
       }
     }
 
@@ -818,6 +906,10 @@
       html {
         scroll-behavior: auto;
       }
+      
+      .hiring-btn {
+        animation: none;
+      }
     }
   </style>
 </head>
@@ -848,15 +940,18 @@
         <a href="#about">About</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYw-6YvtassUB25LDLMt-U46SUaja9cXEtpqvt92DKxp2RIw/viewform?usp=publish-editor" 
-           target="_blank" class="hiring-btn">
-          We're Hiring
-        </a>
       </div>
     </nav>
-    <button class="login-btn" onclick="window.location.href='login.html'" aria-label="Admin login">
-      Admin Login
-    </button>
+    
+    <div class="header-buttons">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYw-6YvtassUB25LDLMt-U46SUaja9cXEtpqvt92DKxp2RIw/viewform?usp=publish-editor" 
+         target="_blank" class="hiring-btn">
+        We're Hiring
+      </a>
+      <button class="login-btn" onclick="window.location.href='login.html'" aria-label="Admin login">
+        Admin Login
+      </button>
+    </div>
   </header>
 
   <!-- Main Content -->
@@ -953,7 +1048,7 @@
       </div>
     </section>
 
-    <!-- SOLUTION 3: Direct Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" data-aos="fade-up">
       <h2>Get In Touch</h2>
       <p style="margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
@@ -1256,6 +1351,3 @@
   </script>
 </body>
 </html>
-
-
-
