@@ -2,7 +2,7 @@
   <img src="assets/logo.png" alt="Codecortex Logo" width="150"/>
 </p>
 
-<h1 align="center">CodecortexPK</h1>
+<h1 align="center">Codecortex</h1>
 <p align="center"><em>Full-stack software solutions & innovative digital products</em></p>
 
 <p align="center">
@@ -13,7 +13,7 @@
 ---
 
 ## 🌟 About Us
-CodecortexPK is a professional software house delivering **high-quality web, mobile, and backend solutions**.  
+Codecortex is a professional software house delivering **high-quality web, mobile, and backend solutions**.  
 We specialize in creating **scalable, secure, and maintainable applications** for businesses worldwide.  
 Our team focuses on **modern technologies**, clean code, and best practices to ensure client success.
 
