@@ -1,25 +1,47 @@
-@media (max-width: 800px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: rgba(43,46,61,0.98);
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    z-index: 999;
-  }
+<!-- ================================
+     CODE CORTEX – GLOBAL HEADER
+     Extracted from reference
+================================ -->
 
-  .nav-links.show {
-    display: flex;
-  }
+<header id="mainHeader">
+  <div class="header-left">
+    <a href="index.html" class="logo-link" aria-label="Code Cortex - Home">
+      <img
+        src="assets/code_logo.png"
+        alt="Code Cortex - Software House Pakistan"
+        class="logo-img"
+        width="55"
+        height="55"
+      />
+      <h1>Code Cortex</h1>
+    </a>
+  </div>
 
-  .nav-toggle {
-    display: block;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: white;
-  }
-}
+  <nav class="main-nav" aria-label="Main Navigation">
+    <button
+      id="navToggle"
+      class="nav-toggle"
+      aria-expanded="false"
+      aria-controls="navMenu"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <button
+    class="login-btn"
+    onclick="window.location.href='login.html'"
+    aria-label="Admin Login"
+  >
+    Admin Login
+  </button>
+</header>
