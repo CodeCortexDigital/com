@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>About Code Cortex | Software House Pakistan - Our Story & Team</title>
+  <meta name="description" content="Learn about Code Cortex, a premier software house in Pakistan. Our mission, team, and commitment to delivering innovative digital solutions since 2025.">
+  <meta name="keywords" content="about Code Cortex, software house Pakistan, our story, company mission, development team Pakistan, technology company Pakistan">
+  <meta name="author" content="Code Cortex (SMC-Pvt.) Ltd.">
+  <link rel="canonical" href="https://codecortexdigital.github.io/com/about.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Code Cortex | Software House Pakistan">
+  <meta property="og:description" content="Learn about our journey, mission, and team of experts dedicated to building innovative digital solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codecortexdigital.github.io/com/about.html">
+  <meta property="og:image" content="https://codecortexdigital.github.io/com/code_logo.png">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Code Cortex | Software House Pakistan">
+  <meta name="twitter:description" content="Our story, mission, and team of technology experts.">
+  
+  <!-- Load CSS Files -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="code_logo.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="code_logo.png">
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Code Cortex (SMC-Pvt.) Ltd.",
+    "url": "https://codecortexdigital.github.io/com/",
+    "logo": "https://codecortexdigital.github.io/com/code_logo.png",
+    "description": "Premier software house in Pakistan providing web development, mobile apps, AI solutions, and IT services.",
+    "foundingDate": "2025",
+    "founders": [{
+      "@type": "Person",
+      "name": "Code Cortex Team"
+    }],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Attock",
+      "addressRegion": "Punjab",
+      "addressCountry": "PK"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+92-315-722-7688",
+      "contactType": "customer service",
+      "email": "info@codecortexdigital.com",
+      "availableLanguage": ["English", "Urdu"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/codecortex",
+      "https://www.linkedin.com/company/codecortex",
+      "https://twitter.com/codecortex"
+    ]
+  }
+  </script>
+
+  <style>
+    /* About-specific styles */
+    .about-hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 80vh;
+      background: linear-gradient(135deg, var(--bg) 0%, #1a1c23 100%);
+      position: relative;
+      padding: 0 2rem;
+      margin-top: 80px;
+      overflow: hidden;
+    }
+    
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    }
+    
+    .about-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      background: linear-gradient(90deg, var(--about-primary), var(--about-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .about-hero p {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Story Section */
+    .story-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .story-timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .story-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--about-primary);
+      border-radius: 3px;
+    }
+    
+    .story-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 2rem;
+    }
+    
+    .story-item::before {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--about-primary);
+      border-radius: 50%;
+      border: 4px solid var(--bg);
+    }
+    
+    .story-year {
+      color: var(--about-primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Values Section */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .value-card {
+      background: var(--panel);
+      padding: 2.5rem 2rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--about-primary), var(--about-secondary));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .value-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    
+    .value-card i {
+      font-size: 3rem;
+      color: var(--about-primary);
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .value-card:hover i {
+      transform: scale(1.2) rotate(5deg);
+      color: var(--about-secondary);
+    }
+
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .team-member {
+      background: var(--panel);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    
+    .member-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--about-primary), var(--about-secondary));
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .member-role {
+      color: var(--about-primary);
+      font-weight: 600;
+      margin: 0.5rem 0;
+    }
+    
+    .member-skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .skill-tag {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--about-primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Stats Section */
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 2rem;
+      min-width: 200px;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--about-primary), var(--about-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    
+    .stat-label {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    /* CTA Section */
+    .about-cta {
+      background: linear-gradient(135deg, var(--about-primary) 0%, var(--about-secondary) 100%);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    
+    .about-cta h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="logo-link" aria-label="Code Cortex - Return to home page">
+        <img src="code_logo.png" alt="Code Cortex - About Us" class="logo-img" width="55" height="55" />
+        <h1>Code Cortex</h1>
+      </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <h1 class="fade-in">About Code Cortex</h1>
+    <p class="fade-in">We're a passionate team of developers, designers, and innovators dedicated to building digital solutions that transform businesses and enhance user experiences.</p>
+  </section>
+
+  <!-- Our Story -->
+  <section id="story">
+    <h2>Our Story</h2>
+    <div class="story-container">
+      <p style="margin-bottom: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Founded in 2025, Code Cortex began with a simple mission: to bridge the gap between innovative ideas and practical digital solutions. 
+        What started as a small team of passionate developers has grown into a trusted software house serving clients across Pakistan and beyond.
+      </p>
+      
+      <div class="story-timeline">
+        <div class="story-item" data-aos="fade-up">
+          <div class="story-year">2025</div>
+          <h3>Foundation</h3>
+          <p>Code Cortex was founded with a vision to deliver exceptional digital solutions. Our first project was a local e-commerce platform that quickly gained traction.</p>
+          <p>Today, we're leading digital transformation projects for businesses across various industries, with a focus on cutting-edge technologies and user-centric design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section style="background: var(--panel);">
+    <h2>Our Values</h2>
+    <div class="values-grid">
+      <div class="value-card" data-aos="fade-up">
+        <i class="fas fa-lightbulb"></i>
+        <h3>Innovation</h3>
+        <p>We constantly explore new technologies and approaches to deliver cutting-edge solutions that give our clients a competitive advantage.</p>
+      </div>
+      
+      <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-handshake"></i>
+        <h3>Partnership</h3>
+        <p>We believe in building long-term relationships with our clients, working collaboratively to achieve their business goals.</p>
+      </div>
+      
+      <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-tachometer-alt"></i>
+        <h3>Excellence</h3>
+        <p>We maintain the highest standards in everything we do, from code quality to customer service and project delivery.</p>
+      </div>
+      
+      <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+        <i class="fas fa-users"></i>
+        <h3>Teamwork</h3>
+        <p>Our collaborative culture fosters creativity and ensures we deliver the best possible solutions through collective expertise.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Team -->
+  <section id="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="team-member" data-aos="fade-up">
+        <div class="member-avatar">DC</div>
+        <h3>Development Core</h3>
+        <div class="member-role">Lead Developers</div>
+        <p>Expert in full-stack development with 5+ years of experience building scalable web applications.</p>
+        <div class="member-skills">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Python</span>
+        </div>
+      </div>
+      
+      <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+        <div class="member-avatar">MD</div>
+        <h3>Mobile Division</h3>
+        <div class="member-role">Mobile Lead</div>
+        <p>Specializes in native and cross-platform mobile app development for iOS and Android.</p>
+        <div class="member-skills">
+          <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">React Native</span>
+          <span class="skill-tag">Swift</span>
+        </div>
+      </div>
+      
+      <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+        <div class="member-avatar">AI</div>
+        <h3>AI Innovation</h3>
+        <div class="member-role">AI Specialists</div>
+        <p>Passionate about machine learning and AI solutions that solve real-world business problems.</p>
+        <div class="member-skills">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">ML</span>
+        </div>
+      </div>
+      
+      <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+        <div class="member-avatar">UX</div>
+        <h3>User Experience</h3>
+        <div class="member-role">UI/UX Designers</div>
+        <p>Creates intuitive and engaging user interfaces that enhance user satisfaction and drive conversions.</p>
+        <div class="member-skills">
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Adobe XD</span>
+          <span class="skill-tag">Prototyping</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section style="background: var(--panel);">
+    <h2>Our Impact</h2>
+    <div class="stats-container">
+      <div class="stat-item" data-aos="fade-up">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-number">95%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+      
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+      
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Support Available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section>
+    <div class="about-cta" data-aos="fade-up">
+      <h3>Ready to Work With Us?</h3>
+      <p>Join the growing list of businesses that trust Code Cortex for their digital transformation needs.</p>
+      <a href="contact.html" class="cta-button" style="background: white; color: var(--about-primary);">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Code Cortex</h3>
+        <p>Building innovative digital solutions that drive business growth and transform user experiences.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/codecortex" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/codecortex" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/company/codecortex" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/codecortexdigital" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="mobile-apps.html">Mobile Apps</a></li>
+          <li><a href="ai-solutions.html">AI Solutions</a></li>
+          <li><a href="maintenance.html">Maintenance & Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Information</h3>
+        <div class="contact-method">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <p>Attock, Punjab, Pakistan</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <i class="fas fa-phone"></i>
+          <div>
+            <p>+92-315-722-7688</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <p>info@codecortexdigital.com</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <i class="fas fa-clock"></i>
+          <div>
+            <p>Monday - Saturday: 9AM - 6PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Code Cortex (Pvt.) Ltd. | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <div class="float-btn">
+    <a href="https://wa.me/923157227688" target="_blank" class="whatsapp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="#top" class="top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </div>
+
+  <!-- Theme Toggle -->
+  <button id="themeToggle">
+    <i class="fas fa-adjust"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        once: true,
+        duration: 800,
+        offset: 100
+      });
+
+      // Theme toggle
+      const themeBtn = document.getElementById('themeToggle');
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      
+      document.body.setAttribute('data-theme', savedTheme);
+      
+      themeBtn.addEventListener('click', () => {
+        const current = document.body.getAttribute('data-theme');
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    });
+  </script>
+</body>
+</html>
