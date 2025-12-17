@@ -1,607 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Primary Meta Tags -->
-  <title>Mobile App Development Pakistan | Code Cortex - iOS & Android Apps</title>
-  <meta name="description" content="Professional mobile app development services in Pakistan. Code Cortex builds cross-platform iOS & Android apps with React Native, Flutter. Secure, high-performance mobile solutions.">
-  <meta name="keywords" content="mobile app development Pakistan, iOS app development, Android apps, cross-platform apps, React Native, Flutter, mobile app company Pakistan">
-  <meta name="author" content="Code Cortex (SMC-Pvt.) Ltd.">
-  <link rel="canonical" href="https://codecortexdigital.github.io/com/mobile-apps.html">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Mobile App Development | Code Cortex</title>
+  <meta name="description" content="Professional mobile app development services by Code Cortex. High-quality Android & iOS applications built for performance and scalability." />
+  <meta name="keywords" content="mobile app development, android apps, ios apps, cross platform apps" />
+  <meta name="author" content="Code Cortex (Pvt.) Ltd." />
+  <meta name="robots" content="index, follow" />
+
   <!-- Open Graph -->
-  <meta property="og:title" content="Mobile App Development Pakistan | Code Cortex - iOS & Android Apps">
-  <meta property="og:description" content="Professional mobile app development for iOS and Android. Cross-platform solutions with React Native and Flutter.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://codecortexdigital.github.io/com/mobile-apps.html">
-  <meta property="og:image" content="https://codecortexdigital.github.io/com/code_logo.png">
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mobile App Development | Code Cortex">
-  <meta name="twitter:description" content="iOS & Android app development with cross-platform solutions and native performance.">
-  
-  <!-- Load CSS Files -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  <link rel="stylesheet" href="style.css">
-  
+  <meta property="og:title" content="Mobile App Development | Code Cortex" />
+  <meta property="og:description" content="Scalable and secure mobile applications for modern businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/code_logo.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
   <!-- Favicon -->
-  <link rel="icon" href="code_logo.png" type="image/x-icon">
-  <link rel="apple-touch-icon" href="code_logo.png">
-
-  <style>
-    /* Mobile Apps-specific styles */
-    .mobile-hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      min-height: 80vh;
-      background: linear-gradient(135deg, var(--bg) 0%, #1a1c23 100%);
-      position: relative;
-      padding: 0 2rem;
-      margin-top: 80px;
-      overflow: hidden;
-    }
-    
-    .mobile-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(61, 220, 132, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
-      animation: pulse 8s ease-in-out infinite;
-    }
-    
-    .mobile-hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      background: linear-gradient(90deg, var(--mobile-primary), var(--mobile-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .mobile-hero p {
-      font-size: clamp(1.1rem, 2vw, 1.3rem);
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-      max-width: 700px;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .platforms {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .platform-card {
-      background: var(--panel);
-      padding: 2rem;
-      border-radius: 15px;
-      text-align: center;
-      min-width: 200px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .platform-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    }
-    
-    .platform-card i {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    
-    .platform-card.android i { color: var(--mobile-primary); }
-    .platform-card.ios i { color: var(--mobile-secondary); }
-    .platform-card.cross i { color: #61DAFB; }
-
-    /* Mobile Apps Cards */
-    .mobile-card {
-      background: var(--panel);
-      padding: 2.5rem 2rem;
-      border-radius: 15px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .mobile-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--mobile-primary), var(--mobile-secondary));
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-    
-    .mobile-card:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .mobile-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    }
-    
-    .mobile-card i {
-      font-size: 3rem;
-      color: var(--mobile-primary);
-      margin-bottom: 1.5rem;
-      transition: all 0.3s ease;
-    }
-    
-    .mobile-card:hover i {
-      transform: scale(1.2) rotate(5deg);
-      color: var(--mobile-secondary);
-    }
-    
-    .mobile-card h3 {
-      color: var(--mobile-primary);
-      margin-bottom: 1rem;
-    }
-
-    /* Tech Stack */
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .tech-item {
-      background: var(--panel);
-      padding: 12px 24px;
-      border-radius: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .tech-item:hover {
-      transform: translateY(-3px);
-      background: var(--mobile-primary);
-      color: white;
-    }
-
-    /* App Mockups */
-    .app-mockup {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-    
-    .phone {
-      width: 220px;
-      height: 450px;
-      border-radius: 40px;
-      background: #1a1a1a;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      border: 8px solid #2a2a2a;
-    }
-    
-    .phone::before {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 6px;
-      background: #333;
-      border-radius: 3px;
-    }
-    
-    .phone-content {
-      width: 92%;
-      height: 92%;
-      border-radius: 25px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      transition: transform 0.3s ease;
-    }
-    
-    .phone:hover {
-      transform: translateY(-15px) scale(1.05);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-    }
-    
-    .phone:hover .phone-content {
-      transform: scale(1.05);
-    }
-
-    /* Process Steps */
-    .process-step .step-number {
-      background: var(--mobile-primary);
-    }
-
-    /* CTA Section */
-    .mobile-cta {
-      background: linear-gradient(135deg, var(--mobile-primary) 0%, var(--mobile-secondary) 100%);
-      color: white;
-      padding: 4rem 2rem;
-      border-radius: 20px;
-      margin: 2rem auto;
-      max-width: 800px;
-    }
-    
-    .mobile-cta h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .mobile-cta .cta-button {
-      background: white;
-      color: var(--mobile-primary);
-    }
-
-    /* App Types */
-    .app-types {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .app-type {
-      text-align: center;
-      padding: 2rem;
-      background: var(--panel);
-      border-radius: 15px;
-      transition: all 0.3s ease;
-    }
-    
-    .app-type:hover {
-      transform: translateY(-5px);
-      background: rgba(61, 220, 132, 0.1);
-    }
-    
-    .app-type i {
-      font-size: 2.5rem;
-      color: var(--mobile-primary);
-      margin-bottom: 1rem;
-    }
-  </style>
+  <link rel="icon" href="assets/code_logo.png" />
 </head>
+
 <body data-theme="dark">
 
+  <!-- Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Header -->
-  <header>
-    <div class="header-left">
-      <a href="index.html" class="logo-link" aria-label="Code Cortex - Return to home page">
-        <img src="code_logo.png" alt="Code Cortex - Mobile App Development Company Pakistan" class="logo-img" width="55" height="55" />
-        <h1>Code Cortex</h1>
+  <div id="site-header"></div>
+
+  <!-- Main -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero small-hero" data-aos="fade-up">
+      <h2>Mobile App Development</h2>
+      <p>
+        Powerful, user-friendly mobile applications for Android & iOS that
+        deliver real business impact.
+      </p>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section data-aos="fade-up">
+      <h2>What We Deliver</h2>
+
+      <div class="cards-container">
+
+        <div class="card">
+          <i class="fab fa-android"></i>
+          <h3>Android Applications</h3>
+          <p>
+            High-quality Android apps optimized for performance, usability,
+            and scalability.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fab fa-apple"></i>
+          <h3>iOS Applications</h3>
+          <p>
+            Native iOS apps built with clean UI, smooth animations, and
+            App Store compliance.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Cross-Platform Apps</h3>
+          <p>
+            Cost-effective cross-platform solutions using Flutter and React Native.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section data-aos="fade-up">
+      <h2>Key Features</h2>
+
+      <div class="cards-container">
+
+        <div class="card">
+          <i class="fas fa-bolt"></i>
+          <h3>High Performance</h3>
+          <p>
+            Optimized apps with fast load times and smooth user interactions.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-lock"></i>
+          <h3>Secure Architecture</h3>
+          <p>
+            Industry-standard security practices to protect user data.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-sync-alt"></i>
+          <h3>API Integration</h3>
+          <p>
+            Seamless integration with backend systems and third-party services.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section data-aos="fade-up">
+      <h2>Our Development Process</h2>
+
+      <div class="cards-container">
+
+        <div class="card">
+          <i class="fas fa-search"></i>
+          <h3>Discovery</h3>
+          <p>
+            Understanding your business goals, users, and technical requirements.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-pencil-ruler"></i>
+          <h3>Design & Prototyping</h3>
+          <p>
+            UI/UX design focused on usability and user engagement.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Development & Testing</h3>
+          <p>
+            Agile development with continuous testing and quality assurance.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-rocket"></i>
+          <h3>Launch & Support</h3>
+          <p>
+            App store deployment and ongoing maintenance support.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="final-cta" data-aos="fade-up">
+      <h2>Have an App Idea?</h2>
+      <p>Let’s turn your idea into a successful mobile application.</p>
+
+      <a href="contact.html" class="btn-large">
+        Start Your App Project
       </a>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="careers.html">Careers</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+    </section>
 
-  <!-- Hero Section -->
-  <section class="mobile-hero">
-    <h1 class="fade-in">Mobile App Development</h1>
-    <p class="fade-in">We create stunning, high-performance mobile applications for iOS and Android platforms. From concept to deployment, we deliver apps that users love and businesses rely on.</p>
-    
-    <div class="platforms fade-in">
-      <div class="platform-card android" data-aos="fade-up">
-        <i class="fab fa-android"></i>
-        <h3>Android Apps</h3>
-        <p>Native Android development with Kotlin and Java</p>
-      </div>
-      
-      <div class="platform-card ios" data-aos="fade-up" data-aos-delay="100">
-        <i class="fab fa-apple"></i>
-        <h3>iOS Apps</h3>
-        <p>Native iOS development with Swift and Objective-C</p>
-      </div>
-      
-      <div class="platform-card cross" data-aos="fade-up" data-aos-delay="200">
-        <i class="fas fa-mobile-alt"></i>
-        <h3>Cross-Platform</h3>
-        <p>React Native & Flutter for cost-effective solutions</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section id="features">
-    <h2>Our Mobile App Expertise</h2>
-    <div class="cards-container">
-      <div class="mobile-card" data-aos="fade-up" data-aos-delay="100">
-        <i class="fas fa-mobile-alt"></i>
-        <h3>Cross-Platform Development</h3>
-        <p>Build once, deploy everywhere with React Native and Flutter. Native-like performance with cost-effective development for both iOS and Android platforms.</p>
-      </div>
-      
-      <div class="mobile-card" data-aos="fade-up" data-aos-delay="200">
-        <i class="fas fa-lock"></i>
-        <h3>Secure & Compliant</h3>
-        <p>Enterprise-grade security with data encryption, secure authentication, and compliance with app store guidelines and data protection regulations.</p>
-      </div>
-      
-      <div class="mobile-card" data-aos="fade-up" data-aos-delay="300">
-        <i class="fas fa-rocket"></i>
-        <h3>High Performance</h3>
-        <p>Optimized for speed and efficiency with smooth animations, fast loading times, and minimal battery consumption for superior user experience.</p>
-      </div>
-      
-      <div class="mobile-card" data-aos="fade-up" data-aos-delay="400">
-        <i class="fas fa-cloud"></i>
-        <h3>Cloud Integration</h3>
-        <p>Seamless integration with cloud services, APIs, and backend systems for real-time data synchronization and scalable infrastructure.</p>
-      </div>
-      
-      <div class="mobile-card" data-aos="fade-up" data-aos-delay="500">
-        <i class="fas fa-paint-brush"></i>
-        <h3>Beautiful UI/UX</h3>
-        <p>Intuitive and engaging user interfaces designed following Material Design and Human Interface Guidelines for exceptional user experience.</p>
-      </div>
-      
-      <div class="mobile-card" data-aos="fade-up" data-aos-delay="600">
-        <i class="fas fa-shopping-cart"></i>
-        <h3>E-commerce & Payments</h3>
-        <p>Complete e-commerce solutions with secure payment gateways, inventory management, and seamless shopping experiences.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- App Types -->
-  <section style="background: var(--panel);">
-    <h2>Types of Mobile Apps We Build</h2>
-    <div class="app-types">
-      <div class="app-type" data-aos="fade-up">
-        <i class="fas fa-shopping-cart"></i>
-        <h3>E-commerce Apps</h3>
-        <p>Online shopping platforms with secure payments and inventory management.</p>
-      </div>
-      
-      <div class="app-type" data-aos="fade-up" data-aos-delay="100">
-        <i class="fas fa-utensils"></i>
-        <h3>Food Delivery Apps</h3>
-        <p>Restaurant ordering, food delivery, and real-time tracking systems.</p>
-      </div>
-      
-      <div class="app-type" data-aos="fade-up" data-aos-delay="200">
-        <i class="fas fa-dumbbell"></i>
-        <h3>Fitness & Health Apps</h3>
-        <p>Workout tracking, health monitoring, and wellness applications.</p>
-      </div>
-      
-      <div class="app-type" data-aos="fade-up" data-aos-delay="300">
-        <i class="fas fa-graduation-cap"></i>
-        <h3>Educational Apps</h3>
-        <p>Learning platforms, course management, and educational content delivery.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section>
-    <h2>Our Mobile Technology Stack</h2>
-    <div class="tech-stack">
-      <span class="tech-item" data-aos="fade-up"><i class="fab fa-react"></i> React Native</span>
-      <span class="tech-item" data-aos="fade-up" data-aos-delay="100"><i class="fab fa-android"></i> Flutter</span>
-      <span class="tech-item" data-aos="fade-up" data-aos-delay="200"><i class="fab fa-apple"></i> Swift</span>
-      <span class="tech-item" data-aos="fade-up" data-aos-delay="300"><i class="fab fa-android"></i> Kotlin</span>
-      <span class="tech-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-fire"></i> Firebase</span>
-      <span class="tech-item" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-database"></i> MongoDB</span>
-      <span class="tech-item" data-aos="fade-up" data-aos-delay="600"><i class="fab fa-aws"></i> AWS Amplify</span>
-      <span class="tech-item" data-aos="fade-up" data-aos-delay="700"><i class="fab fa-node-js"></i> Node.js</span>
-    </div>
-  </section>
-
-  <!-- App Mockups -->
-  <section style="background: var(--panel);">
-    <h2>App Showcase</h2>
-    <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-      Explore our portfolio of successful mobile applications across various industries.
-    </p>
-    <div class="app-mockup">
-      <div class="phone" data-aos="fade-up">
-        <div class="phone-content">E-commerce App</div>
-      </div>
-      <div class="phone" data-aos="fade-up" data-aos-delay="100">
-        <div class="phone-content">Food Delivery</div>
-      </div>
-      <div class="phone" data-aos="fade-up" data-aos-delay="200">
-        <div class="phone-content">Fitness Tracker</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section>
-    <h2>Our App Development Process</h2>
-    <div class="process-steps">
-      <div class="process-step" data-aos="fade-up">
-        <div class="step-number">1</div>
-        <h3>Discovery & Strategy</h3>
-        <p>We analyze your requirements, target audience, and business objectives to create a comprehensive mobile strategy.</p>
-      </div>
-      
-      <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-        <div class="step-number">2</div>
-        <h3>UI/UX Design</h3>
-        <p>Create wireframes, prototypes, and stunning visual designs that provide exceptional user experiences.</p>
-      </div>
-      
-      <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-        <div class="step-number">3</div>
-        <h3>Development</h3>
-        <p>Agile development process with regular updates, code reviews, and quality assurance at every stage.</p>
-      </div>
-      
-      <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-        <div class="step-number">4</div>
-        <h3>Testing & Launch</h3>
-        <p>Rigorous testing across devices, app store submission, and deployment to production environment.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section style="background: var(--panel);">
-    <div class="mobile-cta" data-aos="fade-up">
-      <h3>Ready to Build Your Mobile App?</h3>
-      <p>Let's transform your idea into a successful mobile application that users will love.</p>
-      <a href="contact.html" class="cta-button">Start Your App Project</a>
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-column">
-        <h3>Code Cortex</h3>
-        <p>Building innovative digital solutions that drive business growth and transform user experiences.</p>
-        <div class="social-links">
-          <a href="https://www.facebook.com/codecortex" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://twitter.com/codecortex" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.linkedin.com/company/codecortex" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://github.com/codecortexdigital" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="footer-column">
-        <h3>Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Services</h3>
-        <ul class="footer-links">
-          <li><a href="web-development.html">Web Development</a></li>
-          <li><a href="mobile-apps.html">Mobile Apps</a></li>
-          <li><a href="ai-solutions.html">AI Solutions</a></li>
-          <li><a href="maintenance.html">Maintenance & Support</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Contact Information</h3>
-        <div class="contact-method">
-          <i class="fas fa-map-marker-alt"></i>
-          <div>
-            <p>Attock, Punjab, Pakistan</p>
-          </div>
-        </div>
-        <div class="contact-method">
-          <i class="fas fa-phone"></i>
-          <div>
-            <p>+92-315-722-7688</p>
-          </div>
-        </div>
-        <div class="contact-method">
-          <i class="fas fa-envelope"></i>
-          <div>
-            <p>info@codecortexdigital.com</p>
-          </div>
-        </div>
-        <div class="contact-method">
-          <i class="fas fa-clock"></i>
-          <div>
-            <p>Monday - Saturday: 9AM - 6PM</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Code Cortex (Pvt.) Ltd. | All Rights Reserved</p>
-    </div>
-  </footer>
-
-  <!-- Floating Buttons -->
-  <div class="float-btn">
-    <a href="https://wa.me/923157227688" target="_blank" class="whatsapp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="#top" class="top">
-      <i class="fas fa-arrow-up"></i>
-    </a>
-  </div>
-
-  <!-- Theme Toggle -->
-  <button id="themeToggle">
-    <i class="fas fa-adjust"></i>
-  </button>
+  <div id="site-footer"></div>
 
   <!-- Scripts -->
+  <script src="js/include.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      AOS.init({
-        once: true,
-        duration: 800,
-        offset: 100
-      });
+  <script src="js/main.js"></script>
 
-      // Theme toggle
-      const themeBtn = document.getElementById('themeToggle');
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      
-      document.body.setAttribute('data-theme', savedTheme);
-      
-      themeBtn.addEventListener('click', () => {
-        const current = document.body.getAttribute('data-theme');
-        const newTheme = current === 'dark' ? 'light' : 'dark';
-        document.body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-      });
-    });
-  </script>
 </body>
 </html>
