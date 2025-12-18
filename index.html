@@ -496,6 +496,54 @@
       resize: vertical;
     }
 
+    /* Certification Logos */
+    .certification-section {
+      text-align: center;
+      margin: 4rem 0 3rem;
+      padding: 2.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .certification-title {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .certification-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .certification-logo {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      filter: grayscale(20%);
+      opacity: 0.9;
+    }
+
+    .certification-logo:hover {
+      transform: translateY(-5px);
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    .certification-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
     /* Footer */
     footer {
       background: var(--secondary-dark);
@@ -676,6 +724,15 @@
 
       .btn {
         width: 100%;
+      }
+
+      .certification-logos {
+        gap: 1.5rem;
+      }
+
+      .certification-logo {
+        width: 60px;
+        height: 60px;
       }
     }
 
@@ -1130,6 +1187,45 @@
         </span>
       </div>
     </div>
+  </div>
+  
+  <!-- Certification Section -->
+  <div class="certification-section">
+    <div class="certification-title">Registered with National and International Authorities</div>
+    <div class="certification-logos">
+      <!-- SECP Logo -->
+      <div class="certification-logo">
+        <img src="assets/secp_logo.png" alt="SECP Registered">
+      </div>
+      
+      <!-- FBR Logo -->
+      <div class="certification-logo">
+        <img src="assets/fbr_logo.png" alt="FBR Active Taxpayer">
+      </div>
+      
+      <!-- D&B Logo -->
+      <div class="certification-logo">
+        <img src="assets/dnb_logo.png" alt="Dun & Bradstreet">
+      </div>
+      
+      <!-- PSEB Logo -->
+      <div class="certification-logo">
+        <img src="assets/pseb_logo.png" alt="Pakistan Software Export Board">
+      </div>
+      
+      <!-- CDC Logo -->
+      <div class="certification-logo">
+        <img src="assets/cdc_logo.png" alt="Central Depository Company">
+      </div>
+      
+      <!-- Add more logos if you have -->
+      <!-- <div class="certification-logo">
+        <img src="assets/other_logo.png" alt="Other Certification">
+      </div> -->
+    </div>
+    <p style="color: var(--text-muted); margin-top: 1.5rem; font-size: 0.9rem;">
+      Fully compliant and registered with all regulatory authorities
+    </p>
   </div>
   
   <div class="footer-bottom">
