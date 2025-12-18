@@ -1,176 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ================= BASIC ================= -->
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ================= SEO ================= -->
-  <title>Code Cortex | Strategic Development Partner for USA & UAE</title>
-  <meta name="description" content="Code Cortex provides elite engineering teams for web, mobile & AI solutions. 40% faster delivery, 60% cost savings." />
-  <meta name="keywords" content="software house Pakistan, web development, mobile apps, AI solutions, remote developers" />
-  <meta name="author" content="Code Cortex (Pvt.) Ltd." />
+  <!-- SEO -->
+  <title>Code Cortex | Software House in Pakistan | IT & AI Solutions</title>
+  <meta name="description" content="Code Cortex (SMC-Pvt.) Ltd. is a professional software house in Pakistan delivering web, mobile, AI & automation solutions globally." />
+  <meta name="keywords" content="software house Pakistan, web development, mobile apps, AI solutions, IT services" />
   <meta name="robots" content="index, follow" />
-
-  <!-- Canonical -->
   <link rel="canonical" href="https://www.codecortexdigital.com/" />
 
-  <!-- ================= SOCIAL (OG + Twitter) ================= -->
-  <meta property="og:title" content="Code Cortex – Strategic Development Partner" />
-  <meta property="og:description" content="Elite Pakistani engineering talent for USA & UAE markets." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.codecortexdigital.com/" />
-  <meta property="og:image" content="https://www.codecortexdigital.com/assets/code_logo.png" />
-  <meta property="og:site_name" content="Code Cortex" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Code Cortex | Software House in Pakistan">
+  <meta property="og:description" content="Web, Mobile & AI Solutions by Code Cortex">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.codecortexdigital.com/">
+  <meta property="og:image" content="./code_logo.png">
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Code Cortex – Strategic Development Partner" />
-  <meta name="twitter:description" content="Elite engineering teams for web, mobile & AI solutions." />
+  <!-- Icons & Fonts -->
+  <link rel="icon" href="./code_logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-  <!-- ================= PERFORMANCE ================= -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <!-- Google Site Verification -->
+  <!-- PLACE YOUR GOOGLE VERIFICATION META TAG HERE -->
 
-  <!-- ================= STYLES ================= -->
-  <link rel="stylesheet" href="./css/theme.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- ================= FAVICON ================= -->
-  <link rel="icon" href="./assets/code_logo.png" type="image/png" />
-
-  <!-- ================= STRUCTURED DATA ================= -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Code Cortex (Pvt.) Ltd.",
-    "url": "https://www.codecortexdigital.com/",
-    "logo": "https://www.codecortexdigital.com/assets/code_logo.png",
-    "email": "info@codecortexdigital.com",
-    "telephone": "+92-315-722-7688",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Attock",
-      "addressCountry": "PK"
+  <style>
+    :root{
+      --bg:#1c1e26; --panel:#2f3243; --accent:#ffe27d; --muted:#cfcfcf; --cta:#ff6b6b;
     }
-  }
-  </script>
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+    body{font-family:Segoe UI,sans-serif;background:var(--bg);color:var(--muted);line-height:1.6}
+
+    header{position:fixed;top:0;width:100%;background:#2b2e3d;padding:1rem 2rem;
+      display:flex;justify-content:space-between;align-items:center;z-index:999;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+    .header-left{display:flex;align-items:center;gap:15px}
+    .logo-img{width:52px;height:52px;border-radius:50%;border:2px solid var(--accent)}
+    nav a{color:#fff;text-decoration:none;font-weight:600;margin:0 8px}
+    nav a:hover{color:var(--accent)}
+    .login-btn{background:var(--accent);border:none;padding:8px 16px;border-radius:6px;font-weight:700;cursor:pointer}
+
+    section{padding:5rem 2rem;text-align:center}
+    h2{color:var(--accent);margin-bottom:1.5rem;font-size:2.2rem}
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+    .hero h2{font-size:3rem;background:linear-gradient(90deg,var(--accent),var(--cta));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+    .cta-btn{background:var(--cta);border:none;color:#fff;padding:14px 30px;
+      border-radius:30px;font-size:1rem;cursor:pointer}
+    .cta-btn:hover{background:#ff4b4b}
+
+    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+    .card{background:var(--panel);padding:1.6rem;border-radius:12px;width:280px;
+      box-shadow:0 6px 20px rgba(0,0,0,.45);transition:.3s}
+    .card:hover{transform:translateY(-6px)}
+    .card i{font-size:2rem;color:var(--cta);margin-bottom:1rem}
+
+    footer{background:#2b2e3d;padding:2rem;text-align:center;margin-top:3rem}
+
+    .float-btn{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;z-index:999}
+    .float-btn a{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;
+      justify-content:center;color:#fff;font-size:20px}
+    .whatsapp{background:#25D366}
+    .top{background:var(--cta)}
+  </style>
 </head>
 
-<body data-theme="dark">
+<body>
 
-  <!-- ================= ACCESSIBILITY ================= -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+<header>
+  <div class="header-left">
+    <img src="./code_logo.png" class="logo-img" alt="Code Cortex Logo">
+    <h1>Code Cortex</h1>
+  </div>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#careers">Careers</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="login-btn">Admin</button>
+</header>
 
-  <!-- ================= HEADER ================= -->
-  <div id="site-header" role="banner"></div>
+<section class="hero" id="hero">
+  <h2>Innovating Ideas. Building Technology.</h2>
+  <p>We build scalable web, mobile & AI solutions for modern businesses.</p>
+  <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView()">Get in Touch</button>
+</section>
 
-  <!-- ================= MAIN ================= -->
-  <main id="main-content" role="main">
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card"><i class="fas fa-code"></i><h3>Web Development</h3><p>High-performance websites & web apps.</p></div>
+    <div class="card"><i class="fas fa-mobile-alt"></i><h3>Mobile Apps</h3><p>Android & iOS applications.</p></div>
+    <div class="card"><i class="fas fa-brain"></i><h3>AI Solutions</h3><p>Automation & intelligent systems.</p></div>
+    <div class="card"><i class="fas fa-headset"></i><h3>Maintenance</h3><p>Support & performance optimization.</p></div>
+  </div>
+</section>
 
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <h2>Your Strategic Development Partner for USA & UAE Markets</h2>
+<section id="about">
+  <h2>About Us</h2>
+  <p style="max-width:800px;margin:auto">
+    Code Cortex is a Pakistan-based software company delivering reliable,
+    scalable digital solutions globally.
+  </p>
+</section>
 
-      <p>
-        Elite Pakistani engineering talent delivering enterprise software
-        <strong>40% faster</strong> at <strong>60% cost savings</strong>.
-      </p>
+<section id="portfolio">
+  <h2>Portfolio</h2>
+  <div class="cards">
+    <div class="card"><h3>Business Website</h3><p>SEO-optimized corporate site.</p></div>
+    <div class="card"><h3>Mobile App</h3><p>E-commerce application.</p></div>
+    <div class="card"><h3>AI System</h3><p>Recommendation engine.</p></div>
+  </div>
+</section>
 
-      <div class="hero-cta">
-        <a href="./contact.html" class="btn btn-primary">Get Free Consultation</a>
-        <a href="./services.html" class="btn btn-secondary">Our Services</a>
-      </div>
+<section id="careers">
+  <h2>Careers</h2>
+  <p>Join our growing tech team.</p>
+  <a class="cta-btn" href="mailto:info@codecortexdigital.com?subject=Career Application">Apply Now</a>
+</section>
 
-      <div class="social-proof">
-        <p>Trusted by companies in:</p>
-        <div class="client-logos" aria-label="Countries served">
-          <span>USA</span>
-          <span>UAE</span>
-          <span>Pakistan</span>
-        </div>
-      </div>
-    </section>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: info@codecortexdigital.com<br>Phone: +92 315 722 7688</p>
+</section>
 
-    <!-- METRICS -->
-    <section class="metrics" aria-label="Company metrics">
-      <div class="metrics-container">
-        <div class="metric-item">
-          <h3>50+</h3>
-          <p>Projects Delivered</p>
-        </div>
-        <div class="metric-item">
-          <h3>99%</h3>
-          <p>Client Retention</p>
-        </div>
-        <div class="metric-item">
-          <h3>40%</h3>
-          <p>Faster Delivery</p>
-        </div>
-        <div class="metric-item">
-          <h3>60%</h3>
-          <p>Cost Savings</p>
-        </div>
-      </div>
-    </section>
+<footer>
+  © 2025 Code Cortex | All Rights Reserved
+</footer>
 
-    <!-- SERVICES -->
-    <section id="services" aria-labelledby="services-heading">
-      <h2 id="services-heading">We Solve Business Challenges</h2>
+<div class="float-btn">
+  <a href="https://wa.me/923157227688" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+  <a href="#hero" class="top"><i class="fas fa-arrow-up"></i></a>
+</div>
 
-      <div class="cards-container">
-
-        <div class="card">
-          <i class="fas fa-code" aria-hidden="true"></i>
-          <h3>Web Development</h3>
-          <p>Scalable, secure, high-performance web applications.</p>
-          <a href="./web-development.html" class="btn btn-primary">Learn More</a>
-        </div>
-
-        <div class="card">
-          <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-          <h3>Mobile Applications</h3>
-          <p>Android & iOS apps with clean UI and strong architecture.</p>
-          <a href="./mobile-apps.html" class="btn btn-primary">Learn More</a>
-        </div>
-
-        <div class="card">
-          <i class="fas fa-brain" aria-hidden="true"></i>
-          <h3>AI Solutions</h3>
-          <p>Automation, analytics, and AI-powered business systems.</p>
-          <a href="./ai-solutions.html" class="btn btn-primary">Learn More</a>
-        </div>
-
-        <div class="card">
-          <i class="fas fa-headset" aria-hidden="true"></i>
-          <h3>Maintenance & Support</h3>
-          <p>Continuous monitoring, updates, and technical support.</p>
-          <a href="./maintenance.html" class="btn btn-primary">Learn More</a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CAREERS CTA -->
-    <section class="final-cta">
-      <h2>Ready to Grow Your Career?</h2>
-      <p>Be part of a team shaping the future of technology.</p>
-
-      <a href="mailto:info@codecortexdigital.com?subject=Job Application - Code Cortex"
-         class="btn-large">
-        Apply Now
-      </a>
-    </section>
-
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <div id="site-footer" role="contentinfo"></div>
-
-  <!-- ================= SCRIPTS ================= -->
-  <script src="./js/include.js" defer></script>
-  <script src="./js/main.js" defer></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>AOS.init();</script>
 </body>
 </html>
