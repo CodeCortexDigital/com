@@ -136,16 +136,6 @@
       border-bottom: 1px solid rgba(15, 23, 42, 0.1);
     }
 
-    body.light-theme .form-control {
-      background: white;
-      border: 1px solid rgba(15, 23, 42, 0.2);
-      color: var(--text-light);
-    }
-
-    body.light-theme .form-control:focus {
-      border-color: var(--accent-gold);
-    }
-
     body.light-theme footer {
       border-top: 1px solid rgba(15, 23, 42, 0.1);
     }
@@ -517,12 +507,11 @@
       margin-top: 0.5rem;
     }
 
-    /* Contact Form */
+    /* Contact Section */
     .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      max-width: 1200px;
+      display: flex;
+      justify-content: center;
+      max-width: 800px;
       margin: 3rem auto 0;
     }
 
@@ -548,31 +537,6 @@
       color: var(--accent-gold);
       font-size: 1.25rem;
       width: 30px;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 1rem;
-      background: var(--secondary-dark);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--border-radius);
-      color: var(--text-light);
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--accent-gold);
-    }
-
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
     }
 
     /* Certification Logos */
@@ -690,14 +654,6 @@
       background: linear-gradient(135deg, var(--accent-red), #dc2626);
     }
 
-    .float-btn.theme {
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-      position: fixed;
-      left: 2rem;
-      bottom: 2rem;
-      right: auto;
-    }
-
     .float-btn:hover {
       transform: translateY(-3px) scale(1.1);
     }
@@ -729,10 +685,6 @@
     .theme-switch i {
       font-size: 1.25rem;
       transition: transform 0.3s ease;
-    }
-
-    body.light-theme .theme-switch i {
-      transform: rotate(180deg);
     }
 
     /* Modal */
@@ -821,8 +773,7 @@
       }
 
       .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        padding: 0 1rem;
       }
 
       .float-buttons {
@@ -1162,8 +1113,10 @@
           </div>
         </div>
       </div>
-      
-      
+    </div>
+  </section>
+</main>
+
 <footer>
   <div class="footer-content">
     <div>
@@ -1277,8 +1230,8 @@
 </div>
 
 <!-- Theme Toggle Button -->
-<button class="theme-switch" id="themeToggle" aria-label="Toggle theme">
-  <i class="fas fa-moon"></i>
+<button class="theme-switch" id="themeToggle" aria-label="Toggle theme" title="Switch theme">
+  <i class="fas fa-sun"></i>
 </button>
 
 <!-- Admin Modal -->
@@ -1302,30 +1255,47 @@
   // DOM Elements
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mainNav = document.getElementById('mainNav');
-  const contactForm = document.getElementById('contactForm');
   const themeToggle = document.getElementById('themeToggle');
   
-  // Theme Toggle Functionality
+  // Theme Toggle Functionality with Time-Based Default
   function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.body.classList.toggle('light-theme', savedTheme === 'light');
-    updateThemeIcon(savedTheme);
+    // Set default theme based on time (6 AM to 6 PM = day time)
+    const hour = new Date().getHours();
+    const isDayTime = hour >= 6 && hour < 18; // 6 AM to 6 PM is considered day time
+    
+    // Check localStorage first, then time-based default
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      // Use saved preference if exists
+      document.body.classList.toggle('light-theme', savedTheme === 'light');
+    } else {
+      // No saved preference, use time-based default
+      document.body.classList.toggle('light-theme', isDayTime);
+      localStorage.setItem('theme', isDayTime ? 'light' : 'dark');
+    }
+    
+    updateThemeIcon();
   }
   
   function toggleTheme() {
     const isLightTheme = document.body.classList.toggle('light-theme');
     const theme = isLightTheme ? 'light' : 'dark';
     localStorage.setItem('theme', theme);
-    updateThemeIcon(theme);
-    showNotification(`Switched to ${theme} theme`);
+    updateThemeIcon();
+    showNotification(`Switched to ${theme} mode`);
   }
   
-  function updateThemeIcon(theme) {
+  function updateThemeIcon() {
     const icon = themeToggle.querySelector('i');
-    if (theme === 'light') {
-      icon.className = 'fas fa-sun';
-    } else {
+    const isLightTheme = document.body.classList.contains('light-theme');
+    
+    if (isLightTheme) {
       icon.className = 'fas fa-moon';
+      themeToggle.title = "Switch to Dark Mode";
+    } else {
+      icon.className = 'fas fa-sun';
+      themeToggle.title = "Switch to Light Mode";
     }
   }
   
@@ -1441,26 +1411,6 @@
       closeAdmin();
     }
   });
-  
-  // Form submission handler
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Get form data
-      const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData);
-      
-      // Show success message
-      showNotification('Thank you! Your message has been sent.');
-      
-      // Reset form
-      contactForm.reset();
-      
-      // In a real application, you would send this data to your server
-      console.log('Form submitted:', data);
-    });
-  }
   
   // Intersection Observer for animations
   const observerOptions = {
