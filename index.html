@@ -1,3 +1,8 @@
+# Fixed Version with Correct Logo URL
+
+The issue is with your GitHub repository URL. Looking at your GitHub URL `https://github.com/CodeCortexDigital/com/blob/main/code_logo.png`, it seems the repository name is different. Here's the corrected version with the proper GitHub raw URL:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +21,10 @@
   
   <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://codecortexdigital.com/" />
+  <meta property="og:url" content="https://codecortexdigital.github.io/" />
   <meta property="og:title" content="Code Cortex | MVP & Internal Web App Development" />
   <meta property="og:description" content="Building custom web applications for startups and SMEs in Pakistan. CRM, Inventory, Task Management systems development." />
-  <meta property="og:image" content="https://codecortexdigital.com/code_logo.png" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/CodeCortexDigital/com/main/code_logo.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
@@ -27,14 +32,14 @@
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://codecortexdigital.com/" />
+  <meta name="twitter:url" content="https://codecortexdigital.github.io/" />
   <meta name="twitter:title" content="CodeCortex | Web App Development Pakistan" />
   <meta name="twitter:description" content="Custom web applications for startups and SMEs. MVP development, CRM systems, business automation." />
-  <meta name="twitter:image" content="https://codecortexdigital.com/code_logo.png" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/CodeCortexDigital/com/main/code_logo.png" />
   <meta name="twitter:creator" content="@codecortexdigital" />
   
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://codecortexdigital.com/" />
+  <link rel="canonical" href="https://codecortexdigital.github.io/" />
   
   <!-- Additional SEO Tags -->
   <meta name="subject" content="Web Application Development" />
@@ -62,11 +67,11 @@
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "description": "Custom web applications development for startups and SMEs including CRM, Inventory, and Task Management systems.",
-        "url": "https://codecortexdigital.com/",
+        "url": "https://codecortexdigital.github.io/",
         "author": {
           "@type": "Organization",
           "name": "Code Cortex",
-          "url": "https://codecortexdigital.com/"
+          "url": "https://codecortexdigital.github.io/"
         },
         "offers": {
           "@type": "Offer",
@@ -81,10 +86,10 @@
       },
       {
         "@type": "Organization",
-        "@id": "https://codecortexdigital.com/#organization",
+        "@id": "https://codecortexdigital.github.io/#organization",
         "name": "Code Cortex",
-        "url": "https://codecortexdigital.com/",
-        "logo": "https://codecortexdigital.com/code_logo.png",
+        "url": "https://codecortexdigital.github.io/",
+        "logo": "https://raw.githubusercontent.com/CodeCortexDigital/com/main/code_logo.png",
         "description": "Web application development company specializing in MVP and internal tools for startups and SMEs.",
         "address": {
           "@type": "PostalAddress",
@@ -103,23 +108,23 @@
         },
         "sameAs": [
           "https://www.linkedin.com/company/codecortex",
-          "https://github.com/codecortexdigital",
-          "https://twitter.com/codecortex",
+          "https://github.com/CodeCortexDigital",
+          "https://twitter.com/codecortexdigital",
           "https://www.facebook.com/codecortex"
         ]
       },
       {
         "@type": "WebSite",
-        "@id": "https://codecortexdigital.com/#website",
-        "url": "https://codecortexdigital.com/",
+        "@id": "https://codecortexdigital.github.io/#website",
+        "url": "https://codecortexdigital.github.io/",
         "name": "Code Cortex",
         "description": "Web application development for startups and SMEs",
         "publisher": {
-          "@id": "https://codecortexdigital.com/#organization"
+          "@id": "https://codecortexdigital.github.io/#organization"
         },
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://codecortexdigital.com/?s={search_term_string}",
+          "target": "https://codecortexdigital.github.io/?s={search_term_string}",
           "query-input": "required name=search_term_string"
         }
       },
@@ -127,7 +132,7 @@
         "@type": "Service",
         "serviceType": "Web Application Development",
         "provider": {
-          "@id": "https://codecortexdigital.com/#organization"
+          "@id": "https://codecortexdigital.github.io/#organization"
         },
         "name": "MVP Development",
         "description": "Minimum Viable Product development for startups to validate ideas quickly and affordably."
@@ -136,7 +141,7 @@
         "@type": "Service",
         "serviceType": "Web Application Development",
         "provider": {
-          "@id": "https://codecortexdigital.com/#organization"
+          "@id": "https://codecortexdigital.github.io/#organization"
         },
         "name": "CRM System Development",
         "description": "Custom Customer Relationship Management systems for businesses."
@@ -145,7 +150,7 @@
         "@type": "Service",
         "serviceType": "Web Application Development",
         "provider": {
-          "@id": "https://codecortexdigital.com/#organization"
+          "@id": "https://codecortexdigital.github.io/#organization"
         },
         "name": "Inventory Management Systems",
         "description": "Custom inventory and stock management solutions for businesses."
@@ -400,7 +405,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: null;
+      filter: brightness(0) invert(1);
     }
 
     .brand-logo:hover {
@@ -1654,11 +1659,12 @@
       <div class="brand">
         <a href="#hero" class="brand-link" aria-label="Code Cortex Home">
           <div class="brand-logo" itemprop="logo">
-            <https://github.com/CodeCortexDigital/com/blob/main/code_logo.png>
-            <img src="https://github.com/CodeCortexDigital/com/blob/main/code_logo.png" 
+            <!-- CORRECT GitHub raw logo URL -->
+            <img src="https://raw.githubusercontent.com/CodeCortexDigital/com/main/code_logo.png" 
                  alt="Code Cortex Logo - Web Application Development Company" 
                  width="55" 
-                 height="55">
+                 height="55"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%234361ee\"/><text x=\"50\" y=\"65\" font-size=\"40\" text-anchor=\"middle\" fill=\"white\" font-family=\"Arial, sans-serif\">CC</text></svg>'">
           </div>
           <div class="brand-text" itemprop="name">Code Cortex</div>
         </a>
@@ -2055,7 +2061,8 @@
         <div class="footer-col">
           <div class="footer-logo">
             <div class="footer-logo-img">
-              <img src="https://raw.githubusercontent.com/codecortexdigital/codecortexdigital.github.io/main/code_logo.png" 
+              <!-- CORRECT GitHub raw logo URL -->
+              <img src="https://raw.githubusercontent.com/CodeCortexDigital/com/main/code_logo.png" 
                    alt="Code Cortex Logo" 
                    width="50" 
                    height="50"
@@ -2067,8 +2074,8 @@
             <p>We build MVP and internal web applications for startups and SMEs, helping them operate more efficiently with custom software solutions across Pakistan.</p>
             <div class="social-links">
               <a href="https://www.linkedin.com/company/codecortex" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-              <a href="https://github.com/codecortexdigital" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-              <a href="https://twitter.com/codecortex" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+              <a href="https://github.com/CodeCortexDigital" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+              <a href="https://twitter.com/codecortexdigital" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
               <a href="https://www.facebook.com/codecortex" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
             </div>
           </div>
@@ -2118,290 +2125,4 @@
   <!-- Floating Buttons -->
   <div class="float-buttons">
     <a href="https://wa.me/923157227688" target="_blank" class="float-btn whatsapp" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" rel="noopener noreferrer">
-      <i class="fab fa-whatsapp"></i>
-      <span class="float-btn-tooltip">Chat on WhatsApp</span>
-    </a>
-    <button class="float-btn theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-      <i class="fas fa-moon"></i>
-      <span class="float-btn-tooltip">Toggle Theme</span>
-    </button>
-    <button class="float-btn top" id="scrollTopBtn" aria-label="Scroll to top" title="Scroll to top">
-      <i class="fas fa-arrow-up"></i>
-      <span class="float-btn-tooltip">Back to Top</span>
-    </button>
-  </div>
-
-  <script>
-    // DOM Elements
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.querySelector('.nav-links');
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('i');
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    const contactForm = document.getElementById('contactForm');
-    const header = document.getElementById('header');
-    const currentYear = document.getElementById('currentYear');
-    
-    // Initialize current year
-    currentYear.textContent = new Date().getFullYear();
-    
-    // Theme Toggle
-    function initTheme() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      updateThemeIcon(savedTheme);
-    }
-    
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-      
-      showNotification(`Switched to ${newTheme === 'dark' ? 'dark' : 'light'} mode`);
-    }
-    
-    function updateThemeIcon(theme) {
-      if (theme === 'dark') {
-        themeIcon.className = 'fas fa-sun';
-        themeToggle.title = "Switch to Light Mode";
-        themeToggle.querySelector('.float-btn-tooltip').textContent = 'Switch to Light Mode';
-      } else {
-        themeIcon.className = 'fas fa-moon';
-        themeToggle.title = "Switch to Dark Mode";
-        themeToggle.querySelector('.float-btn-tooltip').textContent = 'Switch to Dark Mode';
-      }
-    }
-    
-    // Mobile Menu
-    mobileMenuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      const isExpanded = navLinks.classList.contains('active');
-      mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
-      mobileMenuBtn.innerHTML = isExpanded 
-        ? '<i class="fas fa-times"></i>' 
-        : '<i class="fas fa-bars"></i>';
-    });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-      });
-    });
-    
-    // Scroll to Top
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    
-    // Show/hide scroll to top button
-    window.addEventListener('scroll', () => {
-      // Header scroll effect
-      if (window.scrollY > 100) {
-        header.classList.add('header-scrolled');
-      } else {
-        header.classList.remove('header-scrolled');
-      }
-      
-      // Scroll to top button
-      if (window.scrollY > 300) {
-        scrollTopBtn.style.display = 'flex';
-      } else {
-        scrollTopBtn.style.display = 'none';
-      }
-    });
-    
-    // Form Submission
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Get form values
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const project = document.getElementById('project').value;
-      const message = document.getElementById('message').value;
-      
-      // Validate form
-      if (!name || !email || !project || !message) {
-        showNotification('Please fill in all required fields!', 'error');
-        return;
-      }
-      
-      // Show success message
-      showNotification(`Thanks ${name}! We'll contact you at ${email} within 24 hours.`);
-      
-      // Reset form
-      this.reset();
-    });
-    
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 100,
-            behavior: 'smooth'
-          });
-          
-          // Close mobile menu if open
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove('active');
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-          }
-        }
-      });
-    });
-    
-    // Stats Counter Animation
-    function animateStats() {
-      const stats = document.querySelectorAll('.stat-number[data-count]');
-      stats.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-count'));
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          if (stat.textContent.includes('%')) {
-            stat.textContent = Math.floor(current) + '%';
-          } else if (stat.textContent.includes('/')) {
-            stat.textContent = current.toFixed(1) + '/5';
-          } else {
-            stat.textContent = Math.floor(current) + '+';
-          }
-        }, 30);
-      });
-    }
-    
-    // Notification Function
-    function showNotification(message, type = 'success') {
-      const notification = document.createElement('div');
-      const icon = type === 'error' ? 'fas fa-exclamation-circle' : 'fas fa-check-circle';
-      
-      notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 30px;
-        background: ${type === 'error' ? 'var(--gradient-accent)' : 'var(--gradient-primary)'};
-        color: white;
-        padding: 18px 24px;
-        border-radius: var(--radius-md);
-        font-weight: 600;
-        box-shadow: var(--shadow-lg);
-        z-index: 9999;
-        animation: slideIn 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        max-width: 400px;
-        border-left: 5px solid ${type === 'error' ? 'var(--accent-color)' : 'var(--success-color)'};
-      `;
-      
-      notification.innerHTML = `
-        <i class="${icon}"></i>
-        <span>${message}</span>
-      `;
-      
-      document.body.appendChild(notification);
-      
-      // Add animation keyframes
-      if (!document.querySelector('#notification-styles')) {
-        const style = document.createElement('style');
-        style.id = 'notification-styles';
-        style.textContent = `
-          @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-          }
-        `;
-        document.head.appendChild(style);
-      }
-      
-      setTimeout(() => {
-        notification.style.animation = 'slideIn 0.3s ease reverse';
-        setTimeout(() => notification.remove(), 300);
-      }, 4000);
-    }
-    
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (entry.target.classList.contains('hero-stats')) {
-            animateStats();
-          }
-          
-          // Add animation class
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-    
-    // Observe elements
-    document.querySelectorAll('.service-card, .project-card, .process-step, .tech-item').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      initTheme();
-      themeToggle.addEventListener('click', toggleTheme);
-      scrollTopBtn.style.display = 'none'; // Initially hidden
-      
-      // Add click listener for brand link
-      const brandLink = document.querySelector('.brand-link');
-      if (brandLink) {
-        brandLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        });
-      }
-      
-      // Check if we're on GitHub Pages
-      const isGitHubPages = window.location.hostname.includes('github.io');
-      console.log('Running on GitHub Pages:', isGitHubPages);
-    });
-  </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
+      <i class="fab fa
