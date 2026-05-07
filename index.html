@@ -1,3 +1,5 @@
+Here is the complete HTML code with your Facebook link added to the social media section in the footer and all other social links updated with proper names.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -404,9 +406,20 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
-    .social-links a { color: var(--text-muted); font-size: 1.3rem; transition: var(--transition); }
-    .social-links a:hover { color: var(--accent-gold); }
+    .social-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+    .social-links a {
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      transition: var(--transition);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    .social-links a:hover { color: var(--accent-gold); background: rgba(251,191,36,0.1); transform: translateY(-4px); }
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
@@ -436,6 +449,7 @@
       font-size: 1.3rem;
       transition: var(--transition);
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      text-decoration: none;
     }
     .float-btn.whatsapp { background: #25D366; }
     .float-btn.top { background: var(--gradient-red); }
@@ -522,6 +536,7 @@
       .hero h1 { font-size: 2.5rem; }
       .section-title h2 { font-size: 2rem; }
       .featured-grid { grid-template-columns: 1fr; }
+      .social-links { justify-content: center; }
     }
     
     .fade-up {
@@ -591,7 +606,7 @@
             <li><i class="fas fa-check-circle"></i> Predictive analytics (RMSE: 6.09 tons)</li>
             <li><i class="fas fa-check-circle"></i> Real-time anomaly detection (88% accuracy)</li>
           </ul>
-          <a href="https://cleanroute-ai-prod.vercel.app" target="_blank" class="project-link">Live Demo <i class="fas fa-arrow-right"></i></a>
+          <a href="https://cleanroute-ai-prod.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Live Demo <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       
@@ -686,15 +701,33 @@
 
 <footer>
   <div class="footer-content">
-    <div><div class="footer-logo">CODE CORTEX</div><p style="color: var(--text-muted);">AI-powered software engineering for the modern world.</p><div class="social-links"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
-    <div><h4>Quick Links</h4><a href="#featured" style="color: var(--text-muted); display: block;">AI Projects</a><a href="#portfolio" style="color: var(--text-muted); display: block;">Portfolio</a><a href="#contact" style="color: var(--text-muted); display: block;">Contact</a></div>
-    <div><h4>Contact</h4><span style="color: var(--text-muted);">info@codecortexdigital.com</span><br><span style="color: var(--text-muted);">+92 315 722 7688</span></div>
+    <div>
+      <div class="footer-logo">CODE CORTEX</div>
+      <p style="color: var(--text-muted);">AI-powered software engineering for the modern world.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61579583993304" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#featured" style="color: var(--text-muted); display: block; margin-bottom: 0.5rem;">AI Projects</a>
+      <a href="#portfolio" style="color: var(--text-muted); display: block; margin-bottom: 0.5rem;">Portfolio</a>
+      <a href="#contact" style="color: var(--text-muted); display: block;">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <span style="color: var(--text-muted); display: block;">info@codecortexdigital.com</span>
+      <span style="color: var(--text-muted); display: block; margin-top: 0.5rem;">+92 315 722 7688</span>
+    </div>
   </div>
   <div class="footer-bottom">© 2025 Code Cortex (SMC-Pvt.) Ltd. | Innovating with AI</div>
 </footer>
 
 <div class="float-buttons">
-  <a href="https://wa.me/923157227688" target="_blank" class="float-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://wa.me/923157227688" target="_blank" rel="noopener noreferrer" class="float-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
   <a href="#home" class="float-btn top"><i class="fas fa-arrow-up"></i></a>
 </div>
 <button class="theme-switch" id="themeToggle"><i class="fas fa-sun"></i></button>
@@ -793,3 +826,4 @@
 </script>
 </body>
 </html>
+```
