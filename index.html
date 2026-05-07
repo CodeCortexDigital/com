@@ -789,7 +789,7 @@ Here is the updated HTML code with your `code_logo.png` added to the header, rep
   function adminLogin() {
     const u = document.getElementById('adminUser').value;
     const p = document.getElementById('adminPass').value;
-    if (u && p) { showNotif('Welcome Admin!'); closeAdmin(); }
+    if (u && p) { showNotif('Incorrect Password!'); closeAdmin(); }
     else alert('Enter credentials');
   }
   
