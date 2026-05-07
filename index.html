@@ -1,4 +1,4 @@
-Here is the complete HTML code with your Facebook link added to the social media section in the footer and all other social links updated with proper names.
+Here is the updated HTML code with your `code_logo.png` added to the header, replacing the text-based logo.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -105,17 +105,15 @@ Here is the complete HTML code with your Facebook link added to the social media
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
     
-    .logo {
+    .logo-img {
       width: 48px;
       height: 48px;
-      background: var(--gradient-gold);
       border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.4rem;
-      color: #0a0f1e;
+      object-fit: contain;
+      transition: var(--transition);
+    }
+    .logo-img:hover {
+      transform: scale(1.05) rotate(5deg);
     }
     
     .company-name {
@@ -537,6 +535,7 @@ Here is the complete HTML code with your Facebook link added to the social media
       .section-title h2 { font-size: 2rem; }
       .featured-grid { grid-template-columns: 1fr; }
       .social-links { justify-content: center; }
+      .company-name { font-size: 1.2rem; }
     }
     
     .fade-up {
@@ -554,7 +553,7 @@ Here is the complete HTML code with your Facebook link added to the social media
 
 <header>
   <div style="display: flex; align-items: center; gap: 1rem;">
-    <div class="logo">CC</div>
+    <img src="code_logo.png" alt="Code Cortex Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
     <div class="company-name">CODE CORTEX</div>
   </div>
   <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
