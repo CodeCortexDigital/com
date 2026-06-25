@@ -1429,9 +1429,14 @@
             transition: transform .2s, box-shadow .2s;
         }
 
-        .cf-submit:hover {
+        .cf-submit:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 28px rgba(232, 160, 32, .35);
+        }
+
+        .cf-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         /* ─────────────────────────────────────────
@@ -1694,6 +1699,18 @@
             animation: toastIn .3s var(--ease);
             box-shadow: var(--shadow);
             max-width: 320px;
+        }
+
+        .toast.error {
+            border-color: var(--coral);
+            color: var(--coral);
+            background: var(--coral-dim);
+        }
+
+        .toast.success {
+            border-color: var(--green);
+            color: var(--green);
+            background: var(--green-dim);
         }
 
         @keyframes toastIn {
@@ -2131,15 +2148,15 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="divider-or">Or send a message</div>
-                
-                <form class="cf" id="contactForm" action="https://formsubmit.co/ajax/codecortexpk@gmail.com" method="POST">
+
+                <form class="cf" id="contactForm" action="https://formsubmit.co/codecortexpk@gmail.com" method="POST">
                     <!-- FormSubmit Configuration -->
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="New Client Inquiry - Code Cortex">
                     <input type="hidden" name="_template" value="table">
-                    
+
                     <div class="cf-row">
                         <div class="cf-group">
                             <label class="cf-label" for="cfName">Your Name *</label>
@@ -2150,7 +2167,7 @@
                             <input type="email" id="cfEmail" name="email" class="cf-input" placeholder="email@example.com" required>
                         </div>
                     </div>
-                    
+
                     <div class="cf-row">
                         <div class="cf-group">
                             <label class="cf-label" for="cfPhone">Phone Number</label>
@@ -2161,7 +2178,7 @@
                             <input type="text" id="cfCompany" name="company" class="cf-input" placeholder="Company Name">
                         </div>
                     </div>
-                    
+
                     <div class="cf-group">
                         <label class="cf-label">Interest / Service</label>
                         <input type="hidden" id="cfService" name="service" value="CleanRoute AI">
@@ -2172,12 +2189,12 @@
                             <div class="svc-opt" data-val="General Inquiry">General Inquiry</div>
                         </div>
                     </div>
-                    
+
                     <div class="cf-group">
                         <label class="cf-label" for="cfMessage">Message *</label>
                         <textarea id="cfMessage" name="message" class="cf-input" placeholder="Describe your project or inquiry..." required></textarea>
                     </div>
-                    
+
                     <button type="submit" class="cf-submit" id="submitBtn">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
@@ -2218,20 +2235,20 @@
         (function() {
             const canvas = document.getElementById('hero-canvas');
             if (!canvas) return;
-            
+
             const ctx = canvas.getContext('2d');
             let width = canvas.width = canvas.offsetWidth;
             let height = canvas.height = canvas.offsetHeight;
-            
+
             window.addEventListener('resize', () => {
                 width = canvas.width = canvas.offsetWidth;
                 height = canvas.height = canvas.offsetHeight;
             });
-            
+
             const particles = [];
             const maxParticles = 65;
             const connectionDist = 110;
-            
+
             class Particle {
                 constructor() {
                     this.x = Math.random() * width;
@@ -2254,15 +2271,15 @@
                     ctx.fill();
                 }
             }
-            
+
             for (let i = 0; i < maxParticles; i++) {
                 particles.push(new Particle());
             }
-            
+
             function animate() {
                 ctx.clearRect(0, 0, width, height);
                 const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-                
+
                 ctx.lineWidth = 0.5;
                 for (let i = 0; i < particles.length; i++) {
                     particles[i].update();
@@ -2291,18 +2308,18 @@
         // ─────────────────────────────────────────
         const themeToggle = document.getElementById('themeToggle');
         const themeLabel = document.getElementById('themeLabel');
-        
+
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             if (themeLabel) {
                 themeLabel.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
             }
         }
-        
+
         // Initial Theme Check
         const savedTheme = localStorage.getItem('theme') || 'dark';
         applyTheme(savedTheme);
-        
+
         if (themeToggle) {
             themeToggle.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -2316,21 +2333,22 @@
         // ─────────────────────────────────────────
         // 3. TOAST NOTIFICATION UTILITY
         // ─────────────────────────────────────────
-        function showToast(msg) {
+        function showToast(msg, type = '') {
             const existing = document.querySelector('.toast');
             if (existing) existing.remove();
-            
+
             const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = `<i class="fas fa-info-circle"></i> <span>${msg}</span>`;
+            toast.className = `toast ${type}`;
+            const icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+            toast.innerHTML = `<i class="fas ${icon}"></i> <span>${msg}</span>`;
             document.body.appendChild(toast);
-            
+
             setTimeout(() => {
                 toast.style.transition = 'opacity .32s var(--ease), transform .32s var(--ease)';
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateX(110%)';
                 setTimeout(() => toast.remove(), 320);
-            }, 3200);
+            }, 4000);
         }
 
         // ─────────────────────────────────────────
@@ -2338,7 +2356,7 @@
         // ─────────────────────────────────────────
         const menuBtn = document.getElementById('menuBtn');
         const mainNav = document.getElementById('mainNav');
-        
+
         if (menuBtn && mainNav) {
             menuBtn.addEventListener('click', () => {
                 mainNav.classList.toggle('open');
@@ -2346,7 +2364,7 @@
                 menuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
         }
-        
+
         // Close menu on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -2368,94 +2386,94 @@
         });
 
         // ─────────────────────────────────────────
-        // 5. CONTACT DRAWER TOGGLES & AJAX SUBMISSION
+        // 5. CONTACT DRAWER TOGGLES & FORM SUBMISSION
         // ─────────────────────────────────────────
         const contactOverlay = document.getElementById('contactOverlay');
         const contactScrim = document.getElementById('contactScrim');
         const closeContact = document.getElementById('closeContact');
         const openContactBtns = document.querySelectorAll('.open-contact');
-        
+
         function openDrawer() {
             if (contactOverlay) {
                 contactOverlay.classList.add('open');
                 document.body.style.overflow = 'hidden';
             }
         }
-        
+
         function closeDrawer() {
             if (contactOverlay) {
                 contactOverlay.classList.remove('open');
                 document.body.style.overflow = '';
             }
         }
-        
+
         openContactBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 openDrawer();
             });
         });
-        
+
         if (closeContact) closeContact.addEventListener('click', closeDrawer);
         if (contactScrim) contactScrim.addEventListener('click', closeDrawer);
 
-        // Form listeners setup
-        let originalFormHTML = '';
+        // ─────────────────────────────────────────
+        // 6. FORM SUBMISSION WITH BETTER HANDLING & FALLBACK
+        // ─────────────────────────────────────────
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
         const drawerBody = document.querySelector('.contact-drawer .drawer-body');
+        let originalFormHTML = '';
+
         if (drawerBody) {
             originalFormHTML = drawerBody.innerHTML;
         }
 
         function bindFormListeners() {
-            const contactForm = document.getElementById('contactForm');
-            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('contactForm');
+            const btn = document.getElementById('submitBtn');
             const svcOpts = document.querySelectorAll('.svc-opt');
             const cfServiceInput = document.getElementById('cfService');
-            
+
             // Re-bind service selection chips
             svcOpts.forEach(opt => {
                 opt.addEventListener('click', () => {
                     svcOpts.forEach(o => o.classList.remove('active'));
                     opt.classList.add('active');
                     if (cfServiceInput) {
-                        cfServiceInput.value = opt.getAttribute('data-val') || opt.textContent;
+                        cfServiceInput.value = opt.getAttribute('data-val') || opt.textContent.trim();
                     }
                 });
             });
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    if (!submitBtn) return;
-                    
-                    const originalText = submitBtn.innerHTML;
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
-                    
-                    const formData = new FormData(contactForm);
-                    
-                    fetch(contactForm.action, {
+                    if (!btn) return;
+
+                    const originalText = btn.innerHTML;
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+
+                    const formData = new FormData(form);
+                    const formObject = Object.fromEntries(formData);
+
+                    // Submit to FormSubmit AJAX endpoint using JSON payload
+                    fetch('https://formsubmit.co/ajax/codecortexpk@gmail.com', {
                         method: 'POST',
-                        body: formData,
+                        body: JSON.stringify(formObject),
                         headers: {
+                            'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         }
                     })
-                    .then(async res => {
-                        const text = await res.text();
-                        try {
-                            return JSON.parse(text);
-                        } catch {
-                            // If response is not JSON, check if it contains success indicators
-                            if (res.ok && (text.includes('success') || text.includes('ok'))) {
-                                return { success: true };
-                            }
-                            throw new Error('Invalid response');
-                        }
+                    .then(res => {
+                        if (res.ok) return res.json();
+                        throw new Error('Network error or CORS block');
                     })
                     .then(data => {
-                        // Consider any successful response as success
-                        if (data && (data.success === 'true' || data.success === true || data.success === undefined)) {
+                        if (data && (data.success === 'true' || data.success === true)) {
+                            // Show success state
                             if (drawerBody) {
                                 drawerBody.innerHTML = `
                                     <div class="success-wrap" style="text-align: center; padding: 4rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; opacity: 0; transform: translateY(20px); transition: opacity .4s, transform .4s;" id="successContent">
@@ -2469,7 +2487,7 @@
                                         <button class="btn-outline" id="btnBackToForm" style="margin-top: 1rem; padding: 0.7rem 1.8rem; font-size: 0.82rem; border-radius: 40px; cursor: pointer;"><i class="fas fa-arrow-left"></i> Send Another</button>
                                     </div>
                                 `;
-                                
+
                                 setTimeout(() => {
                                     const successContent = document.getElementById('successContent');
                                     if (successContent) {
@@ -2477,7 +2495,7 @@
                                         successContent.style.transform = 'translateY(0)';
                                     }
                                 }, 50);
-                                
+
                                 document.getElementById('btnBackToForm').addEventListener('click', () => {
                                     drawerBody.innerHTML = originalFormHTML;
                                     bindFormListeners();
@@ -2485,73 +2503,44 @@
                             }
                             showToast('Message sent successfully! ✓');
                         } else {
-                            showToast('Failed to send message.');
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = originalText;
+                            throw new Error(data.message || 'FormSubmit error response');
                         }
                     })
                     .catch(err => {
-                        console.warn('Submit Warning:', err);
-                        // Even if there's a parsing error, the form might have been submitted successfully
-                        // Show a success message anyway since FormSubmit often redirects
-                        if (drawerBody) {
-                            drawerBody.innerHTML = `
-                                <div class="success-wrap" style="text-align: center; padding: 4rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; opacity: 0; transform: translateY(20px); transition: opacity .4s, transform .4s;" id="successContent">
-                                    <div class="success-icon" style="width: 80px; height: 80px; border-radius: 50%; background: var(--green-dim); color: #34D399; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; box-shadow: 0 8px 24px rgba(5, 150, 105, 0.25);">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div class="success-text">
-                                        <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text-1); margin-bottom: 0.5rem;">Message Sent!</h3>
-                                        <p style="font-size: 0.9rem; color: var(--text-2); max-width: 320px; line-height: 1.6;">Thank you for reaching out. We have received your inquiry and will contact you shortly.</p>
-                                    </div>
-                                    <button class="btn-outline" id="btnBackToForm" style="margin-top: 1rem; padding: 0.7rem 1.8rem; font-size: 0.82rem; border-radius: 40px; cursor: pointer;"><i class="fas fa-arrow-left"></i> Send Another</button>
-                                </div>
-                            `;
-                            setTimeout(() => {
-                                const successContent = document.getElementById('successContent');
-                                if (successContent) {
-                                    successContent.style.opacity = '1';
-                                    successContent.style.transform = 'translateY(0)';
-                                }
-                            }, 50);
-                            document.getElementById('btnBackToForm').addEventListener('click', () => {
-                                drawerBody.innerHTML = originalFormHTML;
-                                bindFormListeners();
-                            });
-                        }
-                        showToast('Message sent successfully! ✓');
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalText;
+                        console.warn('AJAX submit failed, falling back to traditional submission:', err);
+                        showToast('Securely routing message...');
+                        // Fallback: Submit form traditionally. This bypasses the JS listener
+                        form.submit();
                     });
                 });
             }
         }
-        
+
         bindFormListeners();
 
         // ─────────────────────────────────────────
-        // 6. ADMIN MODAL ACCESS
+        // 7. ADMIN MODAL ACCESS
         // ─────────────────────────────────────────
         const adminModal = document.getElementById('adminModal');
         const adminBtn = document.getElementById('adminBtn');
         const closeAdmin = document.getElementById('closeAdmin');
-        
+
         if (adminBtn && adminModal) {
             adminBtn.addEventListener('click', () => {
                 adminModal.classList.add('open');
                 document.body.style.overflow = 'hidden';
             });
         }
-        
+
         function closeAdminModal() {
             if (adminModal) {
                 adminModal.classList.remove('open');
                 document.body.style.overflow = '';
             }
         }
-        
+
         if (closeAdmin) closeAdmin.addEventListener('click', closeAdminModal);
-        
+
         if (adminModal) {
             adminModal.addEventListener('click', (e) => {
                 if (e.target === adminModal) {
@@ -2559,7 +2548,7 @@
                 }
             });
         }
-        
+
         function adminLogin() {
             const user = document.getElementById('adminUser').value;
             const pass = document.getElementById('adminPass').value;
@@ -2572,14 +2561,14 @@
         }
 
         // ─────────────────────────────────────────
-        // 7. SCROLL FADE-IN ANIMATIONS & SMOOTH SCROLL
+        // 8. SCROLL FADE-IN ANIMATIONS & SMOOTH SCROLL
         // ─────────────────────────────────────────
         const fadeElements = document.querySelectorAll('.fade-up');
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2588,9 +2577,9 @@
                 }
             });
         }, observerOptions);
-        
+
         fadeElements.forEach(el => observer.observe(el));
-        
+
         // Smooth scrolling for page links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
