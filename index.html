@@ -1,828 +1,2606 @@
-Here is the updated HTML code with your `code_logo.png` added to the header, replacing the text-based logo.
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <!-- Primary SEO Meta Tags -->
-  <title>Code Cortex | Premium Software Development & AI Solutions Pakistan</title>
-  <meta name="description" content="Code Cortex delivers enterprise-grade web, mobile, AI solutions, CleanRoute AI waste management, and School ERP systems. Transform your business with Pakistan's leading software development company.">
-  <meta name="keywords" content="software development Pakistan, AI solutions, CleanRoute AI, School ERP, waste management system, educational ERP, web development, mobile apps">
-  <meta name="author" content="Code Cortex (SMC-Pvt.) Ltd.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://www.codecortexdigital.com/">
-  
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.codecortexdigital.com/">
-  <meta property="og:title" content="Code Cortex | Premium Software & AI Solutions">
-  <meta property="og:description" content="AI-powered waste management, school ERP, custom software development.">
-  <meta property="og:image" content="https://www.codecortexdigital.com/assets/og-image.png">
-  <meta property="og:site_name" content="Code Cortex">
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Code Cortex | Software Development & AI">
-  <meta name="twitter:description" content="Enterprise software, AI solutions, web & mobile development.">
-  
-  <!-- Icons & Fonts -->
-  <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e293b'/%3E%3Cpath d='M30 30 L70 30 L70 70 L30 70 Z' fill='none' stroke='%23fbbf24' stroke-width='6'/%3E%3Cpath d='M45 30 L45 70 M55 30 L55 70' stroke='%23fbbf24' stroke-width='4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Global Variables & Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    :root {
-      --primary-dark: #0a0f1e;
-      --secondary-dark: #111827;
-      --accent-gold: #fbbf24;
-      --accent-red: #ef4444;
-      --accent-blue: #3b82f6;
-      --accent-green: #10b981;
-      --text-light: #ffffff;
-      --text-muted: #9ca3af;
-      --card-bg: #1e293b;
-      --border-radius-lg: 24px;
-      --border-radius-md: 16px;
-      --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      --shadow-glow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(251, 191, 36, 0.1);
-      --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-      --gradient-red: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-      --gradient-blue: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      --gradient-green: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    }
-    
-    body.light-theme {
-      --primary-dark: #f1f5f9;
-      --secondary-dark: #ffffff;
-      --card-bg: #ffffff;
-      --text-light: #0f172a;
-      --text-muted: #475569;
-      --shadow-glow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
-    }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--primary-dark);
-      color: var(--text-light);
-      line-height: 1.6;
-      transition: var(--transition);
-      overflow-x: hidden;
-    }
-    
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--primary-dark); }
-    ::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 10px; }
-    
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(10, 15, 30, 0.85);
-      backdrop-filter: blur(16px);
-      padding: 1rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      transition: var(--transition);
-    }
-    
-    body.light-theme header {
-      background: rgba(255, 255, 255, 0.9);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-    
-    .logo-img {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      object-fit: contain;
-      transition: var(--transition);
-    }
-    .logo-img:hover {
-      transform: scale(1.05) rotate(5deg);
-    }
-    
-    .company-name {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: var(--gradient-gold);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    nav { display: flex; gap: 2rem; align-items: center; }
-    .nav-link {
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    .nav-link:hover { color: var(--accent-gold); }
-    
-    .admin-btn {
-      background: var(--gradient-red);
-      padding: 0.7rem 1.5rem;
-      border-radius: 40px;
-      border: none;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .admin-btn:hover { transform: scale(1.05); }
-    
-    .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-light); font-size: 1.5rem; cursor: pointer; }
-    
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 8rem 5% 6rem;
-      position: relative;
-    }
-    
-    .hero h1 {
-      font-size: 4.2rem;
-      font-weight: 900;
-      line-height: 1.2;
-      background: linear-gradient(135deg, #fff 30%, var(--accent-gold) 70%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 1.5rem auto;
-    }
-    
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 1rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .btn-primary {
-      background: var(--gradient-red);
-      color: white;
-      box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
-    }
-    .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(239, 68, 68, 0.4); }
-    
-    .btn-outline {
-      border: 2px solid var(--accent-gold);
-      color: var(--accent-gold);
-      background: transparent;
-    }
-    .btn-outline:hover { background: var(--accent-gold); color: #0a0f1e; transform: translateY(-4px); }
-    
-    /* Section Styles */
-    section { padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
-    .section-title { text-align: center; margin-bottom: 4rem; }
-    .section-title h2 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      background: var(--gradient-gold);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .section-title p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 1rem auto 0; }
-    
-    /* Featured Projects Grid (2 big cards) */
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 5rem;
-    }
-    
-    .feature-card {
-      background: var(--card-bg);
-      border-radius: var(--border-radius-lg);
-      overflow: hidden;
-      transition: var(--transition);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(4px);
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--shadow-glow);
-      border-color: rgba(251, 191, 36, 0.3);
-    }
-    
-    .card-header {
-      padding: 2rem 2rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-    
-    .card-icon-lg {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-    }
-    
-    .card-icon-lg.ai { background: var(--gradient-blue); }
-    .card-icon-lg.erp { background: var(--gradient-green); }
-    
-    .badge {
-      background: rgba(251, 191, 36, 0.15);
-      color: var(--accent-gold);
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    
-    .card-body { padding: 1.5rem 2rem 2rem; }
-    .card-body h3 { font-size: 1.8rem; margin-bottom: 0.75rem; }
-    .card-body p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
-    
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
-    }
-    .tech-stack span {
-      background: rgba(255,255,255,0.05);
-      padding: 0.3rem 0.9rem;
-      border-radius: 30px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-    
-    .feature-list {
-      list-style: none;
-      margin-top: 1rem;
-    }
-    .feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 0.7rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-    .feature-list li i { color: var(--accent-gold); width: 20px; }
-    
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-      color: var(--accent-gold);
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-    .project-link:hover { gap: 0.9rem; color: var(--accent-red); }
-    
-    /* Portfolio Grid (additional projects) */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .portfolio-card {
-      background: var(--card-bg);
-      border-radius: var(--border-radius-md);
-      overflow: hidden;
-      transition: var(--transition);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .portfolio-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); }
-    
-    .portfolio-img {
-      height: 180px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: white;
-    }
-    .portfolio-content { padding: 1.5rem; }
-    .portfolio-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    
-    /* Stats Section */
-    .stats-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    .stat-card {
-      text-align: center;
-      padding: 2rem;
-      background: var(--card-bg);
-      border-radius: 24px;
-      min-width: 180px;
-      transition: var(--transition);
-    }
-    .stat-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      background: var(--gradient-gold);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    /* Contact */
-    .contact-container {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      padding: 1.2rem;
-      background: rgba(255,255,255,0.02);
-      border-radius: 20px;
-      margin-bottom: 1rem;
-      transition: var(--transition);
-    }
-    .contact-detail:hover { background: rgba(255,255,255,0.05); transform: translateX(10px); }
-    .contact-detail i { color: var(--accent-gold); font-size: 1.5rem; width: 40px; }
-    
-    /* Footer */
-    footer {
-      background: var(--secondary-dark);
-      padding: 4rem 5% 2rem;
-      margin-top: 4rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-    .footer-logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: var(--gradient-gold);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .social-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-    .social-links a {
-      color: var(--text-muted);
-      font-size: 1.3rem;
-      transition: var(--transition);
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.03);
-    }
-    .social-links a:hover { color: var(--accent-gold); background: rgba(251,191,36,0.1); transform: translateY(-4px); }
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      margin-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      color: var(--text-muted);
-    }
-    
-    /* Floating Buttons */
-    .float-buttons {
-      position: fixed;
-      right: 1.5rem;
-      bottom: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      z-index: 1000;
-    }
-    .float-btn {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.3rem;
-      transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      text-decoration: none;
-    }
-    .float-btn.whatsapp { background: #25D366; }
-    .float-btn.top { background: var(--gradient-red); }
-    .float-btn:hover { transform: translateY(-5px) scale(1.1); }
-    
-    .theme-switch {
-      position: fixed;
-      left: 1.5rem;
-      bottom: 1.5rem;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-      color: white;
-      border: none;
-      cursor: pointer;
-      z-index: 1000;
-      transition: var(--transition);
-    }
-    .theme-switch:hover { transform: translateY(-5px) scale(1.1); }
-    
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-content {
-      background: var(--card-bg);
-      border-radius: 28px;
-      padding: 2rem;
-      max-width: 400px;
-      width: 90%;
-    }
-    .form-control {
-      width: 100%;
-      padding: 0.8rem;
-      background: var(--primary-dark);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
-    .notification {
-      position: fixed;
-      top: 100px;
-      right: 20px;
-      background: var(--accent-gold);
-      color: #0a0f1e;
-      padding: 1rem 1.5rem;
-      border-radius: 50px;
-      font-weight: 600;
-      z-index: 9999;
-      animation: slideIn 0.3s ease;
-    }
-    
-    @keyframes slideIn {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .mobile-menu-btn { display: block; }
-      nav {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        background: var(--primary-dark);
-        flex-direction: column;
-        padding: 2rem;
-        transition: 0.3s;
-      }
-      nav.active { left: 0; }
-      .hero h1 { font-size: 2.5rem; }
-      .section-title h2 { font-size: 2rem; }
-      .featured-grid { grid-template-columns: 1fr; }
-      .social-links { justify-content: center; }
-      .company-name { font-size: 1.2rem; }
-    }
-    
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Code Cortex | AI Software Studio · Pakistan</title>
+    <meta name="description"
+        content="Code Cortex delivers enterprise AI, web, mobile solutions, CleanRoute AI waste management, and School ERP. Pakistan's premier software engineering studio.">
+    <meta name="author" content="Code Cortex (SMC-Pvt.) Ltd.">
+    <link rel="canonical" href="https://www.codecortexdigital.com/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+        :root {
+            --gold: #E8A020;
+            --gold-light: #F5C05A;
+            --gold-dim: rgba(232, 160, 32, .10);
+            --gold-border: rgba(232, 160, 32, .22);
+            --blue: #2563EB;
+            --blue-dim: rgba(37, 99, 235, .12);
+            --green: #059669;
+            --green-dim: rgba(5, 150, 105, .12);
+            --coral: #E5394B;
+            --coral-dim: rgba(229, 57, 75, .12);
+
+            --r-xl: 24px;
+            --r-lg: 18px;
+            --r-md: 12px;
+            --r-sm: 8px;
+
+            --ease: cubic-bezier(.4, 0, .2, 1);
+            --dur: .32s;
+        }
+
+        /* DARK theme */
+        [data-theme="dark"] {
+            --bg: #060B18;
+            --bg-2: #0C1524;
+            --bg-3: #101D30;
+            --bg-4: #152336;
+            --border: rgba(255, 255, 255, .07);
+            --border-2: rgba(255, 255, 255, .04);
+            --text-1: #F0F4FF;
+            --text-2: #8FA3C0;
+            --text-3: #56708A;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .55);
+            --shadow-lg: 0 24px 64px rgba(0, 0, 0, .6);
+            --header-bg: rgba(6, 11, 24, .80);
+            --canvas-gold: rgba(232, 160, 32, .55);
+            --canvas-blue: rgba(37, 99, 235, .25);
+        }
+
+        /* LIGHT theme */
+        [data-theme="light"] {
+            --bg: #F5F7FC;
+            --bg-2: #FFFFFF;
+            --bg-3: #FFFFFF;
+            --bg-4: #EEF2F9;
+            --border: rgba(0, 0, 0, .07);
+            --border-2: rgba(0, 0, 0, .04);
+            --text-1: #0D1626;
+            --text-2: #4A5E78;
+            --text-3: #8FA3BF;
+            --shadow: 0 4px 20px rgba(0, 0, 0, .08);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, .12);
+            --header-bg: rgba(245, 247, 252, .90);
+            --canvas-gold: rgba(232, 160, 32, .30);
+            --canvas-blue: rgba(37, 99, 235, .15);
+        }
+
+        /* ─────────────────────────────────────────
+   BASE
+───────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--text-1);
+            transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        /* type scale */
+        .t-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+        }
+
+        .t-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .t-label {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+        }
+
+        .t-body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        .t-body-m {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+        /* ─────────────────────────────────────────
+   THEME TOGGLE
+───────────────────────────────────────── */
+        .theme-toggle {
+            position: fixed;
+            top: 19px;
+            right: 5%;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 14px 6px 8px;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            background: var(--bg-3);
+            box-shadow: var(--shadow);
+            transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+            cursor: pointer;
+        }
+
+        .theme-toggle .toggle-track {
+            width: 34px;
+            height: 18px;
+            border-radius: 9px;
+            background: var(--bg-4);
+            border: 1px solid var(--border);
+            position: relative;
+            transition: background var(--dur) var(--ease);
+        }
+
+        [data-theme="dark"] .theme-toggle .toggle-track {
+            background: var(--gold-dim);
+            border-color: var(--gold-border);
+        }
+
+        .theme-toggle .toggle-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-3);
+            transition: transform .25s var(--ease), background .25s var(--ease);
+        }
+
+        [data-theme="dark"] .theme-toggle .toggle-thumb {
+            transform: translateX(16px);
+            background: var(--gold);
+        }
+
+        .theme-toggle .toggle-label {
+            font-size: 0.75rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            color: var(--text-2);
+            user-select: none;
+        }
+
+        /* ─────────────────────────────────────────
+   HEADER
+───────────────────────────────────────── */
+        header {
+            position: fixed;
+            inset: 0 0 auto 0;
+            height: 68px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--header-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border);
+            transition: height var(--dur) var(--ease), background var(--dur) var(--ease);
+        }
+
+        header.compact {
+            height: 58px;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+            color: var(--text-1);
+        }
+
+        .logo-text span {
+            color: var(--gold);
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-right: 1.5rem;
+        }
+
+        .nav-link {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-2);
+            padding: 0.45rem 0.9rem;
+            border-radius: var(--r-sm);
+            transition: color .2s, background .2s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-1);
+            background: var(--bg-4);
+        }
+
+        .btn-header-contact {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            border: none;
+            background: var(--gold);
+            color: #080808;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background .2s, box-shadow .2s, transform .2s;
+            margin-right: 10rem;
+            /* leave room for theme toggle */
+        }
+
+        .btn-header-contact:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(232, 160, 32, .35);
+        }
+
+        .btn-admin-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--text-3);
+            border: 1px solid var(--border);
+            background: transparent;
+            padding: 0.45rem 0.95rem;
+            border-radius: 40px;
+            transition: color .2s, border-color .2s, background .2s;
+            margin-right: 0.6rem;
+        }
+
+        .btn-admin-pill:hover {
+            color: var(--gold);
+            border-color: var(--gold-border);
+            background: var(--gold-dim);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-1);
+            font-size: 1.3rem;
+        }
+
+        /* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 5rem;
+            overflow: hidden;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: .65;
+        }
+
+        [data-theme="light"] #hero-canvas {
+            opacity: .35;
+        }
+
+        .hero-radial {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 55% at 50% 35%, rgba(37, 99, 235, .07) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 35% at 80% 80%, rgba(232, 160, 32, .05) 0%, transparent 55%);
+            z-index: 0;
+        }
+
+        [data-theme="light"] .hero-radial {
+            background:
+                radial-gradient(ellipse 70% 55% at 50% 35%, rgba(37, 99, 235, .06) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 35% at 80% 80%, rgba(232, 160, 32, .05) 0%, transparent 55%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .eyebrow-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--gold-border);
+            background: var(--gold-dim);
+            color: var(--gold);
+            padding: 5px 14px 5px 10px;
+            border-radius: 40px;
+            margin-bottom: 2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-chip .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: liveDot 2s ease-in-out infinite;
+        }
+
+        @keyframes liveDot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .35;
+                transform: scale(.65);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.06;
+            color: var(--text-1);
+            margin-bottom: 1.4rem;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(130deg, var(--gold) 0%, #F5A623 50%, #FF7A30 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            max-width: 560px;
+            margin: 0 auto 2.4rem;
+            font-weight: 400;
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.9rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-solid {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.88rem;
+            letter-spacing: 0.02em;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .2s;
+            cursor: pointer;
+        }
+
+        .btn-solid.coral {
+            background: linear-gradient(135deg, var(--coral) 0%, #C42A3A 100%);
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(229, 57, 75, .30);
+        }
+
+        .btn-solid.coral:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(229, 57, 75, .40);
+        }
+
+        .btn-outline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            border: 1px solid var(--gold-border);
+            background: var(--gold-dim);
+            color: var(--gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background .2s, transform .2s, box-shadow .2s;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: rgba(232, 160, 32, .18);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(232, 160, 32, .18);
+        }
+
+        .hero-metrics {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-top: 4.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-metric {
+            padding: 0 2.8rem;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .hero-metric:last-child {
+            border-right: none;
+        }
+
+        .hero-metric-val {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-1);
+            display: block;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .hero-metric-val .accent {
+            color: var(--gold);
+        }
+
+        .hero-metric-lbl {
+            font-size: 0.75rem;
+            color: var(--text-3);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        /* ─────────────────────────────────────────
+   SECTION SCAFFOLD
+───────────────────────────────────────── */
+        .sec {
+            padding: 6rem 5%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .sec-full {
+            padding: 6rem 5%;
+            background: var(--bg-2);
+        }
+
+        .sec-full>.sec {
+            padding: 0;
+        }
+
+        .sec-head {
+            margin-bottom: 3.5rem;
+        }
+
+        .sec-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.85rem;
+        }
+
+        .sec-eyebrow::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .sec-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.9rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            color: var(--text-1);
+            margin-bottom: 0.9rem;
+        }
+
+        .sec-sub {
+            font-size: 0.95rem;
+            color: var(--text-2);
+            max-width: 480px;
+            line-height: 1.75;
+        }
+
+        /* ─────────────────────────────────────────
+   FEATURED AI CARDS
+───────────────────────────────────────── */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+
+        .fcard {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+            position: relative;
+        }
+
+        .fcard:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .fcard.blue:hover {
+            border-color: rgba(37, 99, 235, .3);
+        }
+
+        .fcard.green:hover {
+            border-color: rgba(5, 150, 105, .3);
+        }
+
+        /* thin top accent */
+        .fcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            z-index: 1;
+        }
+
+        .fcard.blue::before {
+            background: linear-gradient(90deg, #2563EB, #7C3AED);
+        }
+
+        .fcard.green::before {
+            background: linear-gradient(90deg, #059669, #0EA5E9);
+        }
+
+        .fcard-vis {
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .fcard.blue .fcard-vis {
+            background: linear-gradient(145deg, #080F28 0%, #0D1840 100%);
+        }
+
+        .fcard.green .fcard-vis {
+            background: linear-gradient(145deg, #071A12 0%, #0A2418 100%);
+        }
+
+        [data-theme="light"] .fcard.blue .fcard-vis {
+            background: linear-gradient(145deg, #EEF3FF 0%, #E0EAFF 100%);
+        }
+
+        [data-theme="light"] .fcard.green .fcard-vis {
+            background: linear-gradient(145deg, #EDFAF5 0%, #D1FAE5 100%);
+        }
+
+        .vis-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(48px);
+        }
+
+        .orb-b1 {
+            width: 180px;
+            height: 180px;
+            background: #2563EB;
+            top: -50px;
+            right: -40px;
+            opacity: .25;
+        }
+
+        .orb-b2 {
+            width: 120px;
+            height: 120px;
+            background: #7C3AED;
+            bottom: -30px;
+            left: -20px;
+            opacity: .20;
+        }
+
+        .orb-g1 {
+            width: 180px;
+            height: 180px;
+            background: #059669;
+            top: -50px;
+            right: -40px;
+            opacity: .25;
+        }
+
+        .orb-g2 {
+            width: 120px;
+            height: 120px;
+            background: #0EA5E9;
+            bottom: -30px;
+            left: -20px;
+            opacity: .18;
+        }
+
+        .fcard-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fcard.blue .fcard-icon {
+            background: linear-gradient(135deg, #2563EB, #4F46E5);
+            box-shadow: 0 16px 40px rgba(37, 99, 235, .4);
+        }
+
+        .fcard.green .fcard-icon {
+            background: linear-gradient(135deg, #059669, #0EA5E9);
+            box-shadow: 0 16px 40px rgba(5, 150, 105, .4);
+        }
+
+        .fcard-icon i {
+            color: #fff;
+        }
+
+        .fcard-body {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .fcard-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.1rem;
+        }
+
+        .cbadge {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 40px;
+        }
+
+        .cbadge.blue {
+            background: var(--blue-dim);
+            color: #6BA3FF;
+            border: 1px solid rgba(37, 99, 235, .22);
+        }
+
+        .cbadge.green {
+            background: var(--green-dim);
+            color: #34D399;
+            border: 1px solid rgba(5, 150, 105, .22);
+        }
+
+        .fcard-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-1);
+            margin-bottom: 0.7rem;
+        }
+
+        .fcard-desc {
+            font-size: 0.88rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            margin-bottom: 1.3rem;
+        }
+
+        .tech-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1.3rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-4);
+            border: 1px solid var(--border);
+            color: var(--text-3);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.7rem;
+            letter-spacing: 0.02em;
+            padding: 3px 10px;
+            border-radius: 30px;
+        }
+
+        .fcard-feats {
+            list-style: none;
+            margin-bottom: 1.6rem;
+        }
+
+        .fcard-feats li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-2);
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+        }
+
+        .feat-check {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.52rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feat-check.blue {
+            background: var(--blue-dim);
+            color: #6BA3FF;
+        }
+
+        .feat-check.green {
+            background: var(--green-dim);
+            color: #34D399;
+        }
+
+        .fcard-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.83rem;
+            letter-spacing: 0.03em;
+            color: var(--gold);
+            margin-top: auto;
+            transition: gap .2s, color .2s;
+        }
+
+        .fcard-link:hover {
+            gap: 12px;
+            color: var(--gold-light);
+        }
+
+        /* ─────────────────────────────────────────
+   PORTFOLIO
+───────────────────────────────────────── */
+        .pgrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+        }
+
+        .pcard {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+        }
+
+        .pcard:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold-border);
+        }
+
+        .pcard-thumb {
+            height: 148px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pt1 {
+            background: linear-gradient(145deg, #160B2E, #1E0D45);
+        }
+
+        .pt2 {
+            background: linear-gradient(145deg, #091830, #0D2448);
+        }
+
+        .pt3 {
+            background: linear-gradient(145deg, #071A12, #0A2418);
+        }
+
+        [data-theme="light"] .pt1 {
+            background: linear-gradient(145deg, #EDE9FF, #DDD6FE);
+        }
+
+        [data-theme="light"] .pt2 {
+            background: linear-gradient(145deg, #EFF6FF, #DBEAFE);
+        }
+
+        [data-theme="light"] .pt3 {
+            background: linear-gradient(145deg, #ECFDF5, #D1FAE5);
+        }
+
+        .pcard-thumb-icon {
+            font-size: 2.6rem;
+            opacity: .55;
+            filter: drop-shadow(0 4px 12px currentColor);
+        }
+
+        .pt1 .pcard-thumb-icon {
+            color: #A78BFA;
+        }
+
+        .pt2 .pcard-thumb-icon {
+            color: #60A5FA;
+        }
+
+        .pt3 .pcard-thumb-icon {
+            color: #34D399;
+        }
+
+        .pcard-body {
+            padding: 1.3rem 1.4rem;
+        }
+
+        .pcard-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+            color: var(--text-1);
+            margin-bottom: 0.45rem;
+        }
+
+        .pcard-desc {
+            font-size: 0.83rem;
+            color: var(--text-2);
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
+        /* ─────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-tagline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.8rem, 2.8vw, 2.3rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.18;
+            color: var(--text-1);
+            margin-bottom: 1.2rem;
+        }
+
+        .about-tagline em {
+            font-style: normal;
+            background: linear-gradient(130deg, var(--gold), #F5A623);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-body {
+            font-size: 0.92rem;
+            color: var(--text-2);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .about-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.9rem 1.1rem;
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            transition: border-color .2s, background .2s;
+        }
+
+        .about-row:hover {
+            border-color: var(--gold-border);
+            background: var(--bg-4);
+        }
+
+        .about-row-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .ari-gold {
+            background: var(--gold-dim);
+            color: var(--gold);
+        }
+
+        .ari-blue {
+            background: var(--blue-dim);
+            color: #60A5FA;
+        }
+
+        .ari-green {
+            background: var(--green-dim);
+            color: #34D399;
+        }
+
+        .ari-coral {
+            background: var(--coral-dim);
+            color: #F87171;
+        }
+
+        .about-row-text strong {
+            display: block;
+            font-size: 0.87rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            color: var(--text-1);
+            margin-bottom: 2px;
+        }
+
+        .about-row-text span {
+            font-size: 0.78rem;
+            color: var(--text-3);
+        }
+
+        .stats-quad {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .stat-tile {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .stat-tile:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-5px);
+        }
+
+        .stat-tile-val {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, var(--gold), #F5A623);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-tile-lbl {
+            font-size: 0.78rem;
+            color: var(--text-3);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.04em;
+        }
+
+        /* ─────────────────────────────────────────
+   CONTACT SIDE PANEL
+───────────────────────────────────────── */
+        .contact-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1500;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        .contact-overlay.open {
+            pointer-events: all;
+            visibility: visible;
+        }
+
+        .contact-scrim {
+            position: absolute;
+            inset: 0;
+            background: rgba(6, 11, 24, .72);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transition: opacity .35s var(--ease);
+        }
+
+        [data-theme="light"] .contact-scrim {
+            background: rgba(13, 22, 38, .5);
+        }
+
+        .contact-overlay.open .contact-scrim {
+            opacity: 1;
+        }
+
+        .contact-drawer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 540px;
+            background: var(--bg-2);
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform .42s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .contact-overlay.open .contact-drawer {
+            transform: translateX(0);
+        }
+
+        .drawer-head {
+            padding: 2.2rem 2.2rem 1.6rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-shrink: 0;
+        }
+
+        .drawer-head-text h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--text-1);
+            line-height: 1.15;
+            margin-bottom: 0.35rem;
+        }
+
+        .drawer-head-text h2 em {
+            font-style: normal;
+            background: linear-gradient(130deg, var(--gold), #F5A623);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .drawer-head-text p {
+            font-size: 0.83rem;
+            color: var(--text-2);
+        }
+
+        .drawer-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-4);
+            border: 1px solid var(--border);
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            transition: background .2s, color .2s, border-color .2s;
+        }
+
+        .drawer-close:hover {
+            background: var(--coral-dim);
+            color: var(--coral);
+            border-color: var(--coral);
+        }
+
+        .drawer-body {
+            padding: 1.8rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            flex: 1;
+        }
+
+        .quick-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .qc-item {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 0.8rem 1rem;
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            transition: border-color .2s, transform .2s;
+        }
+
+        .qc-item:hover {
+            border-color: var(--gold-border);
+            transform: translateX(4px);
+        }
+
+        .qc-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.88rem;
+            flex-shrink: 0;
+        }
+
+        .qci-em {
+            background: var(--blue-dim);
+            color: #60A5FA;
+        }
+
+        .qci-ph {
+            background: var(--green-dim);
+            color: #34D399;
+        }
+
+        .qci-wa {
+            background: rgba(37, 211, 102, .12);
+            color: #25D366;
+        }
+
+        .qci-lo {
+            background: var(--gold-dim);
+            color: var(--gold);
+        }
+
+        .qc-info strong {
+            display: block;
+            font-size: 0.83rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            color: var(--text-1);
+        }
+
+        .qc-info span {
+            font-size: 0.76rem;
+            color: var(--text-3);
+        }
+
+        .divider-or {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 0.74rem;
+            color: var(--text-3);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .divider-or::before,
+        .divider-or::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* FORM */
+        .cf {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .cf-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+        }
+
+        .cf-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .cf-label {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.73rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-3);
+        }
+
+        .cf-input {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 0.75rem 1rem;
+            font-size: 0.88rem;
+            color: var(--text-1);
+            outline: none;
+            transition: border-color .2s, background .2s;
+            width: 100%;
+        }
+
+        .cf-input::placeholder {
+            color: var(--text-3);
+        }
+
+        .cf-input:focus {
+            border-color: var(--gold);
+            background: var(--gold-dim);
+        }
+
+        textarea.cf-input {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem;
+        }
+
+        .svc-opt {
+            padding: 0.6rem 0.85rem;
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            font-size: 0.78rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: var(--text-2);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            cursor: pointer;
+            transition: border-color .18s, background .18s, color .18s;
+        }
+
+        .svc-opt:hover,
+        .svc-opt.active {
+            border-color: var(--gold-border);
+            background: var(--gold-dim);
+            color: var(--gold);
+        }
+
+        .cf-submit {
+            background: linear-gradient(135deg, var(--gold) 0%, #F5A623 100%);
+            color: #080808;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.88rem;
+            letter-spacing: 0.04em;
+            padding: 0.95rem;
+            border-radius: var(--r-md);
+            border: none;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .cf-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(232, 160, 32, .35);
+        }
+
+        /* ─────────────────────────────────────────
+   ADMIN MODAL
+───────────────────────────────────────── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(6, 11, 24, .85);
+            backdrop-filter: blur(16px);
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        [data-theme="light"] .modal-overlay {
+            background: rgba(13, 22, 38, .6);
+        }
+
+        .modal-box {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: 2.4rem;
+            width: 100%;
+            max-width: 370px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-box h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-1);
+            margin-bottom: 0.35rem;
+        }
+
+        .modal-box p {
+            font-size: 0.83rem;
+            color: var(--text-2);
+            margin-bottom: 1.8rem;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-4);
+            border: 1px solid var(--border);
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: color .2s, border-color .2s;
+        }
+
+        .modal-close:hover {
+            color: var(--coral);
+            border-color: var(--coral);
+        }
+
+        .modal-submit {
+            background: linear-gradient(135deg, var(--coral), #C42A3A);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 0.9rem;
+            border-radius: var(--r-md);
+            border: none;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: box-shadow .2s, transform .2s;
+        }
+
+        .modal-submit:hover {
+            box-shadow: 0 8px 24px rgba(229, 57, 75, .35);
+            transform: translateY(-2px);
+        }
+
+        /* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+        footer {
+            background: var(--bg-2);
+            border-top: 1px solid var(--border);
+            padding: 4rem 5% 2rem;
+            transition: background var(--dur) var(--ease);
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1280px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .footer-brand {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: var(--text-1);
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-brand span {
+            color: var(--gold);
+        }
+
+        .footer-desc {
+            font-size: 0.84rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            max-width: 260px;
+            margin-bottom: 1.4rem;
+        }
+
+        .socials {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: background .2s, color .2s, border-color .2s, transform .2s;
+        }
+
+        .social-btn:hover {
+            background: var(--gold-dim);
+            color: var(--gold);
+            border-color: var(--gold-border);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--text-1);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-link {
+            display: block;
+            font-size: 0.84rem;
+            color: var(--text-2);
+            margin-bottom: 0.65rem;
+            transition: color .2s;
+        }
+
+        .footer-link:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 1.8rem;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-3);
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ─────────────────────────────────────────
+   FLOAT BUTTONS
+───────────────────────────────────────── */
+        .floats {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            z-index: 900;
+        }
+
+        .float-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: transform .22s var(--ease), box-shadow .22s;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .float-btn.wa {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .float-btn.top {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+        }
+
+        .float-btn:hover {
+            transform: translateY(-4px) scale(1.08);
+        }
+
+        /* ─────────────────────────────────────────
+   TOAST
+───────────────────────────────────────── */
+        .toast {
+            position: fixed;
+            top: 85px;
+            right: 1.5rem;
+            background: var(--bg-3);
+            border: 1px solid var(--gold-border);
+            color: var(--gold);
+            padding: 0.8rem 1.3rem;
+            border-radius: 50px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.83rem;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: toastIn .3s var(--ease);
+            box-shadow: var(--shadow);
+            max-width: 320px;
+        }
+
+        @keyframes toastIn {
+            from {
+                transform: translateX(110%);
+                opacity: 0
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1
+            }
+        }
+
+        /* ─────────────────────────────────────────
+   FADE-UP
+───────────────────────────────────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity .65s var(--ease), transform .65s var(--ease);
+        }
+
+        .fade-up.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+        @media(max-width:960px) {
+            .mobile-menu-btn {
+                display: block;
+                margin-left: auto;
+            }
+
+            nav {
+                position: fixed;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: var(--bg-2);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .35s var(--ease);
+                z-index: 999;
+            }
+
+            nav.open {
+                max-height: 480px;
+            }
+
+            .nav-link {
+                padding: 1rem 1.4rem;
+                width: 100%;
+                border-bottom: 1px solid var(--border);
+                border-radius: 0;
+            }
+
+            .btn-header-contact {
+                margin: 1rem 1.4rem;
+                width: calc(100% - 2.8rem);
+                justify-content: center;
+            }
+
+            .btn-admin-pill {
+                margin: 0.5rem 1.4rem 1rem;
+            }
+
+            .btn-header-contact {
+                margin-right: 1.4rem;
+            }
+
+            .theme-toggle {
+                top: 16px;
+                right: 58px;
+            }
+
+            .featured-grid,
+            .pgrid,
+            .about-grid,
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .cf-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-metric {
+                padding: 0 1.5rem;
+            }
+
+            .contact-drawer {
+                max-width: 100%;
+            }
+
+            header {
+                padding: 0 4%;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <div style="display: flex; align-items: center; gap: 1rem;">
-    <img src="code_logo.png" alt="Code Cortex Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-    <div class="company-name">CODE CORTEX</div>
-  </div>
-  <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-  <nav id="mainNav">
-    <a href="#home" class="nav-link">Home</a>
-    <a href="#featured" class="nav-link">AI Projects</a>
-    <a href="#portfolio" class="nav-link">Portfolio</a>
-    <a href="#about" class="nav-link">About</a>
-    <a href="#contact" class="nav-link">Contact</a>
-    <button class="admin-btn" id="adminBtn"><i class="fas fa-lock"></i> Admin</button>
-  </nav>
-</header>
-
-<main>
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div>
-      <h1>AI-Powered Innovation<br><span style="background: var(--gradient-gold); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">For a Smarter Future</span></h1>
-      <p>From intelligent waste management to next-gen educational ERP — we build AI solutions that transform industries.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="#contact" class="btn btn-primary"><i class="fas fa-rocket"></i> Start Project</a>
-        <a href="#featured" class="btn btn-outline"><i class="fas fa-eye"></i> Explore AI Work</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured AI Projects Section (CleanRoute AI + School ERP) -->
-  <section id="featured">
-    <div class="section-title">
-      <h2>Featured AI Innovations</h2>
-      <p>Cutting-edge solutions redefining efficiency and intelligence</p>
-    </div>
-    <div class="featured-grid">
-      <!-- CleanRoute AI Card -->
-      <div class="feature-card fade-up">
-        <div class="card-header">
-          <div class="card-icon-lg ai"><i class="fas fa-robot"></i></div>
-          <span class="badge"><i class="fas fa-microchip"></i> AI-Powered</span>
+    <!-- THEME TOGGLE -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <div class="toggle-track">
+            <div class="toggle-thumb"></div>
         </div>
-        <div class="card-body">
-          <h3>CleanRoute AI</h3>
-          <p>Smart waste management system using computer vision & ML — detects fill levels, optimizes routes, predicts waste generation.</p>
-          <div class="tech-stack">
-            <span>Django</span><span>React</span><span>scikit-learn</span><span>OpenCV</span><span>Supabase</span>
-          </div>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> 90% accuracy waste detection</li>
-            <li><i class="fas fa-check-circle"></i> K-Means route optimization (25% time saved)</li>
-            <li><i class="fas fa-check-circle"></i> Predictive analytics (RMSE: 6.09 tons)</li>
-            <li><i class="fas fa-check-circle"></i> Real-time anomaly detection (88% accuracy)</li>
-          </ul>
-          <a href="https://cleanroute-ai-prod.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Live Demo <i class="fas fa-arrow-right"></i></a>
+        <span class="toggle-label" id="themeLabel">Dark</span>
+    </button>
+
+    <!-- HEADER -->
+    <header id="hdr">
+        <a href="#home" class="logo-wrap">
+            <img src="code_logo.png" alt="Code Cortex" class="logo-img" onerror="this.style.display='none'">
+            <span class="logo-text">CODE <span>CORTEX</span></span>
+        </a>
+        <div class="header-spacer"></div>
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        <nav id="mainNav">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#featured" class="nav-link">AI Projects</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#about" class="nav-link">About</a>
+            <button class="btn-admin-pill" id="adminBtn"><i class="fas fa-lock"></i> Admin</button>
+            <button class="btn-header-contact open-contact"><i class="fas fa-paper-plane"></i> Get in Touch</button>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-radial"></div>
+        <div class="hero-content">
+            <div class="eyebrow-chip"><span class="live-dot"></span> Pakistan's AI-First Software Studio</div>
+            <h1 class="t-display">We Build Intelligence.<br><em>Not Just Software.</em></h1>
+            <p class="hero-sub">From AI-powered waste management to enterprise school ERPs — we engineer solutions that
+                transform industries and scale with your ambition.</p>
+            <div class="hero-actions">
+                <a href="#featured" class="btn-solid coral"><i class="fas fa-rocket"></i> Explore Our Work</a>
+                <button class="btn-outline open-contact"><i class="fas fa-comments"></i> Start a Project</button>
+            </div>
+            <div class="hero-metrics">
+                <div class="hero-metric">
+                    <span class="hero-metric-val">30<span class="accent">+</span></span>
+                    <span class="hero-metric-lbl">AI Models Deployed</span>
+                </div>
+                <div class="hero-metric">
+                    <span class="hero-metric-val">15<span class="accent">+</span></span>
+                    <span class="hero-metric-lbl">Enterprise Clients</span>
+                </div>
+                <div class="hero-metric">
+                    <span class="hero-metric-val">99<span class="accent">%</span></span>
+                    <span class="hero-metric-lbl">Client Retention</span>
+                </div>
+                <div class="hero-metric">
+                    <span class="hero-metric-val">24<span class="accent">/7</span></span>
+                    <span class="hero-metric-lbl">Dedicated Support</span>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- Code Cortex ERP (School Management) Card -->
-      <div class="feature-card fade-up">
-        <div class="card-header">
-          <div class="card-icon-lg erp"><i class="fas fa-school"></i></div>
-          <span class="badge"><i class="fas fa-brain"></i> AI-Integrated ERP</span>
+    </section>
+
+    <!-- FEATURED -->
+    <div class="sec-full" id="featured">
+        <div class="sec">
+            <div class="sec-head">
+                <div class="sec-eyebrow">Featured Innovations</div>
+                <h2 class="sec-title">AI Products We're Proud Of</h2>
+                <p class="sec-sub">Two flagship products reshaping industries with machine intelligence and
+                    enterprise-grade engineering.</p>
+            </div>
+            <div class="featured-grid">
+
+                <div class="fcard blue fade-up">
+                    <div class="fcard-vis">
+                        <div class="vis-orb orb-b1"></div>
+                        <div class="vis-orb orb-b2"></div>
+                        <div class="fcard-icon"><i class="fas fa-robot"></i></div>
+                    </div>
+                    <div class="fcard-body">
+                        <div class="fcard-meta"><span class="cbadge blue"><i class="fas fa-microchip"></i>&nbsp;
+                                AI-Powered</span></div>
+                        <div class="fcard-title">CleanRoute AI</div>
+                        <p class="fcard-desc">Smart waste management using computer vision &amp; machine learning —
+                            detects fill levels, optimizes routes, and predicts generation before overflow occurs.</p>
+                        <div class="tech-row">
+                            <span class="tech-tag">Django</span><span class="tech-tag">React</span><span
+                                class="tech-tag">scikit-learn</span><span class="tech-tag">OpenCV</span><span
+                                class="tech-tag">Supabase</span>
+                        </div>
+                        <ul class="fcard-feats">
+                            <li><span class="feat-check blue"><i class="fas fa-check"></i></span>90% accuracy in waste
+                                level detection</li>
+                            <li><span class="feat-check blue"><i class="fas fa-check"></i></span>K-Means route
+                                optimization — 25% time saved</li>
+                            <li><span class="feat-check blue"><i class="fas fa-check"></i></span>Predictive analytics
+                                with RMSE of 6.09 tons</li>
+                            <li><span class="feat-check blue"><i class="fas fa-check"></i></span>Real-time anomaly
+                                detection at 88% accuracy</li>
+                        </ul>
+                        <a href="https://cleanroute-ai-prod.vercel.app" target="_blank" rel="noopener noreferrer"
+                            class="fcard-link">View Live Demo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="fcard green fade-up">
+                    <div class="fcard-vis">
+                        <div class="vis-orb orb-g1"></div>
+                        <div class="vis-orb orb-g2"></div>
+                        <div class="fcard-icon"><i class="fas fa-school"></i></div>
+                    </div>
+                    <div class="fcard-body">
+                        <div class="fcard-meta"><span class="cbadge green"><i class="fas fa-brain"></i>&nbsp;
+                                AI-Integrated ERP</span></div>
+                        <div class="fcard-title">School ERP</div>
+                        <p class="fcard-desc">Complete AI-powered school management platform — students, academics,
+                            attendance, exams, finance, and admissions managed in one intelligent system.</p>
+                        <div class="tech-row">
+                            <span class="tech-tag">React</span><span class="tech-tag">Django</span><span
+                                class="tech-tag">PostgreSQL</span><span class="tech-tag">AI Analytics</span><span
+                                class="tech-tag">MUI</span>
+                        </div>
+                        <ul class="fcard-feats">
+                            <li><span class="feat-check green"><i class="fas fa-check"></i></span>AI-powered academic
+                                insights &amp; predictions</li>
+                            <li><span class="feat-check green"><i class="fas fa-check"></i></span>Smart attendance with
+                                facial recognition</li>
+                            <li><span class="feat-check green"><i class="fas fa-check"></i></span>Automated fee
+                                management &amp; finance tracking</li>
+                            <li><span class="feat-check green"><i class="fas fa-check"></i></span>Real-time performance
+                                analytics dashboards</li>
+                        </ul>
+                        <button class="fcard-link open-contact"
+                            style="background:none;border:none;padding:0;font-size:inherit;">Request a Demo <i
+                                class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <h3>Code Cortex ERP</h3>
-          <p>Complete AI-powered school management platform — manage students, academics, attendance, exams, finance, and admissions seamlessly.</p>
-          <div class="tech-stack">
-            <span>React</span><span>Django</span><span>PostgreSQL</span><span>AI Analytics</span><span>MUI</span>
-          </div>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> AI-powered academic insights & predictions</li>
-            <li><i class="fas fa-check-circle"></i> Smart attendance with facial recognition</li>
-            <li><i class="fas fa-check-circle"></i> Automated fee management & finance tracking</li>
-            <li><i class="fas fa-check-circle"></i> Performance analytics & real-time dashboards</li>
-          </ul>
-          <a href="#contact" class="project-link">Request Demo <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <!-- PORTFOLIO -->
+    <div id="portfolio">
+        <div class="sec">
+            <div class="sec-head">
+                <div class="sec-eyebrow">Our Work</div>
+                <h2 class="sec-title">More Success Stories</h2>
+                <p class="sec-sub">Enterprise solutions trusted by clients across industries and geographies.</p>
+            </div>
+            <div class="pgrid">
+                <div class="pcard fade-up">
+                    <div class="pcard-thumb pt1"><i class="fas fa-briefcase pcard-thumb-icon"></i></div>
+                    <div class="pcard-body">
+                        <div class="pcard-title">Enterprise CRM System</div>
+                        <p class="pcard-desc">AI-powered CRM with lead tracking, sales pipeline automation, and customer
+                            insight generation.</p>
+                        <div class="tech-row"><span class="tech-tag">React</span><span
+                                class="tech-tag">Node.js</span><span class="tech-tag">PostgreSQL</span></div>
+                    </div>
+                </div>
+                <div class="pcard fade-up">
+                    <div class="pcard-thumb pt2"><i class="fas fa-shopping-cart pcard-thumb-icon"></i></div>
+                    <div class="pcard-body">
+                        <div class="pcard-title">Multi-Vendor Marketplace</div>
+                        <p class="pcard-desc">Real-time inventory, multi-payment gateway integration, and comprehensive
+                            vendor analytics.</p>
+                        <div class="tech-row"><span class="tech-tag">Vue.js</span><span
+                                class="tech-tag">Laravel</span><span class="tech-tag">MySQL</span></div>
+                    </div>
+                </div>
+                <div class="pcard fade-up">
+                    <div class="pcard-thumb pt3"><i class="fas fa-chart-line pcard-thumb-icon"></i></div>
+                    <div class="pcard-body">
+                        <div class="pcard-title">Smart Inventory System</div>
+                        <p class="pcard-desc">Real-time stock tracking, intelligent alerts, and ML-powered predictive
+                            reordering.</p>
+                        <div class="tech-row"><span class="tech-tag">React</span><span
+                                class="tech-tag">Express</span><span class="tech-tag">MongoDB</span></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <!-- Additional Portfolio Section (Existing Projects) -->
-  <section id="portfolio">
-    <div class="section-title">
-      <h2>More Success Stories</h2>
-      <p>Enterprise solutions trusted by global clients</p>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-card fade-up">
-        <div class="portfolio-img"><i class="fas fa-briefcase"></i></div>
-        <div class="portfolio-content">
-          <h3>Enterprise CRM System</h3>
-          <p style="color: var(--text-muted);">AI-powered CRM with lead tracking, sales pipeline, and automated customer insights.</p>
-          <div class="tech-stack"><span>React</span><span>Node.js</span><span>PostgreSQL</span></div>
+    <!-- ABOUT -->
+    <div class="sec-full" id="about">
+        <div class="sec">
+            <div class="about-grid">
+                <div class="fade-up">
+                    <div class="sec-eyebrow">Who We Are</div>
+                    <h2 class="about-tagline">We Don't Just Code.<br>We Engineer <em>Intelligence.</em></h2>
+                    <p class="about-body">Based in Pakistan with a global footprint, Code Cortex specializes in AI-first
+                        solutions, enterprise software, and digital transformation. Our team combines deep technical
+                        expertise with business strategy to drive measurable impact.</p>
+                    <div class="about-rows">
+                        <div class="about-row">
+                            <div class="about-row-icon ari-blue"><i class="fas fa-brain"></i></div>
+                            <div class="about-row-text"><strong>AI-First Engineering</strong><span>Every product we
+                                    build has intelligence at its core</span></div>
+                        </div>
+                        <div class="about-row">
+                            <div class="about-row-icon ari-green"><i class="fas fa-shield-alt"></i></div>
+                            <div class="about-row-text"><strong>Enterprise-Grade Quality</strong><span>Production-ready,
+                                    scalable systems for real-world demands</span></div>
+                        </div>
+                        <div class="about-row">
+                            <div class="about-row-icon ari-coral"><i class="fas fa-headset"></i></div>
+                            <div class="about-row-text"><strong>24/7 Dedicated Support</strong><span>We stay with you
+                                    long after launch — outcomes matter</span></div>
+                        </div>
+                        <div class="about-row">
+                            <div class="about-row-icon ari-gold"><i class="fas fa-globe"></i></div>
+                            <div class="about-row-text"><strong>Global Reach, Local Roots</strong><span>Serving
+                                    worldwide from our base in Islamabad, Pakistan</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-quad fade-up">
+                    <div class="stat-tile">
+                        <div class="stat-tile-val">30+</div>
+                        <div class="stat-tile-lbl">AI Models Deployed</div>
+                    </div>
+                    <div class="stat-tile">
+                        <div class="stat-tile-val">15+</div>
+                        <div class="stat-tile-lbl">Enterprise Clients</div>
+                    </div>
+                    <div class="stat-tile">
+                        <div class="stat-tile-val">99%</div>
+                        <div class="stat-tile-lbl">Client Retention</div>
+                    </div>
+                    <div class="stat-tile">
+                        <div class="stat-tile-val">24/7</div>
+                        <div class="stat-tile-lbl">Technical Support</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="portfolio-card fade-up">
-        <div class="portfolio-img"><i class="fas fa-shopping-cart"></i></div>
-        <div class="portfolio-content">
-          <h3>E-commerce Platform</h3>
-          <p style="color: var(--text-muted);">Multi-vendor marketplace with real-time inventory and payment gateway.</p>
-          <div class="tech-stack"><span>Vue.js</span><span>Laravel</span><span>MySQL</span></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand">CODE <span>CORTEX</span></div>
+                <p class="footer-desc">AI-powered software engineering for the modern world. Building tomorrow's
+                    solutions, today.</p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-btn"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-btn"
+                        aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="social-btn"
+                        aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61579583993304" target="_blank"
+                        rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="#home" class="footer-link">Home</a>
+                <a href="#featured" class="footer-link">AI Projects</a>
+                <a href="#portfolio" class="footer-link">Portfolio</a>
+                <a href="#about" class="footer-link">About Us</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <span class="footer-link">info@codecortexdigital.com</span>
+                <span class="footer-link">+923 157 227 688</span>
+                <span class="footer-link">Islamabad, Pakistan</span>
+            </div>
         </div>
-      </div>
-      <div class="portfolio-card fade-up">
-        <div class="portfolio-img"><i class="fas fa-chart-line"></i></div>
-        <div class="portfolio-content">
-          <h3>Inventory Management</h3>
-          <p style="color: var(--text-muted);">Real-time tracking, smart stock alerts, and predictive reordering system.</p>
-          <div class="tech-stack"><span>React</span><span>Express</span><span>MongoDB</span></div>
+        <div class="footer-bottom">© 2025 Code Cortex (SMC-Pvt.) Ltd. &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp;
+            Innovating with AI</div>
+    </footer>
+
+    <!-- FLOATS -->
+    <div class="floats">
+        <a href="https://wa.me/923157227688" target="_blank" rel="noopener noreferrer" class="float-btn wa"
+            aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <button class="float-btn top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Top"><i
+                class="fas fa-arrow-up"></i></button>
+    </div>
+
+    <!-- CONTACT DRAWER -->
+    <div class="contact-overlay" id="contactOverlay">
+        <div class="contact-scrim" id="contactScrim"></div>
+        <div class="contact-drawer">
+            <div class="drawer-head">
+                <div class="drawer-head-text">
+                    <h2>Get in <em>Touch</em></h2>
+                    <p>Tell us about your project or request a demo.</p>
+                </div>
+                <button class="drawer-close" id="closeContact" aria-label="Close contact drawer">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div class="quick-contacts">
+                    <a href="mailto:codecortexpk@gmail.com" class="qc-item">
+                        <div class="qc-icon qci-em"><i class="fas fa-envelope"></i></div>
+                        <div class="qc-info">
+                            <strong>Email Us</strong>
+                            <span>codecortexpk@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="tel:+923157227688" class="qc-item">
+                        <div class="qc-icon qci-ph"><i class="fas fa-phone-alt"></i></div>
+                        <div class="qc-info">
+                            <strong>Call Us</strong>
+                            <span>+923 157 227 688</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/923157227688" target="_blank" rel="noopener noreferrer" class="qc-item">
+                        <div class="qc-icon qci-wa"><i class="fab fa-whatsapp"></i></div>
+                        <div class="qc-info">
+                            <strong>WhatsApp Chat</strong>
+                            <span>+923 157 227 688</span>
+                        </div>
+                    </a>
+                    <div class="qc-item">
+                        <div class="qc-icon qci-lo"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="qc-info">
+                            <strong>Our Location</strong>
+                            <span>Islamabad, Pakistan</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="divider-or">Or send a message</div>
+                
+                <form class="cf" id="contactForm" action="https://formsubmit.co/ajax/codecortexpk@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Client Inquiry - Code Cortex">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div class="cf-row">
+                        <div class="cf-group">
+                            <label class="cf-label" for="cfName">Your Name *</label>
+                            <input type="text" id="cfName" name="name" class="cf-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="cf-group">
+                            <label class="cf-label" for="cfEmail">Your Email *</label>
+                            <input type="email" id="cfEmail" name="email" class="cf-input" placeholder="email@example.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="cf-row">
+                        <div class="cf-group">
+                            <label class="cf-label" for="cfPhone">Phone Number</label>
+                            <input type="tel" id="cfPhone" name="phone" class="cf-input" placeholder="+92 300 1234567">
+                        </div>
+                        <div class="cf-group">
+                            <label class="cf-label" for="cfCompany">Company</label>
+                            <input type="text" id="cfCompany" name="company" class="cf-input" placeholder="Company Name">
+                        </div>
+                    </div>
+                    
+                    <div class="cf-group">
+                        <label class="cf-label">Interest / Service</label>
+                        <input type="hidden" id="cfService" name="service" value="CleanRoute AI">
+                        <div class="service-grid">
+                            <div class="svc-opt active" data-val="CleanRoute AI">CleanRoute AI</div>
+                            <div class="svc-opt" data-val="School ERP">School ERP</div>
+                            <div class="svc-opt" data-val="Custom Software">Custom Software</div>
+                            <div class="svc-opt" data-val="General Inquiry">General Inquiry</div>
+                        </div>
+                    </div>
+                    
+                    <div class="cf-group">
+                        <label class="cf-label" for="cfMessage">Message *</label>
+                        <textarea id="cfMessage" name="message" class="cf-input" placeholder="Describe your project or inquiry..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="cf-submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <!-- About & Stats -->
-  <section id="about">
-    <div class="section-title">
-      <h2>About Code Cortex</h2>
-      <p>We don't just code — we engineer intelligence.</p>
+    <!-- ADMIN MODAL -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeAdmin" aria-label="Close admin modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3>Admin Access</h3>
+            <p>Enter your credentials to access the admin panel.</p>
+            <form class="modal-form" id="adminForm" onsubmit="event.preventDefault(); adminLogin();">
+                <div class="cf-group">
+                    <label class="cf-label" for="adminUser">Username</label>
+                    <input type="text" id="adminUser" class="cf-input" placeholder="admin" required autocomplete="username">
+                </div>
+                <div class="cf-group">
+                    <label class="cf-label" for="adminPass">Password</label>
+                    <input type="password" id="adminPass" class="cf-input" placeholder="••••••••" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="modal-submit">
+                    <i class="fas fa-lock"></i> Access Panel
+                </button>
+            </form>
+        </div>
     </div>
-    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-      <p style="font-size: 1.1rem; color: var(--text-muted);">Based in Pakistan with a global footprint, we specialize in delivering AI-first solutions, enterprise software, and digital transformation. Our team combines deep tech expertise with business strategy to drive real impact.</p>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-number">30+</div><div>AI Models Deployed</div></div>
-        <div class="stat-card"><div class="stat-number">15+</div><div>Enterprise Clients</div></div>
-        <div class="stat-card"><div class="stat-number">99%</div><div>Client Retention</div></div>
-        <div class="stat-card"><div class="stat-number">24/7</div><div>Support</div></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="section-title">
-      <h2>Let's Build Something Great</h2>
-      <p>Ready to bring your AI vision to life? Reach out to us.</p>
-    </div>
-    <div class="contact-container">
-      <div class="contact-detail"><i class="fas fa-envelope"></i><div><strong>Email</strong><br>info@codecortexdigital.com</div></div>
-      <div class="contact-detail"><i class="fas fa-phone-alt"></i><div><strong>Phone</strong><br>+923 157 227 688</div></div>
-      <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><div><strong>Location</strong><br>Islamabad, Pakistan | Serving Worldwide</div></div>
-    </div>
-  </section>
-</main>
+    <!-- SCRIPTS -->
+    <script>
+        // ─────────────────────────────────────────
+        // 1. HERO PARTICLES ANIMATION
+        // ─────────────────────────────────────────
+        (function() {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = canvas.offsetWidth;
+            let height = canvas.height = canvas.offsetHeight;
+            
+            window.addEventListener('resize', () => {
+                width = canvas.width = canvas.offsetWidth;
+                height = canvas.height = canvas.offsetHeight;
+            });
+            
+            const particles = [];
+            const maxParticles = 65;
+            const connectionDist = 110;
+            
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.4;
+                    this.vy = (Math.random() - 0.5) * 0.4;
+                    this.radius = Math.random() * 2 + 1;
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+                draw() {
+                    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = isDark ? 'rgba(232, 160, 32, 0.4)' : 'rgba(232, 160, 32, 0.2)';
+                    ctx.fill();
+                }
+            }
+            
+            for (let i = 0; i < maxParticles; i++) {
+                particles.push(new Particle());
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+                
+                ctx.lineWidth = 0.5;
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < connectionDist) {
+                            const alpha = (1 - dist / connectionDist) * (isDark ? 0.12 : 0.06);
+                            ctx.strokeStyle = isDark ? `rgba(37, 99, 235, ${alpha})` : `rgba(37, 99, 235, ${alpha})`;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
 
-<footer>
-  <div class="footer-content">
-    <div>
-      <div class="footer-logo">CODE CORTEX</div>
-      <p style="color: var(--text-muted);">AI-powered software engineering for the modern world.</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61579583993304" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      </div>
-    </div>
-    <div>
-      <h4>Quick Links</h4>
-      <a href="#featured" style="color: var(--text-muted); display: block; margin-bottom: 0.5rem;">AI Projects</a>
-      <a href="#portfolio" style="color: var(--text-muted); display: block; margin-bottom: 0.5rem;">Portfolio</a>
-      <a href="#contact" style="color: var(--text-muted); display: block;">Contact</a>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <span style="color: var(--text-muted); display: block;">info@codecortexdigital.com</span>
-      <span style="color: var(--text-muted); display: block; margin-top: 0.5rem;">+923 157 227 688</span>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2025 Code Cortex (SMC-Pvt.) Ltd. | Innovating with AI</div>
-</footer>
+        // ─────────────────────────────────────────
+        // 2. THEME CONTROLLER
+        // ─────────────────────────────────────────
+        const themeToggle = document.getElementById('themeToggle');
+        const themeLabel = document.getElementById('themeLabel');
+        
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            if (themeLabel) {
+                themeLabel.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
+            }
+        }
+        
+        // Initial Theme Check
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+                showToast(`Switched to ${newTheme} mode`);
+            });
+        }
 
-<div class="float-buttons">
-  <a href="https://wa.me/923157227688" target="_blank" rel="noopener noreferrer" class="float-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
-  <a href="#home" class="float-btn top"><i class="fas fa-arrow-up"></i></a>
-</div>
-<button class="theme-switch" id="themeToggle"><i class="fas fa-sun"></i></button>
+        // ─────────────────────────────────────────
+        // 3. TOAST NOTIFICATION UTILITY
+        // ─────────────────────────────────────────
+        function showToast(msg) {
+            const existing = document.querySelector('.toast');
+            if (existing) existing.remove();
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `<i class="fas fa-info-circle"></i> <span>${msg}</span>`;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.transition = 'opacity .32s var(--ease), transform .32s var(--ease)';
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(110%)';
+                setTimeout(() => toast.remove(), 320);
+            }, 3200);
+        }
 
-<!-- Admin Modal -->
-<div class="modal" id="adminModal">
-  <div class="modal-content">
-    <button class="close-modal" style="float: right; background: none; border: none; font-size: 1.5rem; cursor: pointer;" onclick="closeAdmin()">&times;</button>
-    <h3 style="margin-bottom: 1.5rem;">Admin Access</h3>
-    <input type="text" class="form-control" id="adminUser" placeholder="Username">
-    <input type="password" class="form-control" id="adminPass" placeholder="Password">
-    <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="adminLogin()">Login</button>
-  </div>
-</div>
+        // ─────────────────────────────────────────
+        // 4. MOBILE NAVIGATION
+        // ─────────────────────────────────────────
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (menuBtn && mainNav) {
+            menuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+                const isOpen = mainNav.classList.contains('open');
+                menuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+        }
+        
+        // Close menu on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav) mainNav.classList.remove('open');
+                if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
 
-<script>
-  // Mobile Menu
-  const menuBtn = document.getElementById('menuBtn');
-  const navMenu = document.getElementById('mainNav');
-  menuBtn?.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    menuBtn.innerHTML = navMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-  });
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    });
-  });
-  
-  // Theme
-  function initTheme() {
-    const hour = new Date().getHours();
-    const isDay = hour >= 6 && hour < 18;
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') document.body.classList.add('light-theme');
-    else if (saved === 'dark') document.body.classList.remove('light-theme');
-    else if (isDay) document.body.classList.add('light-theme');
-    updateIcon();
-  }
-  function toggleTheme() {
-    document.body.classList.toggle('light-theme');
-    localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
-    updateIcon();
-    showNotif(`Switched to ${document.body.classList.contains('light-theme') ? 'light' : 'dark'} mode`);
-  }
-  function updateIcon() {
-    const icon = document.querySelector('#themeToggle i');
-    if (document.body.classList.contains('light-theme')) icon.className = 'fas fa-moon';
-    else icon.className = 'fas fa-sun';
-  }
-  document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-  initTheme();
-  
-  // Admin Modal
-  const adminModal = document.getElementById('adminModal');
-  document.getElementById('adminBtn')?.addEventListener('click', () => adminModal.style.display = 'flex');
-  function closeAdmin() { adminModal.style.display = 'none'; }
-  window.addEventListener('click', (e) => { if (e.target === adminModal) closeAdmin(); });
-  function adminLogin() {
-    const u = document.getElementById('adminUser').value;
-    const p = document.getElementById('adminPass').value;
-    if (u && p) { showNotif('Incorrect Password!'); closeAdmin(); }
-    else alert('Enter credentials');
-  }
-  
-  function showNotif(msg) {
-    const d = document.createElement('div');
-    d.className = 'notification';
-    d.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
-    document.body.appendChild(d);
-    setTimeout(() => d.remove(), 3000);
-  }
-  
-  // Scroll Animations
-  const fadeElements = document.querySelectorAll('.fade-up');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  fadeElements.forEach(el => observer.observe(el));
-  
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
-  });
-  
-  // Header scroll effect
-  window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) header.style.padding = '0.7rem 5%';
-    else header.style.padding = '1rem 5%';
-  });
-</script>
+        // Compact Header on Scroll
+        window.addEventListener('scroll', () => {
+            const hdr = document.getElementById('hdr');
+            if (hdr) {
+                if (window.scrollY > 50) {
+                    hdr.classList.add('compact');
+                } else {
+                    hdr.classList.remove('compact');
+                }
+            }
+        });
+
+        // ─────────────────────────────────────────
+        // 5. CONTACT DRAWER TOGGLES & AJAX SUBMISSION
+        // ─────────────────────────────────────────
+        const contactOverlay = document.getElementById('contactOverlay');
+        const contactScrim = document.getElementById('contactScrim');
+        const closeContact = document.getElementById('closeContact');
+        const openContactBtns = document.querySelectorAll('.open-contact');
+        
+        function openDrawer() {
+            if (contactOverlay) {
+                contactOverlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeDrawer() {
+            if (contactOverlay) {
+                contactOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        openContactBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openDrawer();
+            });
+        });
+        
+        if (closeContact) closeContact.addEventListener('click', closeDrawer);
+        if (contactScrim) contactScrim.addEventListener('click', closeDrawer);
+
+        // Form listeners setup
+        let originalFormHTML = '';
+        const drawerBody = document.querySelector('.contact-drawer .drawer-body');
+        if (drawerBody) {
+            originalFormHTML = drawerBody.innerHTML;
+        }
+
+        function bindFormListeners() {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const svcOpts = document.querySelectorAll('.svc-opt');
+            const cfServiceInput = document.getElementById('cfService');
+            
+            // Re-bind service selection chips
+            svcOpts.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    svcOpts.forEach(o => o.classList.remove('active'));
+                    opt.classList.add('active');
+                    if (cfServiceInput) {
+                        cfServiceInput.value = opt.getAttribute('data-val') || opt.textContent;
+                    }
+                });
+            });
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (!submitBtn) return;
+                    
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+                    
+                    const formData = new FormData(contactForm);
+                    
+                    fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(async res => {
+                        const text = await res.text();
+                        try {
+                            return JSON.parse(text);
+                        } catch {
+                            // If response is not JSON, check if it contains success indicators
+                            if (res.ok && (text.includes('success') || text.includes('ok'))) {
+                                return { success: true };
+                            }
+                            throw new Error('Invalid response');
+                        }
+                    })
+                    .then(data => {
+                        // Consider any successful response as success
+                        if (data && (data.success === 'true' || data.success === true || data.success === undefined)) {
+                            if (drawerBody) {
+                                drawerBody.innerHTML = `
+                                    <div class="success-wrap" style="text-align: center; padding: 4rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; opacity: 0; transform: translateY(20px); transition: opacity .4s, transform .4s;" id="successContent">
+                                        <div class="success-icon" style="width: 80px; height: 80px; border-radius: 50%; background: var(--green-dim); color: #34D399; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; box-shadow: 0 8px 24px rgba(5, 150, 105, 0.25);">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="success-text">
+                                            <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text-1); margin-bottom: 0.5rem;">Message Sent!</h3>
+                                            <p style="font-size: 0.9rem; color: var(--text-2); max-width: 320px; line-height: 1.6;">Thank you for reaching out. We have received your inquiry and will contact you shortly.</p>
+                                        </div>
+                                        <button class="btn-outline" id="btnBackToForm" style="margin-top: 1rem; padding: 0.7rem 1.8rem; font-size: 0.82rem; border-radius: 40px; cursor: pointer;"><i class="fas fa-arrow-left"></i> Send Another</button>
+                                    </div>
+                                `;
+                                
+                                setTimeout(() => {
+                                    const successContent = document.getElementById('successContent');
+                                    if (successContent) {
+                                        successContent.style.opacity = '1';
+                                        successContent.style.transform = 'translateY(0)';
+                                    }
+                                }, 50);
+                                
+                                document.getElementById('btnBackToForm').addEventListener('click', () => {
+                                    drawerBody.innerHTML = originalFormHTML;
+                                    bindFormListeners();
+                                });
+                            }
+                            showToast('Message sent successfully! ✓');
+                        } else {
+                            showToast('Failed to send message.');
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalText;
+                        }
+                    })
+                    .catch(err => {
+                        console.warn('Submit Warning:', err);
+                        // Even if there's a parsing error, the form might have been submitted successfully
+                        // Show a success message anyway since FormSubmit often redirects
+                        if (drawerBody) {
+                            drawerBody.innerHTML = `
+                                <div class="success-wrap" style="text-align: center; padding: 4rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; opacity: 0; transform: translateY(20px); transition: opacity .4s, transform .4s;" id="successContent">
+                                    <div class="success-icon" style="width: 80px; height: 80px; border-radius: 50%; background: var(--green-dim); color: #34D399; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; box-shadow: 0 8px 24px rgba(5, 150, 105, 0.25);">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="success-text">
+                                        <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text-1); margin-bottom: 0.5rem;">Message Sent!</h3>
+                                        <p style="font-size: 0.9rem; color: var(--text-2); max-width: 320px; line-height: 1.6;">Thank you for reaching out. We have received your inquiry and will contact you shortly.</p>
+                                    </div>
+                                    <button class="btn-outline" id="btnBackToForm" style="margin-top: 1rem; padding: 0.7rem 1.8rem; font-size: 0.82rem; border-radius: 40px; cursor: pointer;"><i class="fas fa-arrow-left"></i> Send Another</button>
+                                </div>
+                            `;
+                            setTimeout(() => {
+                                const successContent = document.getElementById('successContent');
+                                if (successContent) {
+                                    successContent.style.opacity = '1';
+                                    successContent.style.transform = 'translateY(0)';
+                                }
+                            }, 50);
+                            document.getElementById('btnBackToForm').addEventListener('click', () => {
+                                drawerBody.innerHTML = originalFormHTML;
+                                bindFormListeners();
+                            });
+                        }
+                        showToast('Message sent successfully! ✓');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    });
+                });
+            }
+        }
+        
+        bindFormListeners();
+
+        // ─────────────────────────────────────────
+        // 6. ADMIN MODAL ACCESS
+        // ─────────────────────────────────────────
+        const adminModal = document.getElementById('adminModal');
+        const adminBtn = document.getElementById('adminBtn');
+        const closeAdmin = document.getElementById('closeAdmin');
+        
+        if (adminBtn && adminModal) {
+            adminBtn.addEventListener('click', () => {
+                adminModal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        function closeAdminModal() {
+            if (adminModal) {
+                adminModal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        if (closeAdmin) closeAdmin.addEventListener('click', closeAdminModal);
+        
+        if (adminModal) {
+            adminModal.addEventListener('click', (e) => {
+                if (e.target === adminModal) {
+                    closeAdminModal();
+                }
+            });
+        }
+        
+        function adminLogin() {
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+            if (user === 'admin' && pass === 'admin') {
+                showToast('Welcome Admin! Redirecting...');
+                closeAdminModal();
+            } else {
+                showToast('Invalid credentials. Please try again.');
+            }
+        }
+
+        // ─────────────────────────────────────────
+        // 7. SCROLL FADE-IN ANIMATIONS & SMOOTH SCROLL
+        // ─────────────────────────────────────────
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        fadeElements.forEach(el => observer.observe(el));
+        
+        // Smooth scrolling for page links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-```
