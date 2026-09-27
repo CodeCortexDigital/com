@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>Projects | Code Cortex</title>
+<meta name="description" content="Explore Code Cortex's AI-driven projects — CleanRoute AI, CC-EMS School ERP, CC-IMS Enterprise ERP, SafeKid, and intelligent platforms with computer vision, ML, and LLM capabilities." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<script>
+    tailwind.config = {
+        theme: { extend: {
+            colors: { brand: "#1E4FA3", "brand-dark": "#0E2E63", "brand-soft": "rgba(30,79,163,0.15)", ink: "#e2e2e2", muted: "#ccc3d8", bg: "#0F1D3D", "bg-alt": "#1A2842", "bg-deep": "#0c0f0f", border: "rgba(255,255,255,0.10)", "tech-navy": "#0F1D3D", "tech-charcoal": "#1A2842", "tech-purple": "#1E4FA3", "tech-purple-light": "#9FC0F0" },
+            borderRadius: { DEFAULT: "0.35rem", lg: "0.5rem", xl: "0.75rem", "2xl": "1.25rem", full: "9999px" },
+            spacing: { "container-max": "1440px", "stack-md": "1rem", "gutter": "1.5rem", "stack-lg": "2.5rem", "margin-page": "2rem", "stack-sm": "0.5rem" },
+            fontFamily: { sans: ["Inter", "sans-serif"], display: ["Geist", "sans-serif"] },
+            fontSize: { h1: ["3.4rem", { lineHeight: "1.08", letterSpacing: "-0.03em", fontWeight: "800" }], h2: ["2.4rem", { lineHeight: "1.15", letterSpacing: "-0.02em", fontWeight: "800" }], h3: ["1.5rem", { lineHeight: "1.25", letterSpacing: "-0.01em", fontWeight: "700" }] }
+        } }
+    }
+</script>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="font-sans text-ink bg-bg min-h-screen flex flex-col overflow-x-hidden">
+
+<nav id="siteHeader" class="fixed top-0 w-full z-50 bg-tech-navy/80 backdrop-blur-md border-b border-white/10 transition-shadow duration-300">
+    <div class="flex justify-between items-center h-20 px-margin-page max-w-container-max mx-auto">
+        <a href="index.html" class="flex items-center gap-2 font-extrabold text-xl tracking-tight text-ink">
+            <img src="assets/logo.jpeg" alt="Code Cortex" class="w-11 h-11 rounded-full object-cover bg-tech-charcoal ring-2 ring-brand/30 shadow-sm" />
+            Code<span class="text-brand">Cortex</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-6">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="projects.html" class="nav-link active">Projects</a>
+            <a href="solutions.html" class="nav-link">Solutions</a>
+            <a href="platform.html" class="nav-link">Platform</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="insights.html" class="nav-link">Insights</a>
+        </div>
+        <div class="hidden lg:flex items-center gap-3">
+            <a href="contact.html" class="btn-primary font-semibold px-6 py-3 rounded-full">Contact Us</a>
+        </div>
+        <button class="lg:hidden text-ink" id="menuBtn" aria-label="Menu"><span class="material-symbols-outlined text-xl">menu</span></button>
+    </div>
+    <div id="mobileMenu" class="hidden lg:hidden bg-tech-charcoal border-b border-white/10 px-margin-page py-4 flex flex-col gap-3">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="solutions.html" class="nav-link">Solutions</a>
+        <a href="platform.html" class="nav-link">Platform</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="insights.html" class="nav-link">Insights</a>
+        <a href="contact.html" class="btn-primary font-semibold px-6 py-3 rounded-full text-center">Contact Us</a>
+    </div>
+</nav>
+
+<main class="flex-grow pt-12">
+
+<section class="px-margin-page max-w-container-max mx-auto pt-12 pb-10 text-center fade-up">
+    <span class="eyebrow justify-center">Our Portfolio</span>
+    <h1 class="font-extrabold text-ink mt-4 mb-5" style="font-size:clamp(1.7rem,2.6vw,2.1rem);letter-spacing:-.03em;">What We've Built</h1>
+    <p class="text-base text-muted max-w-3xl mx-auto">All products are live, built in-house, and owned by Code Cortex — powered by computer vision, ML, optimization, forecasting, and LLMs.</p>
+</section>
+
+    <div class="px-margin-page max-w-container-max mx-auto flex flex-wrap gap-3 justify-center pb-10 no-scrollbar overflow-x-auto">
+        <span class="pill active" data-filter="all">All</span>
+        <span class="pill" data-filter="ai">AI Products</span>
+        <span class="pill" data-filter="enterprise">Enterprise</span>
+        <span class="pill" data-filter="web">Web &amp; Mobile</span>
+        <span class="pill" data-filter="vision">Computer Vision</span>
+    </div>
+
+<section class="px-margin-page max-w-container-max mx-auto pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai vision">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Flagship</span><span class="text-sm font-semibold text-muted">CleanRoute AI</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI-Powered Smart Waste Management</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">An intelligent waste management platform that detects waste conditions, prioritizes complaints, optimizes crew routes, verifies cleanup, and provides operational analytics — with Computer Vision (OpenCV + MobileNetV2), priority classification (Decision Tree + Naive Bayes), route optimization (Google OR-Tools), Poisson/Linear forecasting, and Isolation Forest anomaly detection.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">Computer Vision</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">Route Optimization</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">Forecasting</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">Anomaly Detection</span>
+                </div>
+                <a href="projects/cleanroute-ai.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai enterprise">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">School ERP</span><span class="text-sm font-semibold text-muted">CC-EMS</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI-Powered School ERP</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">A full-stack, multi-tenant school ERP with 9 AI features — AI report card comments, dropout prediction, fee default prediction, admission screening, homework helper, parent message summarizer, AI timetable generator, behaviour pattern detection, and translation across 23 languages. GDPR-ready with 45 currencies.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">9 AI Features</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">NLP</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">Prediction</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Django</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">React</span>
+                </div>
+                <a href="projects/erp-v2.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai enterprise">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Flagship</span><span class="text-sm font-semibold text-muted">CC-IMS</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">Enterprise ERP with AI Intelligence</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">A production-ready enterprise platform integrating HR, CRM, Finance, Project Operations, Governance, Security, and AI-powered intelligence — with AI classification, risk scoring, forecasting, and intelligent business insights. Includes a risk-aware Unified Approval Engine and real-time notifications.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">Risk Scoring</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">Forecasting</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">NestJS</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Next.js</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Claude AI</span>
+                </div>
+                <a href="projects/cc-ims.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai web">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Product</span><span class="text-sm font-semibold text-muted">SafeKid</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI Student Transport Safety</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">A mobile-based student transport platform connecting drivers, assistants, and parents through QR-based pickup and drop tracking, live GPS monitoring, smart notifications, messaging, billing, and AI-powered ETA prediction — giving parents proof their child was picked up and dropped off safely.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">ETA Prediction</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--accent-soft);color:var(--accent);">QR Automation</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Flutter</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Firebase</span>
+                </div>
+                <a href="projects/safekid.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="web">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Utility</span><span class="text-sm font-semibold text-muted">Gas &amp; Elects</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">Gas &amp; Elects Monitor</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">An offline-first Flutter utility app for tracking, monitoring, and forecasting gas &amp; electricity consumption &mdash; dual light/dark Material 3, multi-meter management, and an automatic recalculation engine.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Flutter</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">SQLite</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Material 3</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Offline</span>
+                </div>
+                <a href="projects/gas-elects-monitor.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="web">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Web App</span><span class="text-sm font-semibold text-muted">Task Manager</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">Task Manager (MVP)</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">A modern, production-ready task manager with JWT auth, full CRUD, an interactive Kanban board, smart due dates, priority system, and a real-time dashboard &mdash; deployed on Vercel + Render.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">React</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Node.js</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Express</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">MongoDB</span>
+                </div>
+                <a href="projects/task-manager.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Healthcare</span><span class="text-sm font-semibold text-muted">SmartMed-AI</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">Doctor Matching &amp; Telehealth</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">An AI-assisted doctor-patient matching platform that maps symptoms to the right specialist, with booking, chat, and an offline AI chatbot that emails doctors automatically.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Node.js</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Express</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Firebase</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Vanilla JS</span>
+                </div>
+                <a href="projects/smartmed-ai.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Career AI</span><span class="text-sm font-semibold text-muted">CareerMind.AI</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI Career Coaching Platform</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">A full-stack AI career coach &mdash; React + FastAPI + PostgreSQL with Gemini (Groq fallback) powering skill-gap analysis, roadmaps, resume ATS scoring, mock interviews, and a job-application Kanban.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">React</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">FastAPI</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">PostgreSQL</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Gemini</span>
+                </div>
+                <a href="projects/careermind-ai.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Research AI</span><span class="text-sm font-semibold text-muted">ScholarFlow</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI Research Paper Analysis Agent</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">A full-stack research agent to upload, fetch, summarize, and chat with papers &mdash; then organize libraries, generate literature reviews, and assess rigor &amp; bias.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">React</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">FastAPI</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">PostgreSQL</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Gemini</span>
+                </div>
+                <a href="projects/scholarflow.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">AI / ML</span><span class="text-sm font-semibold text-muted">Plant Watering</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI Plant Health &amp; Watering System</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">An AI-powered plant health monitor that predicts plant state from sensor data and combines ML with a rule-based engine to recommend watering actions. Built in Streamlit during an AI/ML fellowship.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Streamlit</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Python</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">XGBoost</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">scikit-learn</span>
+                </div>
+                <a href="projects/plant-watering-system.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div class="tech-card overflow-hidden flex flex-col h-full group fade-up" data-categories="ai vision">
+            <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Food Safety</span><span class="text-sm font-semibold text-muted">FoodGuard-AI</span></div>
+                <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI Food Freshness &amp; Safety Detection</h3>
+                <p class="text-muted leading-relaxed mb-5 flex-grow">An AI-powered food freshness and safety detector that analyzes food images to classify freshness (Fresh / Moderate Risk / Spoiled) and advise whether to eat or discard &mdash; built with React, FastAPI, and Google Gemini.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold mb-5" style="color:var(--brand);">
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">React</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">FastAPI</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Gemini</span>
+                    <span class="px-2.5 py-1 rounded-full" style="background:var(--brand-soft);">Computer Vision</span>
+                </div>
+                <a href="projects/foodguard-ai.html" class="btn-primary font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 self-start">View Project Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+    <div class="mt-16 flex justify-center fade-up">
+        <a href="contact.html" class="btn-primary font-semibold px-8 py-4 rounded-full inline-flex items-center gap-2">Discuss Your Project <span class="material-symbols-outlined">arrow_forward</span></a>
+    </div>
+</section>
+
+</main>
+
+<footer class="bg-bg-alt border-t border-white/10 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 px-margin-page py-10 max-w-container-max mx-auto">
+        <div class="md:col-span-1">
+            <div class="flex items-center gap-2 font-extrabold text-xl text-ink mb-4">
+                <img src="assets/logo.jpeg" alt="Code Cortex" class="w-10 h-10 rounded-full object-cover bg-tech-charcoal ring-2 ring-brand/30 shadow-sm" /> Code<span class="text-brand">Cortex</span>
+            </div>
+            <p class="text-sm text-muted leading-relaxed max-w-xs">AI-powered software engineering for the modern world. Building tomorrow's solutions, today.</p>
+            <div class="flex gap-3 mt-5">
+                <a href="https://www.linkedin.com/in/code-cortex/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-tech-charcoal border border-white/10 flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.96H5.67v8.38h2.67zM7 8.78a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.56v-4.59c0-2.45-1.31-3.59-3.06-3.59a2.64 2.64 0 0 0-2.39 1.31v-1.12H10.23v8.38h2.66v-4.43c0-1.17.22-2.3 1.67-2.3 1.43 0 1.45 1.34 1.45 2.39v4.34h2.99z"/></svg></a>
+                <a href="https://github.com/CodeCortexDigital" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-9 h-9 rounded-full bg-tech-charcoal border border-white/10 flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
+                <a href="https://x.com/CodeCortexpk" target="_blank" rel="noopener noreferrer" aria-label="X" class="w-9 h-9 rounded-full bg-tech-charcoal border border-white/10 flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="https://www.facebook.com/profile.php?id=61579583993304" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-tech-charcoal border border-white/10 flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+            </div>
+        </div>
+        <div class="flex flex-col gap-3">
+            <span class="font-bold text-ink mb-1">Navigate</span>
+            <a href="index.html" class="text-sm text-muted hover:text-brand transition-colors">Home</a>
+            <a href="projects.html" class="text-sm text-muted hover:text-brand transition-colors">Projects</a>
+            <a href="solutions.html" class="text-sm text-muted hover:text-brand transition-colors">Solutions</a>
+            <a href="platform.html" class="text-sm text-muted hover:text-brand transition-colors">Platform</a>
+        </div>
+        <div class="flex flex-col gap-3">
+            <span class="font-bold text-ink mb-1">Company</span>
+            <a href="about.html" class="text-sm text-muted hover:text-brand transition-colors">About</a>
+            <a href="insights.html" class="text-sm text-muted hover:text-brand transition-colors">Insights</a>
+            <a href="contact.html" class="text-sm text-muted hover:text-brand transition-colors">Contact</a>
+        </div>
+        <div class="flex flex-col gap-3">
+            <span class="font-bold text-ink mb-1">Contact</span>
+            <span class="text-sm text-muted">info@codecortexdigital.com</span>
+            <span class="text-sm text-muted">+923 157 227 688</span>
+            <span class="text-sm text-muted">Islamabad, Pakistan</span>
+        </div>
+    </div>
+    <div class="border-t border-white/10 px-margin-page py-6 text-center text-sm text-muted max-w-container-max mx-auto">
+        &copy; 2026 Code Cortex (SMC-Pvt.) Ltd. &middot; All rights reserved &middot; Innovating with AI
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
