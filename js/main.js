@@ -68,7 +68,7 @@
     onScroll();
 
     /* Animated stat counters (e.g. "30+", "99%", "24/7") */
-    var nums = document.querySelectorAll('.footprint .num');
+    var nums = document.querySelectorAll('.stat-bar .num, .footprint .num');
     if ('IntersectionObserver' in window && nums.length &&
         !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         var countObs = new IntersectionObserver(function (entries) {
@@ -89,6 +89,91 @@
             });
         }, { threshold: 0.5 });
         nums.forEach(function (n) { countObs.observe(n); });
+    }
+
+    /* Bento: feature grid gets a wide first card only when the rows stay full (3-col) */
+    document.querySelectorAll('.feature-grid').forEach(function (g) {
+        if ((g.children.length + 1) % 3 === 0) { g.classList.add('bento-feat'); }
+    });
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    /* Kinetic headline: split hero title into words that rise in */
+    var heroTitle = document.querySelector('.hero-v2 h1');
+    if (heroTitle && !reduce) {
+        var wi = 0;
+        var splitNode = function (node) {
+            Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+                if (child.nodeType === 3) {
+                    var frag = document.createDocumentFragment();
+                    child.textContent.split(/(\s+)/).forEach(function (part) {
+                        if (!part) { return; }
+                        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+                        var outer = document.createElement('span');
+                        outer.className = 'kw';
+                        var inner = document.createElement('span');
+                        inner.style.setProperty('--i', wi++);
+                        inner.textContent = part;
+                        outer.appendChild(inner);
+                        frag.appendChild(outer);
+                    });
+                    node.replaceChild(frag, child);
+                } else if (child.nodeType === 1 && child.tagName !== 'BR') {
+                    splitNode(child);
+                }
+            });
+        };
+        splitNode(heroTitle);
+    }
+
+    if (finePointer && !reduce) {
+        /* Cursor aura */
+        var aura = document.createElement('div');
+        aura.className = 'cursor-aura';
+        document.body.appendChild(aura);
+        var ax = 0, ay = 0, tx = 0, ty = 0, raf = null;
+        var loop = function () {
+            ax += (tx - ax) * 0.12; ay += (ty - ay) * 0.12;
+            aura.style.transform = 'translate(' + ax + 'px,' + ay + 'px)';
+            raf = (Math.abs(tx - ax) + Math.abs(ty - ay) > 0.5) ? requestAnimationFrame(loop) : null;
+        };
+        window.addEventListener('pointermove', function (e) {
+            tx = e.clientX; ty = e.clientY; aura.classList.add('on');
+            if (!raf) { raf = requestAnimationFrame(loop); }
+        }, { passive: true });
+
+        /* 3D tilt on lift cards and featured project cards */
+        document.querySelectorAll('.tech-card.lift, #featuredTrack .tech-card').forEach(function (card) {
+            card.classList.add('tilt');
+            card.addEventListener('pointermove', function (e) {
+                var r = card.getBoundingClientRect();
+                var px = (e.clientX - r.left) / r.width - 0.5;
+                var py = (e.clientY - r.top) / r.height - 0.5;
+                card.style.setProperty('--ry', (px * 8).toFixed(2) + 'deg');
+                card.style.setProperty('--rx', (-py * 8).toFixed(2) + 'deg');
+            });
+            card.addEventListener('pointerleave', function () {
+                card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg');
+            });
+        });
+
+        /* Magnetic primary buttons */
+        document.querySelectorAll('.btn-primary').forEach(function (btn) {
+            btn.classList.add('magnetic');
+            btn.addEventListener('pointermove', function (e) {
+                var r = btn.getBoundingClientRect();
+                btn.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.18).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.28).toFixed(1) + 'px)';
+            });
+            btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+        });
+    }
+
+    /* Film grain overlay */
+    if (!reduce) {
+        var grain = document.createElement('div');
+        grain.className = 'grain';
+        document.body.appendChild(grain);
     }
 
     /* Card spotlight follows the cursor */
