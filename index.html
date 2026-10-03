@@ -24,6 +24,7 @@
 </script>
 <link rel="stylesheet" href="css/style.css" />
 </head>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-black focus:px-4 focus:py-2 focus:rounded-full font-bold">Skip to content</a>
 <body class="font-sans text-ink bg-bg min-h-screen flex flex-col overflow-x-hidden">
 
 <nav id="siteHeader" class="fixed top-0 w-full z-50 bg-tech-navy/80 backdrop-blur-md border-b border-white/10 transition-shadow duration-300">
@@ -56,7 +57,7 @@
     </div>
 </nav>
 
-<main class="flex-grow pt-14">
+<main id="main" class="flex-grow pt-14">
 
 <section class="relative overflow-hidden px-margin-page">
     <div class="absolute inset-0 -z-10" style="background:radial-gradient(1100px 460px at 78% -8%, rgba(0,212,255,.08), transparent 60%), radial-gradient(820px 420px at 6% 8%, rgba(233,30,140,.06), transparent 55%);"></div>
@@ -266,6 +267,7 @@
         <div id="featuredTrack" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory flex-1 pb-2">
 
             <div class="tech-card overflow-hidden flex flex-col h-full group fade-up snap-start" style="flex:0 0 auto; width:min(360px,80vw);">
+                <div class="proj-visual" aria-hidden="true"><span class="material-symbols-outlined">recycling</span></div>
                 <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Flagship</span><span class="text-sm font-semibold text-muted">CleanRoute AI</span></div>
                     <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">Smart Waste Management</h3>
@@ -282,6 +284,7 @@
             </div>
 
             <div class="tech-card overflow-hidden flex flex-col h-full group fade-up snap-start" style="flex:0 0 auto; width:min(360px,80vw);">
+                <div class="proj-visual" aria-hidden="true"><span class="material-symbols-outlined">school</span></div>
                 <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">School ERP</span><span class="text-sm font-semibold text-muted">CC-EMS</span></div>
                     <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI-Powered School ERP</h3>
@@ -297,6 +300,7 @@
             </div>
 
             <div class="tech-card overflow-hidden flex flex-col h-full group fade-up snap-start" style="flex:0 0 auto; width:min(360px,80vw);">
+                <div class="proj-visual" aria-hidden="true"><span class="material-symbols-outlined">hub</span></div>
                 <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Flagship</span><span class="text-sm font-semibold text-muted">CC-IMS</span></div>
                     <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">Enterprise ERP with AI</h3>
@@ -312,6 +316,7 @@
             </div>
 
             <div class="tech-card overflow-hidden flex flex-col h-full group fade-up snap-start" style="flex:0 0 auto; width:min(360px,80vw);">
+                <div class="proj-visual" aria-hidden="true"><span class="material-symbols-outlined">directions_bus</span></div>
                 <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center justify-between mb-3"><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:var(--brand-soft);color:var(--brand);">Product</span><span class="text-sm font-semibold text-muted">SafeKid</span></div>
                     <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">AI Student Transport Safety</h3>
@@ -326,7 +331,7 @@
                 </div>
             </div>
 
-            <a href="projects.html" class="tech-card overflow-hidden flex flex-col h-full group fade-up snap-start border-2 border-dashed" style="flex:0 0 auto; width:min(360px,80vw); border-color:rgba(30,79,163,.45); text-decoration:none;">
+            <a href="projects.html" class="tech-card see-more-card overflow-hidden flex flex-col h-full group fade-up snap-start" style="flex:0 0 auto; width:min(360px,80vw); text-decoration:none;">
                 <div class="p-6 flex flex-col flex-grow items-center justify-center text-center">
                     <span class="material-symbols-outlined text-5xl mb-3" style="color:var(--brand);">grid_view</span>
                     <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-brand transition-colors">See more projects</h3>
@@ -341,21 +346,20 @@
     </div>
 </section>
 
-<section class="bg-bg-alt py-10">
-    <div class="px-margin-page max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-        <div class="fade-up">
-            <span class="eyebrow">An End-to-End Studio</span>
-            <h2 class="font-extrabold text-ink mt-4 mb-5" style="font-size:clamp(1.7rem,2.6vw,2.1rem);letter-spacing:-.02em;">Our Approach</h2>
-            <p class="text-muted leading-relaxed mb-5">Understand &rarr; Build &rarr; Deploy &rarr; Support. We adapt to the contours of each client's stack, processes, and goals — then engineer the full path from first sketch to production.</p>
-            <p class="text-muted leading-relaxed">The result is software that feels native to your business and keeps performing long after launch.</p>
-            <a href="about.html" class="btn-outline font-semibold px-7 py-3.5 rounded-full inline-flex items-center gap-2 mt-8">How We Work</a>
+<section class="bg-bg-alt py-14">
+    <div class="px-margin-page max-w-container-max mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 fade-up">
+            <span class="eyebrow justify-center">An End-to-End Studio</span>
+            <h2 class="font-extrabold text-ink mt-4" style="font-size:clamp(1.7rem,2.6vw,2.1rem);letter-spacing:-.02em;">Our Approach</h2>
+            <p class="text-muted mt-4 leading-relaxed">We adapt to the contours of each client's stack, processes, and goals &mdash; then engineer the full path from first sketch to production.</p>
         </div>
-        <div class="grid grid-cols-2 gap-5 fade-up">
-            <div class="tech-card p-6"><span class="material-symbols-outlined text-brand text-xl" style="font-variation-settings:'FILL' 1;">search</span><h4 class="font-bold text-ink mt-3">Understand</h4><p class="text-sm text-muted mt-1">Evidence before assumptions.</p></div>
-            <div class="tech-card p-6"><span class="material-symbols-outlined text-brand text-xl" style="font-variation-settings:'FILL' 1;">build</span><h4 class="font-bold text-ink mt-3">Build</h4><p class="text-sm text-muted mt-1">Robust, scalable product builds.</p></div>
-            <div class="tech-card p-6"><span class="material-symbols-outlined text-brand text-xl" style="font-variation-settings:'FILL' 1;">rocket_launch</span><h4 class="font-bold text-ink mt-3">Deploy</h4><p class="text-sm text-muted mt-1">Cloud-native, observable delivery.</p></div>
-            <div class="tech-card p-6"><span class="material-symbols-outlined text-brand text-xl" style="font-variation-settings:'FILL' 1;">autorenew</span><h4 class="font-bold text-ink mt-3">Support</h4><p class="text-sm text-muted mt-1">24/7 support &amp; iteration.</p></div>
+        <div class="timeline fade-up">
+            <div class="step"><div class="ix">1</div><h4 class="font-bold text-ink">Understand</h4><p class="text-sm text-muted mt-2">Evidence before assumptions.</p></div>
+            <div class="step"><div class="ix">2</div><h4 class="font-bold text-ink">Build</h4><p class="text-sm text-muted mt-2">Robust, scalable product builds.</p></div>
+            <div class="step"><div class="ix">3</div><h4 class="font-bold text-ink">Deploy</h4><p class="text-sm text-muted mt-2">Cloud-native, observable delivery.</p></div>
+            <div class="step"><div class="ix">4</div><h4 class="font-bold text-ink">Support</h4><p class="text-sm text-muted mt-2">24/7 support &amp; iteration.</p></div>
         </div>
+        <div class="text-center mt-10 fade-up"><a href="about.html" class="btn-outline font-semibold px-7 py-3.5 rounded-full inline-flex items-center gap-2">How We Work</a></div>
     </div>
 </section>
 
@@ -365,7 +369,7 @@
         <h2 class="font-extrabold text-ink mt-4" style="font-size:clamp(1.7rem,2.8vw,2.2rem);letter-spacing:-.02em;">Why Work With Us</h2>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="tech-card p-6 fade-up"><span class="material-symbols-outlined text-brand text-3xl mb-4" style="font-variation-settings:'FILL' 1;">psychology</span><h3 class="text-base font-bold text-ink mb-2">AI-First</h3><p class="text-sm text-muted leading-relaxed">AI is inside every product we build, not an add-on.</p></div>
+        <div class="tech-card span-2-lg p-6 fade-up"><span class="material-symbols-outlined text-brand text-3xl mb-4" style="font-variation-settings:'FILL' 1;">psychology</span><h3 class="text-base font-bold text-ink mb-2">AI-First</h3><p class="text-sm text-muted leading-relaxed">AI is inside every product we build, not an add-on.</p></div>
         <div class="tech-card p-6 fade-up"><span class="material-symbols-outlined text-brand text-3xl mb-4" style="font-variation-settings:'FILL' 1;">code</span><h3 class="text-base font-bold text-ink mb-2">Technical Expertise</h3><p class="text-sm text-muted leading-relaxed">Modern software engineering, AI/ML, and cloud technologies.</p></div>
         <div class="tech-card p-6 fade-up"><span class="material-symbols-outlined text-brand text-3xl mb-4" style="font-variation-settings:'FILL' 1;">zoom_out_map</span><h3 class="text-base font-bold text-ink mb-2">Scalable Development</h3><p class="text-sm text-muted leading-relaxed">Architecture that evolves as business needs grow.</p></div>
         <div class="tech-card p-6 fade-up"><span class="material-symbols-outlined text-brand text-3xl mb-4" style="font-variation-settings:'FILL' 1;">handshake</span><h3 class="text-base font-bold text-ink mb-2">Flexible Collaboration</h3><p class="text-sm text-muted leading-relaxed">Project-based, dedicated-team, or long-term models.</p></div>
@@ -375,20 +379,8 @@
     </div>
 </section>
 
-<section class="px-margin-page max-w-container-max mx-auto py-10">
-    <div class="doctrine rounded-2xl px-8 py-10 fade-up">
-        <p class="text-center text-sm font-bold uppercase tracking-[.18em] text-brand mb-10">Our Approach</p>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="step"><div class="ix">1</div><h4 class="font-bold text-ink">Understand</h4><p class="text-sm text-muted mt-2">Evidence before assumptions.</p></div>
-            <div class="step"><div class="ix">2</div><h4 class="font-bold text-ink">Build</h4><p class="text-sm text-muted mt-2">Craft in every layer.</p></div>
-            <div class="step"><div class="ix">3</div><h4 class="font-bold text-ink">Deploy</h4><p class="text-sm text-muted mt-2">Secure, dependable systems.</p></div>
-            <div class="step"><div class="ix">4</div><h4 class="font-bold text-ink">Support</h4><p class="text-sm text-muted mt-2">Measurable outcomes.</p></div>
-        </div>
-    </div>
-</section>
-
 <section class="px-margin-page max-w-container-max mx-auto pb-16">
-    <div class="bg-bg-deep rounded-2xl px-8 py-10 text-center fade-up">
+    <div class="cta-panel px-8 py-14 text-center fade-up">
         <h2 class="font-extrabold text-white mb-4" style="font-size:clamp(1.7rem,2.8vw,2.2rem);letter-spacing:-.02em;">Ready to Engineer Intelligence?</h2>
         <p class="text-base text-white/70 max-w-2xl mx-auto mb-8">Tell us about your challenge and our team will design the solution with you.</p>
         <a href="contact.html" class="btn-primary font-semibold px-8 py-4 rounded-full inline-flex items-center gap-2">Start a Conversation <span class="material-symbols-outlined">arrow_forward</span></a>
@@ -444,13 +436,3 @@
 <script src="js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

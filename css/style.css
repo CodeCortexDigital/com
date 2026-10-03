@@ -25,7 +25,7 @@
     --gradient-brand-h: linear-gradient(90deg, #00d4ff 0%, #e91e8c 100%);
 }
 
-html { scroll-behavior: smooth; font-size: 13px; }
+html { scroll-behavior: smooth; font-size: 15px; }
 
 body {
     background-color: var(--bg);
@@ -342,3 +342,234 @@ h1, h2, h3 { font-family: 'Geist', 'Inter', sans-serif; }
     width: 100%;
     height: 100%;
 }
+
+
+/* ============================================================
+   UI/UX Refresh — polish layer (overrides above)
+   ============================================================ */
+
+/* Ambient background: faint grid + soft glow behind all pages */
+body {
+    background-image:
+        radial-gradient(900px 500px at 85% -5%, rgba(0, 212, 255, .07), transparent 60%),
+        radial-gradient(700px 420px at 0% 30%, rgba(233, 30, 140, .05), transparent 60%),
+        linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+    background-size: auto, auto, 56px 56px, 56px 56px;
+    background-attachment: fixed;
+    line-height: 1.65;
+}
+p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+
+/* Accessibility: visible keyboard focus */
+:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* Header: glass that firms up on scroll + progress bar */
+#siteHeader { transition: background .3s, box-shadow .3s, border-color .3s; }
+#siteHeader.scrolled {
+    background: rgba(6, 10, 18, .92);
+    border-color: rgba(0, 212, 255, .18);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .45);
+}
+.scroll-progress {
+    position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%;
+    background: var(--gradient-brand-h);
+    transform-origin: left; transform: scaleX(0);
+    pointer-events: none;
+}
+.nav-link { padding: .35rem 0; }
+.nav-link::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+    background: var(--brand); border-radius: 2px;
+    transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+/* Mobile menu: animated, larger touch targets */
+#mobileMenu { animation: menu-in .25s ease; }
+#mobileMenu .nav-link { padding: .7rem .25rem; border-bottom: 1px solid var(--border); font-size: 1rem; }
+#mobileMenu .nav-link::after { display: none; }
+@keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+/* Buttons: shine sweep + press feedback */
+.btn-primary, .btn-outline { position: relative; overflow: hidden; isolation: isolate; }
+.btn-primary::after {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .45) 50%, transparent 70%);
+    transform: translateX(-120%); transition: transform .6s ease;
+}
+.btn-primary:hover::after { transform: translateX(120%); }
+.btn-primary:active, .btn-outline:active { transform: translateY(0) scale(.98); }
+
+/* Cards: glass surface + cursor spotlight (driven by main.js) */
+.tech-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, .01)), var(--tech-charcoal);
+}
+.tech-card::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(0, 212, 255, .14), transparent 70%);
+    transition: opacity .3s;
+}
+.tech-card:hover::after { opacity: 1; }
+.service-card > .material-symbols-outlined:first-child {
+    display: inline-flex; padding: .6rem; border-radius: 14px;
+    background: var(--brand-soft); border: 1px solid rgba(0, 212, 255, .2);
+}
+
+/* Section rhythm */
+main section { scroll-margin-top: 6rem; }
+
+/* Pills: comfortable tap size */
+.pill { min-height: 40px; }
+
+/* Forms */
+.input-glow { border-radius: 10px; min-height: 46px; }
+.input-glow::placeholder { color: rgba(156, 163, 175, .6); }
+
+/* Hero visual: scale down instead of overflowing on small screens */
+.float-anim { width: min(37rem, 100%); height: auto; aspect-ratio: 1; }
+
+/* Back-to-top button (injected by main.js) */
+.to-top {
+    position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40;
+    width: 46px; height: 46px; border-radius: 999px; border: 1px solid rgba(0, 212, 255, .35);
+    background: rgba(10, 14, 26, .85); color: var(--brand); backdrop-filter: blur(8px);
+    display: grid; place-items: center; cursor: pointer;
+    opacity: 0; transform: translateY(12px); pointer-events: none;
+    transition: opacity .3s, transform .3s, box-shadow .3s;
+}
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { box-shadow: 0 0 20px rgba(0, 212, 255, .35); }
+
+@media (max-width: 640px) {
+    html { font-size: 14.5px; }
+    body { background-size: auto, auto, 40px 40px, 40px 40px; }
+    .footprint .num { font-size: 2rem; }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .marquee-track { animation: none; }
+    .js .fade-up { opacity: 1; transform: none; }
+}
+
+/* Mobile overflow fix: let grid/flex children shrink below their content width */
+main .grid > *, main .flex > * { min-width: 0; }
+.float-anim { width: min(37rem, 90vw); max-width: 100%; }
+html, body { max-width: 100%; overflow-x: hidden; }
+
+
+/* ============================================================
+   Home + Project page components
+   ============================================================ */
+
+/* Project detail hero */
+.project-hero { position: relative; }
+.project-hero .hero-glyph {
+    position: absolute; right: 2%; top: 50%; transform: translateY(-50%);
+    font-size: clamp(10rem, 22vw, 20rem) !important; line-height: 1;
+    font-variation-settings: 'FILL' 1, 'wght' 300;
+    background: var(--gradient-brand); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; opacity: .13; pointer-events: none; user-select: none;
+}
+.project-hero .crumb {
+    display: inline-flex; align-items: center; gap: .35rem; padding: .4rem .9rem .4rem .6rem;
+    border: 1px solid var(--border); border-radius: 999px; font-size: .82rem; color: var(--muted);
+    background: rgba(255, 255, 255, .03); transition: all .25s;
+}
+.project-hero .crumb:hover { color: var(--brand); border-color: rgba(0, 212, 255, .4); transform: translateX(-3px); }
+.project-hero h1 { filter: drop-shadow(0 0 28px rgba(0, 212, 255, .25)); }
+.project-hero .lede { border-left: 3px solid; border-image: var(--gradient-brand) 1; padding-left: 1rem; }
+
+/* Section heading with accent bar */
+.sec-title { position: relative; padding-bottom: .9rem; }
+.sec-title::after {
+    content: ''; position: absolute; left: 0; bottom: 0; width: 56px; height: 3px;
+    background: var(--gradient-brand-h); border-radius: 3px;
+}
+
+/* Feature numbering for project pages */
+.feature-grid { counter-reset: feat; }
+.feature-grid > .tech-card { counter-increment: feat; }
+.feature-grid > .tech-card::before { height: 2px; }
+.feature-grid > .tech-card h3::before {
+    content: counter(feat, decimal-leading-zero); display: block; margin-bottom: .25rem;
+    font-size: .7rem; letter-spacing: .16em; font-weight: 800; color: var(--accent); opacity: .85;
+}
+
+/* Tech chips */
+.chip {
+    padding: .5rem 1rem; border-radius: 999px; font-size: .88rem; font-weight: 600;
+    background: var(--brand-soft); color: var(--brand); border: 1px solid rgba(0, 212, 255, .18);
+    transition: all .25s; cursor: default;
+}
+.chip:hover { background: var(--brand); color: #000; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 212, 255, .3); }
+
+/* Related project cards */
+.related-card { display: flex; flex-direction: column; gap: .5rem; padding: 1.4rem; }
+.related-card .ico {
+    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--brand-soft); color: var(--brand); border: 1px solid rgba(0, 212, 255, .2);
+}
+.related-card .go { margin-top: auto; padding-top: .6rem; font-weight: 600; font-size: .86rem; color: var(--brand); display: inline-flex; gap: .3rem; align-items: center; }
+.related-card:hover .go span { transform: translateX(4px); }
+.related-card .go span { transition: transform .25s; }
+
+/* CTA panel */
+.cta-panel {
+    background: linear-gradient(135deg, rgba(0, 212, 255, .10), rgba(233, 30, 140, .08)), var(--tech-charcoal);
+    border: 1px solid rgba(0, 212, 255, .2); border-radius: 20px; position: relative; overflow: hidden;
+}
+.cta-panel::before {
+    content: ''; position: absolute; width: 380px; height: 380px; right: -120px; top: -160px;
+    background: radial-gradient(circle, rgba(233, 30, 140, .22), transparent 70%); pointer-events: none;
+}
+
+/* Featured carousel: visual banner on each project card */
+.proj-visual {
+    height: 120px; display: grid; place-items: center; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 212, 255, .16), rgba(233, 30, 140, .12));
+    border-bottom: 1px solid var(--border);
+}
+.proj-visual::before {
+    content: ''; position: absolute; inset: 0; opacity: .5;
+    background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    -webkit-mask-image: radial-gradient(circle at center, #000 20%, transparent 75%); mask-image: radial-gradient(circle at center, #000 20%, transparent 75%);
+}
+.proj-visual .material-symbols-outlined {
+    position: relative; font-size: 3.4rem; color: #fff; font-variation-settings: 'FILL' 1;
+    filter: drop-shadow(0 0 18px rgba(0, 212, 255, .6)); transition: transform .4s;
+}
+.tech-card:hover .proj-visual .material-symbols-outlined { transform: scale(1.15) rotate(-4deg); }
+.see-more-card { border: 2px dashed rgba(0, 212, 255, .4) !important; }
+.see-more-card:hover { border-color: var(--brand) !important; }
+
+/* Process timeline (home) */
+.timeline { display: grid; gap: 1.25rem; grid-template-columns: repeat(4, 1fr); position: relative; }
+.timeline::before {
+    content: ''; position: absolute; top: 1.5rem; left: 12%; right: 12%; height: 2px;
+    background: var(--gradient-brand-h); opacity: .45;
+}
+.timeline .step { position: relative; text-align: center; }
+.timeline .ix {
+    width: 3rem; height: 3rem; margin: 0 auto 1rem; border-radius: 999px; display: grid; place-items: center;
+    background: var(--gradient-brand-h); color: #000; font-weight: 800;
+    box-shadow: 0 0 0 6px var(--bg), 0 0 24px rgba(0, 212, 255, .35);
+}
+@media (max-width: 767px) {
+    .timeline { grid-template-columns: 1fr 1fr; }
+    .timeline::before { display: none; }
+    .project-hero .hero-glyph { opacity: .07; right: -8%; }
+}
+
+/* Featured "why" card (spans two columns on desktop) */
+@media (min-width: 1024px) { .span-2-lg { grid-column: span 2; } }
+.span-2-lg.tech-card { background: linear-gradient(135deg, rgba(0, 212, 255, .10), rgba(233, 30, 140, .07)), var(--tech-charcoal); }

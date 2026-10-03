@@ -40,13 +40,71 @@
 
     /* Header shrink on scroll */
     var header = document.getElementById('siteHeader');
+    var bar = null;
     if (header) {
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 24) {
-                header.classList.add('shadow-md');
-            } else {
-                header.classList.remove('shadow-md');
-            }
+        bar = document.createElement('div');
+        bar.className = 'scroll-progress';
+        header.appendChild(bar);
+    }
+    var toTop = document.createElement('button');
+    toTop.className = 'to-top';
+    toTop.setAttribute('aria-label', 'Back to top');
+    toTop.innerHTML = '<span class="material-symbols-outlined">arrow_upward</span>';
+    toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    document.body.appendChild(toTop);
+
+    var ticking = false;
+    function onScroll() {
+        var y = window.scrollY;
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        if (header) { header.classList.toggle('scrolled', y > 24); }
+        if (bar) { bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')'; }
+        toTop.classList.toggle('show', y > 600);
+        ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+    }, { passive: true });
+    onScroll();
+
+    /* Animated stat counters (e.g. "30+", "99%", "24/7") */
+    var nums = document.querySelectorAll('.footprint .num');
+    if ('IntersectionObserver' in window && nums.length &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var countObs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) { return; }
+                countObs.unobserve(entry.target);
+                var el = entry.target;
+                var m = el.textContent.trim().match(/^(\d+)(.*)$/);
+                if (!m || el.textContent.indexOf('/') !== -1) { return; }
+                var end = parseInt(m[1], 10), suffix = m[2], t0 = null;
+                function step(ts) {
+                    if (t0 === null) { t0 = ts; }
+                    var p = Math.min((ts - t0) / 1200, 1);
+                    el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suffix;
+                    if (p < 1) { requestAnimationFrame(step); }
+                }
+                requestAnimationFrame(step);
+            });
+        }, { threshold: 0.5 });
+        nums.forEach(function (n) { countObs.observe(n); });
+    }
+
+    /* Card spotlight follows the cursor */
+    document.querySelectorAll('.tech-card').forEach(function (card) {
+        card.addEventListener('pointermove', function (e) {
+            var r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+    });
+
+    /* Mobile menu button state for assistive tech */
+    if (menuBtn && mobileMenu) {
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.addEventListener('click', function () {
+            menuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
         });
     }
 

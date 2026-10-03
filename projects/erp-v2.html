@@ -14,7 +14,7 @@
 <script>
     tailwind.config = {
         theme: { extend: {
-            colors: { brand: "#1E4FA3", "brand-dark": "#0E2E63", "brand-soft": "rgba(30,79,163,0.15)", ink: "#e2e2e2", muted: "#ccc3d8", bg: "#0F1D3D", "bg-alt": "#1A2842", "bg-deep": "#0c0f0f", border: "rgba(255,255,255,0.10)", "tech-navy": "#0F1D3D", "tech-charcoal": "#1A2842", "tech-purple": "#1E4FA3", "tech-purple-light": "#9FC0F0" },
+            colors: { brand: "#00d4ff", "brand-dark": "#0099cc", "brand-soft": "rgba(0,212,255,0.12)", accent: "#e91e8c", "accent-soft": "rgba(233,30,140,0.12)", ink: "#e8eaed", muted: "#9ca3af", bg: "#0a0e1a", "bg-alt": "#111827", "bg-deep": "#060a12", border: "rgba(255,255,255,0.08)", "tech-navy": "#0a0e1a", "tech-charcoal": "#111827" },
             borderRadius: { DEFAULT: "0.35rem", lg: "0.5rem", xl: "0.75rem", "2xl": "1.25rem", full: "9999px" },
             spacing: { "container-max": "1440px", "stack-md": "1rem", "gutter": "1.5rem", "stack-lg": "2.5rem", "margin-page": "2rem", "stack-sm": "0.5rem" },
             fontFamily: { sans: ["Inter", "sans-serif"], display: ["Geist", "sans-serif"] },
@@ -24,6 +24,7 @@
 </script>
 <link rel="stylesheet" href="../css/style.css" />
 </head>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-black focus:px-4 focus:py-2 focus:rounded-full font-bold">Skip to content</a>
 <body class="font-sans text-ink bg-bg min-h-screen flex flex-col overflow-x-hidden">
 
 <nav id="siteHeader" class="fixed top-0 w-full z-50 bg-tech-navy/80 backdrop-blur-md border-b border-white/10 transition-shadow duration-300">
@@ -56,29 +57,30 @@
     </div>
 </nav>
 
-<main class="flex-grow pt-14">
+<main id="main" class="flex-grow pt-14">
 
 <!-- Hero -->
-<section class="relative overflow-hidden px-margin-page">
-    <div class="absolute inset-0 -z-10" style="background:radial-gradient(1000px 420px at 80% -10%, rgba(30,79,163,.16), transparent 60%);"></div>
-    <div class="max-w-container-max mx-auto py-12">
-        <a href="../projects.html" class="inline-flex items-center gap-1 text-sm text-muted hover:text-brand transition-colors mb-6"><span class="material-symbols-outlined text-sm">arrow_back</span> All Projects</a>
+<section class="project-hero relative overflow-hidden px-margin-page">
+    <div class="absolute inset-0 -z-10" style="background:radial-gradient(1000px 460px at 80% -10%, rgba(0,212,255,.12), transparent 60%), radial-gradient(700px 380px at 0% 100%, rgba(233,30,140,.08), transparent 60%);"></div>
+    <span class="material-symbols-outlined hero-glyph" aria-hidden="true">school</span>
+    <div class="relative max-w-container-max mx-auto py-14">
+        <a href="../projects.html" class="crumb mb-6"><span class="material-symbols-outlined text-sm">arrow_back</span> All Projects</a>
         <span class="eyebrow">School ERP · CC-EMS</span>
-        <h1 class="font-extrabold text-ink mt-4" style="font-size:clamp(2.2rem,4vw,3rem);letter-spacing:-.03em;">CC-EMS</h1>
+        <h1 class="font-extrabold text-gradient mt-4" style="font-size:clamp(2.2rem,4vw,3rem);letter-spacing:-.03em;">CC-EMS</h1>
         <p class="text-lg text-muted mt-3 font-semibold">AI-Powered School ERP</p>
-        <p class="text-lg text-muted mt-4 max-w-3xl leading-relaxed">A full-stack, multi-tenant school ERP with 9 AI features &mdash; report card comments, dropout prediction, fee default prediction, admission screening, homework helper, message summarizer, timetable generation, behaviour detection, and translation across 23 languages. Multi-tenant SaaS &bull; 23 languages &bull; GDPR-ready &bull; 45 currencies.</p>
+        <p class="lede text-lg text-muted mt-6 max-w-3xl leading-relaxed">A full-stack, multi-tenant school ERP with 9 AI features &mdash; report card comments, dropout prediction, fee default prediction, admission screening, homework helper, message summarizer, timetable generation, behaviour detection, and translation across 23 languages. Multi-tenant SaaS &bull; 23 languages &bull; GDPR-ready &bull; 45 currencies.</p>
     </div>
 </section>
 
 <!-- AI Features -->
 <section class="px-margin-page max-w-container-max mx-auto py-12">
-    <h2 class="font-extrabold text-ink" style="font-size:clamp(1.6rem,2.6vw,2rem);letter-spacing:-.02em;">AI Inside CC-EMS</h2>
+    <h2 class="font-extrabold text-ink sec-title" style="font-size:clamp(1.6rem,2.6vw,2rem);letter-spacing:-.02em;">AI Inside CC-EMS</h2>
     <p class="text-muted mt-4 max-w-2xl">Nine AI features that save time, predict outcomes, and improve inclusion across the school community.</p>
     <div class="tech-card overflow-hidden mt-8 fade-up">
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
-                    <tr class="border-b border-white/10" style="background:rgba(30,79,163,0.12);">
+                    <tr class="border-b border-white/10" style="background:rgba(0,212,255,0.12);">
                         <th class="text-left px-6 py-4 font-bold text-ink">AI Feature</th>
                         <th class="text-left px-6 py-4 font-bold text-ink">What It Does</th>
                         <th class="text-left px-6 py-4 font-bold text-ink">Value</th>
@@ -139,9 +141,9 @@
 
 <!-- Main Features -->
 <section class="px-margin-page max-w-container-max mx-auto py-12">
-    <h2 class="font-extrabold text-ink" style="font-size:clamp(1.6rem,2.6vw,2rem);letter-spacing:-.02em;">Main Features</h2>
+    <h2 class="font-extrabold text-ink sec-title" style="font-size:clamp(1.6rem,2.6vw,2rem);letter-spacing:-.02em;">Main Features</h2>
     <p class="text-muted mt-4 max-w-2xl">Everything a school or institute needs to run, taught and managed in one place.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+    <div class="feature-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         <div class="tech-card p-6 fade-up service-card"><span class="material-symbols-outlined text-brand text-4xl mb-4" style="font-variation-settings:'FILL' 1;">group</span><h3 class="text-base font-bold text-ink mb-2">Role-Based Portals</h3><p class="text-sm text-muted leading-relaxed">Separate Admin, Teacher/Employee, Student, and Parent dashboards with RBAC-scoped navigation and route guards.</p></div>
         <div class="tech-card p-6 fade-up service-card"><span class="material-symbols-outlined text-brand text-4xl mb-4" style="font-variation-settings:'FILL' 1;">menu_book</span><h3 class="text-base font-bold text-ink mb-2">Academics</h3><p class="text-sm text-muted leading-relaxed">Classes, sections, subjects, curriculum (syllabus &rarr; topic &rarr; sub-topic), timetables, homework, and class tests.</p></div>
         <div class="tech-card p-6 fade-up service-card"><span class="material-symbols-outlined text-brand text-4xl mb-4" style="font-variation-settings:'FILL' 1;">how_to_reg</span><h3 class="text-base font-bold text-ink mb-2">Students &amp; Teachers</h3><p class="text-sm text-muted leading-relaxed">Full lifecycle: admission, profiles, history timelines, promotions, ID cards, letters, and login management.</p></div>
@@ -157,24 +159,37 @@
 <!-- Tech Stack -->
 <section class="bg-bg-alt px-margin-page py-12">
     <div class="max-w-container-max mx-auto">
-        <h2 class="font-extrabold text-ink" style="font-size:clamp(1.6rem,2.6vw,2rem);letter-spacing:-.02em;">Technology Stack</h2>
+        <h2 class="font-extrabold text-ink sec-title" style="font-size:clamp(1.6rem,2.6vw,2rem);letter-spacing:-.02em;">Technology Stack</h2>
         <div class="flex flex-wrap gap-3 mt-8">
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">React</span>
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">TypeScript</span>
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">Vite</span>
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">Tailwind CSS</span>
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">Django REST Framework</span>
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">PostgreSQL</span>
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">WebSockets</span>
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">scikit-learn</span>
-            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background:var(--brand-soft);color:var(--brand);">Meta Graph API</span>
+            <span class="chip">React</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Vite</span>
+            <span class="chip">Tailwind CSS</span>
+            <span class="chip">Django REST Framework</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">WebSockets</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">Meta Graph API</span>
         </div>
+    </div>
+</section>
+
+<!-- More Projects -->
+<section class="px-margin-page max-w-container-max mx-auto py-12">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+        <h2 class="font-extrabold text-ink sec-title" style="font-size:clamp(1.6rem,2.6vw,2rem);letter-spacing:-.02em;">More Projects</h2>
+        <a href="../projects.html" class="text-sm font-semibold text-brand hover:underline">Browse all &rarr;</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="foodguard-ai.html" class="tech-card lift related-card fade-up"><span class="ico"><span class="material-symbols-outlined">nutrition</span></span><h3 class="text-base font-bold text-ink">FoodGuard-AI</h3><span class="go">View project <span class="material-symbols-outlined text-sm">arrow_forward</span></span></a>
+        <a href="gas-elects-monitor.html" class="tech-card lift related-card fade-up"><span class="ico"><span class="material-symbols-outlined">bolt</span></span><h3 class="text-base font-bold text-ink">Gas & Elects Monitor</h3><span class="go">View project <span class="material-symbols-outlined text-sm">arrow_forward</span></span></a>
+        <a href="plant-watering-system.html" class="tech-card lift related-card fade-up"><span class="ico"><span class="material-symbols-outlined">water_drop</span></span><h3 class="text-base font-bold text-ink">Plant Watering System</h3><span class="go">View project <span class="material-symbols-outlined text-sm">arrow_forward</span></span></a>
     </div>
 </section>
 
 <!-- CTA -->
 <section class="px-margin-page max-w-container-max mx-auto py-12 text-center">
-    <div class="tech-card p-10 fade-up">
+    <div class="cta-panel p-10 md:p-14 fade-up">
         <h2 class="font-extrabold text-ink" style="font-size:clamp(1.6rem,2.6vw,2rem);letter-spacing:-.02em;">Build your own school platform</h2>
         <p class="text-muted mt-4 max-w-xl mx-auto">From admissions to AI-powered analytics, we ship production-grade education ERP systems end to end.</p>
         <div class="flex flex-wrap gap-3 justify-center mt-7">
