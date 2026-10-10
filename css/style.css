@@ -925,3 +925,10 @@ img, svg, video { max-width: 100%; }
     .timeline { grid-template-columns: 1fr; }
     .team-card { max-width: 260px !important; }
 }
+
+/* Gradient headline words: each animated word paints its own gradient
+   (background-clip:text on the parent hides transformed inline-block children) */
+.text-gradient .kw > span {
+    background: var(--gradient-brand); background-size: 100% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+}
