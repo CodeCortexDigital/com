@@ -1,8 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.codecortexdigital.com/</loc>
-    <lastmod>2025-01-01</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/contact.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/insights.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/platform.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/solutions.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/careermind-ai.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/cc-ims.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/cleanroute-ai.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/erp-v2.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/foodguard-ai.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/gas-elects-monitor.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/plant-watering-system.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/safekid.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/scholarflow.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/smartmed-ai.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.codecortexdigital.com/projects/task-manager.html</loc>
+    <priority>0.8</priority>
   </url>
 </urlset>
