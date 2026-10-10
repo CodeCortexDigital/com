@@ -813,8 +813,8 @@ body > .grain {
 
 /* Scroll-driven entrance (progressive enhancement) */
 @supports (animation-timeline: view()) {
-    .js .fade-up { opacity: 1; transform: none; transition: none; animation: sd-rise linear both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-    @keyframes sd-rise { from { opacity: 0; translate: 0 48px; scale: .97; filter: blur(6px); } to { opacity: 1; translate: 0 0; scale: 1; filter: blur(0); } }
+    .js .fade-up { opacity: 1; transform: none; transition: none; animation: sd-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
+    @keyframes sd-rise { from { opacity: 0; translate: 0 48px; scale: .97; } to { opacity: 1; translate: 0 0; scale: 1; } }
 }
 @media (prefers-reduced-motion: reduce) {
     .kw > span { transform: none; animation: none; }
