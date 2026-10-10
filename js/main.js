@@ -127,6 +127,26 @@
         splitNode(heroTitle);
     }
 
+    /* Stagger sibling reveals inside grids */
+    document.querySelectorAll('.grid, .bento-4, .bento-3').forEach(function (g) {
+        Array.prototype.filter.call(g.children, function (c) { return c.classList.contains('fade-up'); })
+            .forEach(function (c, i) { c.style.setProperty('--d', Math.min(i, 6) * 90 + 'ms'); });
+    });
+
+    /* Hero art parallax follows pointer */
+    var heroArt = document.querySelector('.hero-art');
+    if (heroArt && finePointer && !reduce) {
+        var heroSec = heroArt.closest('section');
+        heroSec.addEventListener('pointermove', function (e) {
+            var r = heroSec.getBoundingClientRect();
+            heroArt.style.setProperty('--px', (((e.clientX - r.left) / r.width - 0.5) * 24).toFixed(1) + 'px');
+            heroArt.style.setProperty('--py', (((e.clientY - r.top) / r.height - 0.5) * 18).toFixed(1) + 'px');
+        });
+        heroSec.addEventListener('pointerleave', function () {
+            heroArt.style.setProperty('--px', '0px'); heroArt.style.setProperty('--py', '0px');
+        });
+    }
+
     if (finePointer && !reduce) {
         /* Cursor aura */
         var aura = document.createElement('div');
