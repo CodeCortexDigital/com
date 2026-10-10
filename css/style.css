@@ -826,7 +826,7 @@ body > .grain {
 /* ============================================================
    Motion polish (home) — all gated by reduced-motion below
    ============================================================ */
-@keyframes nav-drop { from { transform: translateY(-100%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes nav-drop { from { transform: translate(-50%, -120%); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
 #siteHeader { animation: nav-drop .7s cubic-bezier(.2,.8,.2,1) both; }
 
 /* Staggered reveal: JS sets --d on grid children */
@@ -884,4 +884,44 @@ tbody tr:hover { background: rgba(139,123,255,.06); }
     .timeline.fade-up .step, .tech-card.fade-up tbody tr { opacity: 1; transform: none; transition: none; }
     .sec-head h2::after { transform: scaleX(1); transition: none; }
     .hero-art { transform: none; }
+}
+
+/* ============================================================
+   Mobile fixes
+   ============================================================ */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg, video { max-width: 100%; }
+.hero-art, .hero-v2 svg.float-anim, main svg.float-anim { width: min(32rem, 100%) !important; height: auto !important; aspect-ratio: 1; }
+
+@media (max-width: 1023px) {
+    nav#siteHeader { border-radius: 22px; }
+    #mobileMenu { max-height: calc(100vh - 110px); overflow-y: auto; }
+}
+@media (max-width: 767px) {
+    :root { --margin-page: 1.1rem; }
+    .px-margin-page { padding-left: 1.1rem !important; padding-right: 1.1rem !important; }
+    main { padding-top: 5rem !important; }
+    nav#siteHeader { top: 10px; width: calc(100% - 20px); }
+    nav#siteHeader > div:first-child { height: 60px; }
+    .hero-v2 h1 { font-size: clamp(2rem, 9vw, 2.6rem) !important; letter-spacing: -.035em !important; }
+    .hero-v2 p { font-size: 1rem; }
+    .hero-v2 .btn-primary, .hero-v2 .btn-outline { width: 100%; justify-content: center; text-align: center; }
+    .hero-chip { display: none; }
+    .stat-bar { grid-template-columns: 1fr 1fr; border-radius: 20px; }
+    .stat-bar > div { padding: 1rem; }
+    .stat-bar > div:nth-child(2n) { border-right: 0; }
+    .sec-head { margin-bottom: 2rem; gap: .75rem; }
+    .tech-card { border-radius: 18px; }
+    .cta-panel { padding: 2.25rem 1.25rem !important; }
+    .mega-track span { font-size: 2.6rem; }
+    #featuredPrev, #featuredNext { display: none; }
+    #featuredTrack { padding-inline: 2px; }
+    footer .grid { gap: 2rem; }
+    table { font-size: .8rem; }
+    table th, table td { padding: .75rem 1rem !important; }
+    .to-top { right: 14px; bottom: 14px; }
+}
+@media (max-width: 400px) {
+    .timeline { grid-template-columns: 1fr; }
+    .team-card { max-width: 260px !important; }
 }
