@@ -1,7 +1,48 @@
-# QuickBrain: Personal Memory & Life-Record App
+# CC QuickBrain: Personal Memory & Life-Record App
+### by Code Cortex · *Never Forget What Matters.*
 ### Complete Build Document (Web App → Android App on Google Play)
 
-Version 1.0 · Date: 2026-10-14
+Version 1.1 · Date: 2026-10-14
+
+---
+
+## 0. Brand & Positioning (decided)
+
+| Item | Decision |
+|---|---|
+| Product name | **CC QuickBrain** (Android app name); "QuickBrain web app" for web |
+| Company | Code Cortex |
+| Tagline | Never Forget What Matters. |
+| Core promise | Your personal memory, records and reminders in one place. |
+| Colors | Coral red (primary / alerts) + aqua teal (secondary / success). Exact hex values to be fixed in the design tokens; check contrast ≥ 4.5:1 for text |
+| Alternate names (backup) | CC LifeVault, CC LifeMemo, CC LifeSync, CC MindKeeper |
+
+> Name availability is **not verified**. Before development, search Google Play, domain names and trademark registers for "CC QuickBrain" / "QuickBrain".
+
+### 0.1 Existing similar apps (from owner's research, not independently verified)
+LifeBox – Life Organizer, Elite Organizer, Scadent: Life Organizer, Chronova. They cover parts of this idea (bills, documents, family records, recurring payments). Re-check their current features before launch.
+
+### 0.2 How CC QuickBrain stands out
+Not by having more modules, but by making **anything worth remembering easy to record, find and review**:
+1. **Universal record builder** (priority feature, see §0.3)
+2. **Global search** across every record, person, payment, note
+3. **Date-wise history**: what happened on any date or period
+4. **Trustworthy backup/restore**: dated snapshots, file export, tested restore
+5. **Accessibility**: simple mode, large text, English + Urdu
+6. **Offline-first**: reading and adding records never needs internet
+
+### 0.3 Universal record builder
+Every record shares one structure; modules (bill, event, expense…) are just presets of it:
+- Title, category, person/profile
+- Start date, due date, optional end date
+- Amount + currency (when applicable)
+- Status, priority, notes
+- Repeat schedule and reminders
+- Photos, PDFs, attachments
+- Tags and custom fields
+- Change history and completed actions
+
+Users can also create their **own record types** (e.g., "School Exam": subjects, marks, exam date, result) without a new module. This serves students, parents, professionals and older adults.
 
 ---
 
@@ -407,6 +448,59 @@ You already have a developer account.
 8. Release to production; monitor Crashlytics/Play Vitals.
 
 **Permissions to declare (minimal)**: INTERNET, POST_NOTIFICATIONS, CAMERA (photos), USE_BIOMETRIC, RECEIVE_BOOT_COMPLETED; avoid broad storage permissions (use system photo picker).
+
+---
+
+## 14.5 Extended Product Roadmap (beyond the 20 core features)
+
+**Phase 1: Core app** (build and test on phone first)
+- [ ] Firebase auth and account recovery
+- [ ] Dashboard, quick add, universal record builder
+- [ ] Due dates, recurring items, payments, expenses
+- [ ] Events, reminders, date-wise history
+- [ ] Global search, people profiles, attachments
+- [ ] Offline access, cloud sync, backup/restore
+
+**Phase 2: Life organizer**
+- [ ] Document scanning and OCR
+- [ ] Belongings, purchases, warranties
+- [ ] Health records and medicine reminders
+- [ ] Budgets, subscriptions, savings goals
+- [ ] Daily journal, photos, reports
+- [ ] English/Urdu, accessibility, dark mode
+
+**Phase 3: Advanced**
+- [ ] Voice quick capture
+- [ ] AI-assisted categorization and search
+- [ ] Vehicle, home, pet and plant tracking
+- [ ] Optional family sharing with permissions
+- [ ] Google Calendar integration, home-screen widgets
+- [ ] Insights and customizable dashboards
+
+**Additional specialized modules** (implement as presets of the universal record builder, so they cost little extra):
+| Module | Purpose |
+|---|---|
+| Vehicle manager | Service, fuel, registration, insurance expiry |
+| Home manager | Repairs, utility bills, appliances, maintenance |
+| Pet profiles | Vaccination, medicine, vet visits |
+| Plant care | Watering schedule, care notes |
+| Subscription manager | Monthly/annual renewals |
+| Savings goals | Targets and progress |
+| Shopping lists | Reusable lists, mark purchased |
+| Calendar integration | Optional Google Calendar sync |
+| Smart insights | Spending patterns, upcoming deadlines, incomplete records |
+| Custom dashboards | User chooses home-screen summaries |
+
+**Technical rules to enforce from day one**
+1. Offline-first: queue changes, sync later; never require internet to read/add.
+2. Reliable backups: dated snapshots, local export, full restore or controlled merge. **Test restore, not just backup.**
+3. Private data: Firebase Auth, user-scoped rules, protected attachments, encryption for sensitive records.
+4. No silent data loss: explicit conflict handling (show both versions when the same record was edited on two devices), confirm destructive actions, keep recoverable history / trash (30 days).
+5. Reliable reminders: test on real Android devices, after reboot, and under battery restrictions.
+6. Portability: export data in a usable format; delete account and cloud data.
+7. Play Store readiness: privacy policy, Data safety, account deletion, minimal permissions.
+
+> Note: §4 originally specified last-write-wins conflicts; per rule 4, upgrade this to "last-write-wins for simple fields, user-visible conflict screen when the same record's content differs on two devices."
 
 ---
 
