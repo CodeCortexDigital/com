@@ -106,6 +106,121 @@ Design goal: **usable by any age and any type of person**: big text, simple word
 
 ---
 
+## 2A. Product Versions: Basic, Standard, Pro
+
+One app, one codebase. The version is a **plan (entitlement)** the user holds, and features unlock by plan.
+
+### 2A.1 Plans and pricing (starting point, adjust after testing)
+
+| | **Basic** | **Standard** | **Pro** |
+|---|---|---|---|
+| Price | **Free** | About Rs 499–699/year ($3–5) | About Rs 1,299–1,999/year ($9–14) |
+| For | Trying it, simple personal reminders | One person or one family organizing life | Families, professionals, heavy record keepers |
+| Play Store | Free install | Subscription (yearly, monthly option) | Subscription (yearly, monthly option) |
+
+Also offer: 7-day free trial of Pro, and a lifetime option later if users ask. Regional pricing by country in Play Console.
+
+### 2A.2 Feature matrix
+
+| Feature | Basic | Standard | Pro |
+|---|:-:|:-:|:-:|
+| **Login** (Firebase email/Google) | ✅ | ✅ | ✅ |
+| Offline use, local storage | ✅ | ✅ | ✅ |
+| Dashboard, Quick Add | ✅ | ✅ | ✅ |
+| Bills / due dates with status | ✅ (up to 30 active) | ✅ unlimited | ✅ unlimited |
+| Payment records / ledger | ✅ (basic) | ✅ partial payments, receipts | ✅ |
+| Expense recorder | ✅ | ✅ + categories, monthly totals | ✅ + budgets and insights |
+| Events and appointments | ✅ | ✅ | ✅ |
+| Reminders | ✅ same-day + 1 day | ✅ custom, multiple, snooze, actions | ✅ + repeat nagging for overdue, smart reminders |
+| Recurring items | ✅ (up to 5) | ✅ unlimited | ✅ |
+| History (date-wise) | ✅ last 12 months | ✅ unlimited | ✅ + change history per record |
+| Notes on entries | ✅ | ✅ | ✅ |
+| Daily diary + mood | ✅ | ✅ | ✅ + tags, photos |
+| People profiles | 2 | 6 | Unlimited |
+| **Global search** | ✅ titles and notes | ✅ all fields | ✅ + filters, natural queries, saved searches |
+| **Custom record types** | 2 types | 10 types | Unlimited, with templates |
+| Photo / document attach | ❌ | ✅ up to 200 MB | ✅ up to 5 GB |
+| Document scanning and OCR | ❌ | ❌ | ✅ |
+| Documents with expiry dates | ❌ | ✅ | ✅ |
+| Loans (lent/borrowed) | ❌ | ✅ | ✅ |
+| Reports (monthly view) | ✅ on-screen | ✅ PDF + CSV | ✅ + yearly, per-person, custom |
+| Budgets and warnings | ❌ | ✅ basic | ✅ per category + savings goals |
+| Subscriptions manager | ❌ | ✅ | ✅ |
+| **Backup: local export/import** | ✅ | ✅ | ✅ |
+| **Backup: cloud sync** | ❌ (one manual cloud backup) | ✅ auto sync | ✅ auto + multiple devices |
+| **Date-wise restore points** | ❌ | last 7 | last 90 + monthly archive |
+| App lock (PIN) | ✅ | ✅ + biometric | ✅ + encrypted backups |
+| Language | English + Urdu | + Arabic | + all added languages |
+| Themes / large text | ✅ | ✅ | ✅ + custom colors |
+| Home-screen widget | ❌ | ✅ today widget | ✅ + custom widgets |
+| Voice quick-add | ❌ | ❌ | ✅ |
+| AI-assisted categorization and search | ❌ | ❌ | ✅ |
+| Vehicle / home / pet / plant managers | ❌ | 1 preset of your choice | ✅ all |
+| Health records and medicine reminders | ❌ | ❌ | ✅ |
+| Family sharing with permissions | ❌ | ❌ | ✅ up to 5 members |
+| Google Calendar sync | ❌ | ❌ | ✅ |
+| Custom dashboards | ❌ | fixed | ✅ |
+| Support | Help center | Email | Priority email |
+| Ads | None | None | None |
+
+**Rules**
+1. Never lock a user's own data. Over-limit data stays viewable, searchable and exportable; only *adding new* items past the limit is blocked.
+2. Downgrade is safe: nothing is deleted; premium-only items become read-only.
+3. Export (JSON/CSV) is available on every plan.
+4. Core memory features (reminders, history, search) work on Basic so the free app is genuinely useful.
+
+### 2A.3 How plans are enforced technically
+
+- **Billing:** Google Play Billing (via a Capacitor plugin such as RevenueCat or the Play Billing library). RevenueCat is recommended to avoid writing receipt validation yourself.
+- **Entitlement document:** `users/{uid}/entitlement` = `{ plan: 'basic'|'standard'|'pro', expiresAt, source, updatedAt }`, written **only by a server-side Cloud Function** after verifying the purchase (webhook from RevenueCat/Play). Firestore rules make it read-only for clients.
+- **Client:** caches the entitlement locally, so limits work offline; allows a **7-day grace period** past `expiresAt` if the device is offline.
+- **Feature flags:** a single `can(feature)` function and a `limits` table:
+```ts
+const LIMITS = {
+  basic:    { people: 2, customTypes: 2, activeBills: 30, recurring: 5, attachMB: 0,    restorePoints: 0,  historyMonths: 12 },
+  standard: { people: 6, customTypes: 10, activeBills: Infinity, recurring: Infinity, attachMB: 200,  restorePoints: 7,  historyMonths: Infinity },
+  pro:      { people: Infinity, customTypes: Infinity, activeBills: Infinity, recurring: Infinity, attachMB: 5000, restorePoints: 90, historyMonths: Infinity },
+};
+```
+- **Server-side checks:** Storage rules and Cloud Functions also enforce attachment size and cloud-sync access, so limits cannot be bypassed by editing the client.
+- **UI:** locked features are visible with a small lock and a clear "Available in Standard / Pro" sheet. Never nag more than once per session.
+- **Web app:** same plans; web purchase via Stripe is optional later. Play-bought plans sync through the account (`uid`).
+- **Required for Play:** subscription management link, clear price and renewal terms, restore-purchase button.
+
+### 2A.4 Cost impact per plan (why the limits exist)
+
+| Plan | Main cloud cost driver | Notes |
+|---|---|---|
+| Basic | Almost none (local-first) | Safe to offer free at scale |
+| Standard | Firestore sync + up to 200 MB per user | A few cents per user per year |
+| Pro | Up to 5 GB storage, OCR, AI calls | Highest cost; priced to cover it; set fair-use caps on AI/OCR |
+
+### 2A.5 Build plan by version
+
+| Release | Contents | Plan gating needed |
+|---|---|---|
+| **v1.0 "Basic"** (Weeks 1–7) | Auth, universal record builder, bills, payments, expenses, events, reminders, recurring, history, search, diary, people, local export, PIN, English + Urdu | Limits table only; **no billing yet** |
+| **v1.1 "Standard"** (Weeks 8–12) | Cloud sync, restore points, attachments, documents with expiry, loans, PDF/CSV reports, budgets, subscriptions, biometric, widget, Arabic, Play Billing + entitlement function | Billing, entitlement, feature flags, paywall screens |
+| **v1.2 "Pro"** (Weeks 13–20) | OCR, voice quick-add, AI search/categorization, health records, vehicle/home/pet/plant presets, family sharing, Google Calendar sync, custom dashboards, encrypted backups, 5 GB storage | Fair-use caps on OCR/AI, family permissions |
+
+Launch order: ship **Basic free** to build users and collect feedback, then switch on Standard, then Pro. Keep all Standard/Pro code behind flags, off until ready.
+
+### 2A.6 Revised revenue model (illustrative, not guaranteed)
+
+Assume 100,000 installs in a year, with 4% on Standard and 1% on Pro:
+- Standard: 4,000 × $4 = $16,000
+- Pro: 1,000 × $11 = $11,000
+- Gross about **$27,000/year**, before Google's 15% and Firebase/AI costs.
+
+The Pro tier carries higher cost per user but higher revenue per user. Review the split after 90 days of real data and adjust limits and prices.
+
+### 2A.7 Success metrics per plan
+- Basic: installs, day-30 retention (target above 20%), records created per active user.
+- Standard: free-to-paid conversion (target 3–5%), cloud-sync adoption.
+- Pro: trial-to-paid rate, churn at renewal, AI/OCR usage versus cost.
+
+---
+
 ## 3. Recommended Architecture
 
 ### 3.1 Technology choice
@@ -503,6 +618,8 @@ You already have a developer account.
 > Note: §4 originally specified last-write-wins conflicts; per rule 4, upgrade this to "last-write-wins for simple fields, user-visible conflict screen when the same record's content differs on two devices."
 
 ---
+
+> **Versions note:** The MVP / v1.1 / v1.2 labels in §2 and §15 map to the plan tiers in §2A: MVP = **Basic**, v1.1 = **Standard**, v1.2 and Phase 2–3 items = **Pro**. §2A.5 is the controlling schedule.
 
 ## 15. Milestones & MVP Definition
 
