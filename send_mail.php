@@ -2,10 +2,10 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name    = htmlspecialchars(trim($_POST["name"]));
-    $email   = htmlspecialchars(trim($_POST["email"]));
+    $email   = filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL);
     $message = htmlspecialchars(trim($_POST["message"]));
 
-    if (empty($name) || empty($email) || empty($message)) {
+    if (empty($name) || $email === false || empty($message)) {
         echo "Please fill all fields.";
         exit;
     }
