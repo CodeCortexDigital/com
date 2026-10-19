@@ -1,11 +1,12 @@
 <p align="center">
-  <img src="assets/logo.jpeg" alt="Codecortex Logo" width="150"/>
+  <img src="assets/logo.png" alt="Codecortex Logo" width="150"/>
 </p>
 
 <h1 align="center">Codecortex</h1>
 <p align="center"><em>Full-stack software solutions & innovative digital products</em></p>
 
 <p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
   <a href="https://github.com/codecortexpk"><img src="https://img.shields.io/badge/GitHub-CodecortexPK-black.svg" alt="GitHub Organization"></a>
 </p>
 

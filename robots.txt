@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.codecortexdigital.com/sitemap.xml
+Sitemap: https://codecortexdigital.github.io/com/sitemap.xml

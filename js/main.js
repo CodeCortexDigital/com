@@ -213,28 +213,6 @@
         });
     }
 
-    /* Contact form: validates, then opens the visitor's mail app (static site, no backend) */
-    var contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            var msg = document.getElementById('formMsg');
-            var f = contactForm.elements;
-            var email = (f.email.value || '').trim();
-            if (!f.name.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !f.message.value.trim()) {
-                msg.textContent = 'Please enter your name, a valid email and project details.';
-                msg.classList.remove('hidden');
-                return;
-            }
-            var body = 'Name: ' + f.name.value.trim() + '\nEmail: ' + email +
-                '\nCompany: ' + (f.company.value || '-').trim() + '\n\n' + f.message.value.trim();
-            window.location.href = 'mailto:info@codecortexdigital.com?subject=' +
-                encodeURIComponent('New project enquiry - ' + f.name.value.trim()) + '&body=' + encodeURIComponent(body);
-            msg.textContent = 'Opening your email app… if nothing opens, write to info@codecortexdigital.com.';
-            msg.classList.remove('hidden');
-        });
-    }
-
     /* Generic contact form (no backend) */
     var forms = document.querySelectorAll('form[data-demo]');
     forms.forEach(function (form) {
