@@ -975,3 +975,11 @@ footer a.text-sm:hover { transform: translateX(3px); }
 
 /* Form fields: clear focus state */
 input:focus, textarea:focus, select:focus { border-color: #b9aeff !important; box-shadow: 0 0 0 4px rgba(139,123,255,.18); outline: none; }
+
+/* The two scrolling strips stay in motion (right to left) even when the OS asks for reduced motion.
+   They are slow, linear and pause on hover; everything else still respects the setting. */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: marquee 60s linear infinite !important; }
+    .mega-track { animation: marquee 80s linear infinite !important; }
+    .marquee:hover .marquee-track, .mega-marquee:hover .mega-track { animation-play-state: paused !important; }
+}
