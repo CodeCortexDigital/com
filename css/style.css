@@ -1148,3 +1148,11 @@ input:focus, textarea:focus, select:focus { border-color: #b9aeff !important; bo
 .proof-tile::after { content: "→"; position: absolute; right: 1.2rem; bottom: 1.1rem; color: #2fe8d0; opacity: 0; transform: translateX(-6px); transition: opacity .25s, transform .25s; }
 .proof-tile:hover::after { opacity: 1; transform: none; }
 .project-hero .text-gradient, .project-hero .text-gradient .kw > span { background-image: linear-gradient(100deg, #2fe8d0 0%, #8b7bff 48%, #f2184a 100%); }
+
+/* Home hero: let the page's purple/pink glows and grid show through (same look as the portfolio background);
+   only a light shade stays behind the left text column for readability. */
+.hero-v3 .hero-veil { background:
+    radial-gradient(760px 520px at 6% 28%, rgba(139,123,255,.26), transparent 68%),
+    radial-gradient(760px 540px at 96% 72%, rgba(255,111,174,.20), transparent 68%),
+    radial-gradient(50% 60% at 16% 52%, rgba(7,6,15,.16), transparent 72%); }
+.hero-v3 .neuro { opacity: .9; }
