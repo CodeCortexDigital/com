@@ -213,31 +213,49 @@
         });
     }
 
-    /* Contact form: a normal form POST to FormSubmit, which emails the enquiry to info@codecortexdigital.com and
-       sends the visitor back to contact.html?sent=1. A plain POST is not affected by CORS or script blockers. */
+    /* Contact form: sends the enquiry to info@codecortexdigital.com through Web3Forms (static-site friendly).
+       Without JavaScript the form still posts to Web3Forms directly. */
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        var TO = 'info@codecortexdigital.com';
         var msg = document.getElementById('formMsg');
         var btn = document.getElementById('cfBtn');
-        var say = function (t, ok) {
-            msg.textContent = t; msg.classList.remove('hidden');
-            msg.style.color = ok === false ? '#ff8aa8' : (ok ? '#2fe8d0' : 'var(--brand)');
+        var paint = function (color) { msg.classList.remove('hidden'); msg.style.color = color; };
+        var fail = function (why) {
+            msg.textContent = 'Your message was not sent' + (why ? ' (' + why + ')' : '') + '. Please try again in a minute, or ';
+            var link = document.createElement('a');
+            link.href = 'mailto:' + TO; link.textContent = 'email us at ' + TO; link.style.textDecoration = 'underline';
+            msg.appendChild(link); msg.appendChild(document.createTextNode('.'));
+            paint('#ff8aa8');
         };
-        if (/[?&]sent=1/.test(window.location.search)) {
-            say('Thank you! Your message has been sent. We will reply to you soon.', true);
-            if (window.history && history.replaceState) { history.replaceState(null, '', window.location.pathname); }
-        }
         contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
             var f = contactForm.elements;
             var email = (f.email.value || '').trim();
             if (!f.name.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !f.message.value.trim()) {
-                e.preventDefault();
-                say('Please enter your name, a valid email and project details.', false);
+                msg.textContent = 'Please enter your name, a valid email and project details.'; paint('#ff8aa8');
                 return;
             }
-            if (f._honey && f._honey.value) { e.preventDefault(); return; }   /* spam bot filled the hidden field */
+            if (f.botcheck && f.botcheck.checked) { return; }          /* spam bot ticked the hidden box */
+            var original = btn.textContent;
             btn.disabled = true; btn.textContent = 'Sending…';
-            say('Sending your message…');
+            msg.textContent = 'Sending your message…'; paint('var(--brand)');
+            var data = {};
+            [].slice.call(f).forEach(function (el) { if (el.name && el.type !== 'submit' && el.type !== 'checkbox') { data[el.name] = el.value; } });
+            data.subject = 'New project enquiry from ' + data.name.trim() + ' - codecortexdigital.com';
+            fetch(contactForm.action, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(function (r) { return r.json().catch(function () { return {}; }); })
+              .then(function (d) {
+                  if (d && d.success) {
+                      msg.textContent = 'Thank you! Your message has been sent. We will reply to ' + email + ' soon.'; paint('#2fe8d0');
+                      contactForm.reset();
+                  } else { fail(d && d.message ? String(d.message).slice(0, 140) : 'no confirmation from the mail service'); }
+              })
+              .catch(function () { fail('could not reach the mail service'); })
+              .then(function () { btn.disabled = false; btn.textContent = original; });
         });
     }
 
