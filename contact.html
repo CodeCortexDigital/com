@@ -23,7 +23,7 @@
         } }
     }
 </script>
-<link rel="stylesheet" href="css/style.css?v=20261105" />
+<link rel="stylesheet" href="css/style.css?v=20261106" />
 </head>
 <body class="font-sans text-ink bg-bg min-h-screen flex flex-col overflow-x-hidden">
 
@@ -96,16 +96,15 @@
 
     <!-- Form -->
     <div class="tech-card p-6 fade-up">
-        <form class="space-y-5" id="contactForm" method="POST" action="https://formsubmit.co/info@codecortexdigital.com" novalidate>
-            <input type="hidden" name="_subject" value="New project enquiry - codecortexdigital.com">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://www.codecortexdigital.com/contact.html?sent=1">
+        <form class="space-y-5" id="contactForm" method="POST" action="https://api.web3forms.com/submit" novalidate>
+            <input type="hidden" name="access_key" value="2663ea55-0763-4caf-b594-fed7a8cf2595">
+            <input type="hidden" name="subject" value="New project enquiry - codecortexdigital.com">
+            <input type="hidden" name="from_name" value="Code Cortex website">
             <div><label for="cf-name" class="block text-sm font-semibold text-ink mb-2">Full Name</label><input id="cf-name" type="text" required name="name" autocomplete="name" placeholder="John Doe" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
             <div><label for="cf-email" class="block text-sm font-semibold text-ink mb-2">Email</label><input id="cf-email" type="email" required name="email" autocomplete="email" placeholder="you@company.com" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
             <div><label for="cf-company" class="block text-sm font-semibold text-ink mb-2">Company</label><input id="cf-company" type="text" name="company" autocomplete="organization" placeholder="Your Company" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
             <div><label for="cf-message" class="block text-sm font-semibold text-ink mb-2">Project Details</label><textarea id="cf-message" rows="4" required name="message" placeholder="Tell us about your project..." class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></textarea></div>
-            <div style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
             <button type="submit" id="cfBtn" class="btn-primary font-semibold w-full py-4 rounded-full">Send Message</button>
             <p id="formMsg" class="text-sm font-semibold hidden" style="color:var(--brand);" role="status" aria-live="polite"></p>
         </form>
@@ -164,7 +163,7 @@
     </div>
 </footer>
 
-<script src="js/main.js?v=20261105"></script>
+<script src="js/main.js?v=20261106"></script>
 </body>
 </html>
 
