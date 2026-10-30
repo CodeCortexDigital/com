@@ -1071,3 +1071,30 @@ input:focus, textarea:focus, select:focus { border-color: #b9aeff !important; bo
     .hero-v3 .hero-grid { padding-top: 1rem; padding-bottom: .75rem; }
     .hero-v3 .stat-bar > div { padding: 1rem 1.3rem; }
 }
+
+/* ============================================================
+   Strips cycle through the logo colours (teal + crimson) automatically
+   ============================================================ */
+@keyframes logo-stroke { 0%, 100% { -webkit-text-stroke-color: rgba(47,232,208,.85); } 50% { -webkit-text-stroke-color: rgba(242,24,74,.9); } }
+@keyframes logo-star   { 0%, 100% { color: #2fe8d0; text-shadow: 0 0 22px rgba(47,232,208,.55); } 50% { color: #f2184a; text-shadow: 0 0 22px rgba(242,24,74,.55); } }
+@keyframes logo-chip   {
+    0%, 100% { color: #c9fbf3; border-color: rgba(47,232,208,.55); box-shadow: 0 0 20px rgba(47,232,208,.16), inset 0 0 14px rgba(47,232,208,.07); }
+    50%      { color: #ffd0dc; border-color: rgba(242,24,74,.6);  box-shadow: 0 0 20px rgba(242,24,74,.18),  inset 0 0 14px rgba(242,24,74,.07); }
+}
+.mega-track span:not(:nth-child(even)) { animation: logo-stroke 7s ease-in-out infinite; -webkit-text-stroke-width: 1.5px; }
+.mega-track span:nth-child(even) { background: linear-gradient(90deg, #2fe8d0, #f2184a); -webkit-background-clip: text; background-clip: text; }
+.mega-track b { animation: logo-star 7s ease-in-out infinite; }
+.logo-chip { animation: logo-chip 7s ease-in-out infinite; }
+.marquee-track > :nth-child(3n+2), .mega-track > :nth-child(3n+2), .mega-track > :nth-child(3n+2) b { animation-delay: -2.3s; }
+.marquee-track > :nth-child(3n),   .mega-track > :nth-child(3n),   .mega-track > :nth-child(3n) b   { animation-delay: -4.6s; }
+/* on hover the strip pauses and the item under the pointer fills with the logo gradient */
+.mega-track span:not(:nth-child(even)):hover { background: linear-gradient(90deg, #2fe8d0, #f2184a); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; -webkit-text-stroke-color: transparent; animation: none; }
+.logo-chip:hover { animation-play-state: paused; color: #fff; border-color: #2fe8d0; box-shadow: 0 0 26px rgba(47,232,208,.35), 0 0 26px rgba(242,24,74,.2); }
+/* colour fades are not motion: keep them under reduced-motion too */
+@media (prefers-reduced-motion: reduce) {
+    .mega-track span:not(:nth-child(even)) { animation: logo-stroke 7s ease-in-out infinite !important; }
+    .mega-track b { animation: logo-star 7s ease-in-out infinite !important; }
+    .logo-chip { animation: logo-chip 7s ease-in-out infinite !important; }
+    .mega-track span:not(:nth-child(even)):hover { animation: none !important; }
+    .logo-chip:hover { animation-play-state: paused !important; }
+}
