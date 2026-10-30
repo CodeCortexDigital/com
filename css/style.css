@@ -1098,3 +1098,53 @@ input:focus, textarea:focus, select:focus { border-color: #b9aeff !important; bo
     .mega-track span:not(:nth-child(even)):hover { animation: none !important; }
     .logo-chip:hover { animation-play-state: paused !important; }
 }
+
+/* ============================================================
+   Shared neural canvas, About hero, founders, proof tiles
+   ============================================================ */
+.project-hero > .neuro, .about-hero > .neuro { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: .85; }
+.project-hero > .relative, .project-hero > div.relative { z-index: 1; }
+.about-hero { isolation: isolate; padding-top: clamp(1rem, 3vh, 2.5rem); padding-bottom: clamp(2rem, 5vh, 3.5rem); }
+.about-hero > .neuro { z-index: -2; }
+.about-hero .hero-veil { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(60% 80% at 15% 50%, rgba(7,6,15,.75), transparent 70%), radial-gradient(600px 400px at 85% 30%, rgba(47,232,208,.10), transparent 65%), radial-gradient(560px 380px at 75% 90%, rgba(242,24,74,.10), transparent 65%); }
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+@media (min-width: 1024px) { .about-grid { grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr); gap: 3.5rem; } }
+.about-hero h1 { font-size: clamp(2.2rem, 4.4vw, 3.9rem) !important; line-height: 1.04 !important; letter-spacing: -.04em !important; }
+.about-hero .text-gradient, .about-hero .text-gradient .kw > span { background-image: linear-gradient(100deg, #2fe8d0 0%, #8b7bff 48%, #f2184a 100%); }
+.about-lede { margin-top: 1.4rem; max-width: 36rem; font-size: 1.08rem; line-height: 1.7; color: var(--muted); }
+.about-visual { position: relative; padding: 1.2rem; }
+.about-frame { position: relative; width: min(100%, 31rem); margin: 0 auto; border-radius: 50%; padding: 5px; aspect-ratio: 1; background: conic-gradient(from var(--ang, 0deg), #2fe8d0, #8b7bff, #f2184a, #2fe8d0); animation: ang-spin 10s linear infinite; box-shadow: 0 30px 80px rgba(0,0,0,.5), 0 0 80px rgba(139,123,255,.22); }
+.about-frame::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: linear-gradient(160deg, rgba(47,232,208,.14), transparent 40%, rgba(242,24,74,.18)); mix-blend-mode: screen; pointer-events: none; }
+.about-frame img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; clip-path: circle(50%); transform: scale(1.12); transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+.about-visual:hover .about-frame img { transform: scale(1.18); }
+.abadge { position: absolute; display: inline-flex; align-items: baseline; gap: .45rem; padding: .6rem 1rem; border-radius: 999px; font-size: .78rem; font-weight: 700; color: #e8eaed; white-space: nowrap;
+    background: rgba(18,15,36,.78); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(12px); box-shadow: 0 14px 34px rgba(0,0,0,.45); animation: chip-float 7s ease-in-out infinite; }
+.abadge b { font-size: 1.15rem; font-weight: 800; background: linear-gradient(100deg, #2fe8d0, #f2184a); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.abadge.b1 { top: 8%; left: 4%; } .abadge.b2 { top: 46%; right: 0; animation-delay: -2.4s; } .abadge.b3 { bottom: 6%; left: 8%; animation-delay: -4.6s; }
+@media (max-width: 767px) { .abadge { font-size: .7rem; padding: .45rem .75rem; } .abadge b { font-size: 1rem; } .about-visual { padding: .9rem; } }
+
+/* Founders */
+.founders { display: grid; grid-template-columns: 1fr; gap: 1.4rem; }
+@media (min-width: 768px) { .founders { grid-template-columns: repeat(3, 1fr); } }
+.founder { position: relative; text-align: center; padding: 2.2rem 1.5rem 1.8rem; border-radius: 24px; background: linear-gradient(170deg, rgba(24,20,48,.9), rgba(12,10,26,.9)); border: 1px solid rgba(255,255,255,.09); overflow: hidden; transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s, box-shadow .4s; }
+.founder::before { content: ""; position: absolute; left: 50%; top: -70px; width: 240px; height: 240px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(47,232,208,.22), rgba(242,24,74,.12) 55%, transparent 70%); filter: blur(6px); opacity: .8; transition: opacity .4s; }
+.founder:hover { transform: translateY(-6px); border-color: rgba(47,232,208,.4); box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 50px rgba(47,232,208,.12); }
+.founder-ring { position: relative; width: 132px; height: 132px; margin: 0 auto 1.2rem; border-radius: 50%; padding: 4px; background: conic-gradient(from var(--ang, 0deg), #2fe8d0, #8b7bff, #f2184a, #2fe8d0); animation: ang-spin 8s linear infinite; }
+.founder-ring img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid #0d0b1c; display: block; }
+.founder h3 { position: relative; font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; color: #fff; }
+.founder-role { position: relative; display: table; margin: .6rem auto 0; padding: .3rem .85rem; border-radius: 999px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #2fe8d0; background: rgba(47,232,208,.1); border: 1px solid rgba(47,232,208,.3); }
+.founder-link { position: relative; display: flex; width: max-content; align-items: center; gap: .5rem; margin: 1.3rem auto 0; padding: .6rem 1.1rem; border-radius: 999px; font-size: .82rem; font-weight: 600; color: var(--muted); border: 1px solid rgba(255,255,255,.12); transition: color .25s, border-color .25s, background .25s; }
+.founder-link:hover { color: #fff; border-color: #2fe8d0; background: rgba(47,232,208,.1); }
+@media (prefers-reduced-motion: reduce) { .founder-ring, .about-frame { animation: none !important; } }
+
+/* Home: proof tiles */
+.proof-band { padding-top: clamp(2.5rem, 5vw, 4rem); }
+.proof-tile { display: flex; flex-direction: column; padding: 1.6rem 1.4rem 1.3rem; text-decoration: none; position: relative; overflow: hidden; }
+.proof-tile .num { font-family: 'Sora', sans-serif; font-size: clamp(2.4rem, 4.2vw, 3.4rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; background: linear-gradient(100deg, #2fe8d0, #8b7bff 55%, #f2184a); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.proof-tile h3 { margin-top: .8rem; font-size: 1.05rem; font-weight: 700; color: #fff; }
+.proof-tile p { margin-top: .45rem; font-size: .88rem; line-height: 1.55; color: var(--muted); flex: 1; }
+.proof-tile span { margin-top: 1rem; font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #2fe8d0; }
+.proof-tile::after { content: "→"; position: absolute; right: 1.2rem; bottom: 1.1rem; color: #2fe8d0; opacity: 0; transform: translateX(-6px); transition: opacity .25s, transform .25s; }
+.proof-tile:hover::after { opacity: 1; transform: none; }
+.project-hero .text-gradient, .project-hero .text-gradient .kw > span { background-image: linear-gradient(100deg, #2fe8d0 0%, #8b7bff 48%, #f2184a 100%); }

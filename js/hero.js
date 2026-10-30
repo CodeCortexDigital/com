@@ -6,8 +6,8 @@
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     /* ---------- Neural canvas ---------- */
-    var canvas = document.getElementById('neuro');
-    if (canvas && canvas.getContext) {
+    [].slice.call(document.querySelectorAll('canvas.neuro')).forEach(function (canvas) {
+    if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
         var hero = canvas.parentElement;
         var COLORS = ['47,232,208', '242,24,74', '139,123,255'];   /* logo teal, logo crimson, brand purple */
@@ -98,6 +98,7 @@
         } else { start(); }
         document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
     }
+    });
 
     /* ---------- Product console ---------- */
     var cons = document.getElementById('cortexConsole');

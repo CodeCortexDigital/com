@@ -68,7 +68,7 @@
     onScroll();
 
     /* Animated stat counters (e.g. "30+", "99%", "24/7") */
-    var nums = document.querySelectorAll('.stat-bar .num, .footprint .num');
+    var nums = document.querySelectorAll('.stat-bar .num, .footprint .num, .proof .num');
     if ('IntersectionObserver' in window && nums.length &&
         !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         var countObs = new IntersectionObserver(function (entries) {
