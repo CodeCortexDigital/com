@@ -68,7 +68,7 @@
     onScroll();
 
     /* Animated stat counters (e.g. "30+", "99%", "24/7") */
-    var nums = document.querySelectorAll('.stat-bar .num, .footprint .num');
+    var nums = document.querySelectorAll('.stat-bar .num, .footprint .num, .proof .num');
     if ('IntersectionObserver' in window && nums.length &&
         !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         var countObs = new IntersectionObserver(function (entries) {
@@ -213,25 +213,50 @@
         });
     }
 
-    /* Contact form: validates, then opens the visitor's mail app (static site, no backend) */
+    /* Contact form: sends the enquiry to info@codecortexdigital.com through FormSubmit (works on a static site);
+       falls back to opening the visitor's mail app if the request cannot be made. */
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        var TO = 'info@codecortexdigital.com';
+        var msg = document.getElementById('formMsg');
+        var btn = document.getElementById('cfBtn');
+        var say = function (t, ok) {
+            msg.textContent = t; msg.classList.remove('hidden');
+            msg.style.color = ok === false ? '#ff8aa8' : (ok ? '#2fe8d0' : 'var(--brand)');
+        };
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            var msg = document.getElementById('formMsg');
             var f = contactForm.elements;
-            var email = (f.email.value || '').trim();
-            if (!f.name.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !f.message.value.trim()) {
-                msg.textContent = 'Please enter your name, a valid email and project details.';
-                msg.classList.remove('hidden');
+            var name = f.name.value.trim(), email = (f.email.value || '').trim(), company = (f.company.value || '').trim(), text = f.message.value.trim();
+            if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !text) {
+                say('Please enter your name, a valid email and project details.', false);
                 return;
             }
-            var body = 'Name: ' + f.name.value.trim() + '\nEmail: ' + email +
-                '\nCompany: ' + (f.company.value || '-').trim() + '\n\n' + f.message.value.trim();
-            window.location.href = 'mailto:info@codecortexdigital.com?subject=' +
-                encodeURIComponent('New project enquiry - ' + f.name.value.trim()) + '&body=' + encodeURIComponent(body);
-            msg.textContent = 'Opening your email app… if nothing opens, write to info@codecortexdigital.com.';
-            msg.classList.remove('hidden');
+            if (f._honey && f._honey.value) { return; }          /* spam bot filled the hidden field */
+            var original = btn.textContent;
+            btn.disabled = true; btn.textContent = 'Sending…';
+            var fallback = function () {
+                window.location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent('New project enquiry - ' + name) +
+                    '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + (company || '-') + '\n\n' + text);
+                say('We could not send it from here, so we are opening your email app. If nothing opens, write to ' + TO + '.', false);
+            };
+            fetch('https://formsubmit.co/ajax/' + TO, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    name: name, email: email, company: company || '-', message: text,
+                    _subject: 'New project enquiry from ' + name + ' - codecortexdigital.com',
+                    _template: 'table', _captcha: 'false', _replyto: email
+                })
+            }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+              .then(function (res) {
+                  if (res.ok && (res.d.success === true || res.d.success === 'true')) {
+                      say('Thank you! Your message has been sent. We will reply to ' + email + ' soon.', true);
+                      contactForm.reset();
+                  } else { fallback(); }
+              })
+              .catch(fallback)
+              .then(function () { btn.disabled = false; btn.textContent = original; });
         });
     }
 

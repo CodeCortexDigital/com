@@ -23,7 +23,7 @@
         } }
     }
 </script>
-<link rel="stylesheet" href="css/style.css?v=20261101" />
+<link rel="stylesheet" href="css/style.css?v=20261103" />
 </head>
 <body class="font-sans text-ink bg-bg min-h-screen flex flex-col overflow-x-hidden">
 
@@ -73,11 +73,11 @@
     <div class="flex flex-col gap-6 fade-up">
         <div class="tech-card p-6 flex items-start gap-4">
             <span class="material-symbols-outlined text-brand text-xl" style="font-variation-settings:'FILL' 1;">mail</span>
-            <div><h3 class="font-bold text-ink">Email</h3><p class="text-muted">info@codecortexdigital.com</p></div>
+            <div><h3 class="font-bold text-ink">Email</h3><p class="text-muted"><a href="mailto:info@codecortexdigital.com" class="hover:text-brand transition-colors">info@codecortexdigital.com</a></p></div>
         </div>
         <div class="tech-card p-6 flex items-start gap-4">
             <span class="material-symbols-outlined text-brand text-xl" style="font-variation-settings:'FILL' 1;">call</span>
-            <div><h3 class="font-bold text-ink">Phone</h3><p class="text-muted">+92 315 722 7688</p></div>
+            <div><h3 class="font-bold text-ink">Phone</h3><p class="text-muted"><a href="tel:+923157227688" class="hover:text-brand transition-colors">+92 315 722 7688</a></p></div>
         </div>
         <div class="tech-card p-6 flex items-start gap-4">
             <span class="material-symbols-outlined text-brand text-xl" style="font-variation-settings:'FILL' 1;">location_on</span>
@@ -97,12 +97,13 @@
     <!-- Form -->
     <div class="tech-card p-6 fade-up">
         <form class="space-y-5" id="contactForm" novalidate>
-            <div><label class="block text-sm font-semibold text-ink mb-2">Full Name</label><input type="text" required name="name" placeholder="John Doe" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
-            <div><label class="block text-sm font-semibold text-ink mb-2">Email</label><input type="email" required name="email" placeholder="you@company.com" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
-            <div><label class="block text-sm font-semibold text-ink mb-2">Company</label><input type="text" name="company" placeholder="Your Company" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
-            <div><label class="block text-sm font-semibold text-ink mb-2">Project Details</label><textarea rows="4" required name="message" placeholder="Tell us about your project..." class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></textarea></div>
-            <button type="submit" class="btn-primary font-semibold w-full py-4 rounded-full">Send Message</button>
-            <p id="formMsg" class="text-sm font-semibold hidden" style="color:var(--brand);"></p>
+            <div><label for="cf-name" class="block text-sm font-semibold text-ink mb-2">Full Name</label><input id="cf-name" type="text" required name="name" autocomplete="name" placeholder="John Doe" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
+            <div><label for="cf-email" class="block text-sm font-semibold text-ink mb-2">Email</label><input id="cf-email" type="email" required name="email" autocomplete="email" placeholder="you@company.com" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
+            <div><label for="cf-company" class="block text-sm font-semibold text-ink mb-2">Company</label><input id="cf-company" type="text" name="company" autocomplete="organization" placeholder="Your Company" class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></div>
+            <div><label for="cf-message" class="block text-sm font-semibold text-ink mb-2">Project Details</label><textarea id="cf-message" rows="4" required name="message" placeholder="Tell us about your project..." class="input-glow w-full px-4 py-3 rounded-lg text-ink bg-tech-charcoal" style="border:1px solid var(--border);"></textarea></div>
+            <div style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+            <button type="submit" id="cfBtn" class="btn-primary font-semibold w-full py-4 rounded-full">Send Message</button>
+            <p id="formMsg" class="text-sm font-semibold hidden" style="color:var(--brand);" role="status" aria-live="polite"></p>
         </form>
     </div>
 
@@ -159,7 +160,7 @@
     </div>
 </footer>
 
-<script src="js/main.js?v=20261101"></script>
+<script src="js/main.js?v=20261103"></script>
 </body>
 </html>
 
