@@ -214,7 +214,7 @@
     }
 
     /* Contact form: sends the enquiry to info@codecortexdigital.com through FormSubmit (works on a static site);
-       falls back to opening the visitor's mail app if the request cannot be made. */
+       shows the reason and a mailto link if it cannot be sent. */
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
         var TO = 'info@codecortexdigital.com';
@@ -235,10 +235,16 @@
             if (f._honey && f._honey.value) { return; }          /* spam bot filled the hidden field */
             var original = btn.textContent;
             btn.disabled = true; btn.textContent = 'Sending…';
-            var fallback = function () {
-                window.location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent('New project enquiry - ' + name) +
+            /* On failure: say why (server text if any) and offer the mail app as a button instead of forcing it open */
+            var fail = function (why) {
+                msg.textContent = 'Your message was not sent' + (why ? ' (' + why + ')' : '') + '. Please try again in a minute, or ';
+                var link = document.createElement('a');
+                link.href = 'mailto:' + TO + '?subject=' + encodeURIComponent('New project enquiry - ' + name) +
                     '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + (company || '-') + '\n\n' + text);
-                say('We could not send it from here, so we are opening your email app. If nothing opens, write to ' + TO + '.', false);
+                link.textContent = 'email us at ' + TO;
+                link.style.textDecoration = 'underline';
+                msg.appendChild(link); msg.appendChild(document.createTextNode('.'));
+                msg.classList.remove('hidden'); msg.style.color = '#ff8aa8';
             };
             fetch('https://formsubmit.co/ajax/' + TO, {
                 method: 'POST',
@@ -253,9 +259,9 @@
                   if (res.ok && (res.d.success === true || res.d.success === 'true')) {
                       say('Thank you! Your message has been sent. We will reply to ' + email + ' soon.', true);
                       contactForm.reset();
-                  } else { fallback(); }
+                  } else { fail(res.d && res.d.message ? String(res.d.message).slice(0, 140) : 'server replied ' + (res.ok ? 'without confirmation' : 'with an error')); }
               })
-              .catch(fallback)
+              .catch(function () { fail('network blocked the request'); })
               .then(function () { btn.disabled = false; btn.textContent = original; });
         });
     }
