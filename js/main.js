@@ -213,56 +213,31 @@
         });
     }
 
-    /* Contact form: sends the enquiry to info@codecortexdigital.com through FormSubmit (works on a static site);
-       shows the reason and a mailto link if it cannot be sent. */
+    /* Contact form: a normal form POST to FormSubmit, which emails the enquiry to info@codecortexdigital.com and
+       sends the visitor back to contact.html?sent=1. A plain POST is not affected by CORS or script blockers. */
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        var TO = 'info@codecortexdigital.com';
         var msg = document.getElementById('formMsg');
         var btn = document.getElementById('cfBtn');
         var say = function (t, ok) {
             msg.textContent = t; msg.classList.remove('hidden');
             msg.style.color = ok === false ? '#ff8aa8' : (ok ? '#2fe8d0' : 'var(--brand)');
         };
+        if (/[?&]sent=1/.test(window.location.search)) {
+            say('Thank you! Your message has been sent. We will reply to you soon.', true);
+            if (window.history && history.replaceState) { history.replaceState(null, '', window.location.pathname); }
+        }
         contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
             var f = contactForm.elements;
-            var name = f.name.value.trim(), email = (f.email.value || '').trim(), company = (f.company.value || '').trim(), text = f.message.value.trim();
-            if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !text) {
+            var email = (f.email.value || '').trim();
+            if (!f.name.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !f.message.value.trim()) {
+                e.preventDefault();
                 say('Please enter your name, a valid email and project details.', false);
                 return;
             }
-            if (f._honey && f._honey.value) { return; }          /* spam bot filled the hidden field */
-            var original = btn.textContent;
+            if (f._honey && f._honey.value) { e.preventDefault(); return; }   /* spam bot filled the hidden field */
             btn.disabled = true; btn.textContent = 'Sending…';
-            /* On failure: say why (server text if any) and offer the mail app as a button instead of forcing it open */
-            var fail = function (why) {
-                msg.textContent = 'Your message was not sent' + (why ? ' (' + why + ')' : '') + '. Please try again in a minute, or ';
-                var link = document.createElement('a');
-                link.href = 'mailto:' + TO + '?subject=' + encodeURIComponent('New project enquiry - ' + name) +
-                    '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + (company || '-') + '\n\n' + text);
-                link.textContent = 'email us at ' + TO;
-                link.style.textDecoration = 'underline';
-                msg.appendChild(link); msg.appendChild(document.createTextNode('.'));
-                msg.classList.remove('hidden'); msg.style.color = '#ff8aa8';
-            };
-            fetch('https://formsubmit.co/ajax/' + TO, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({
-                    name: name, email: email, company: company || '-', message: text,
-                    _subject: 'New project enquiry from ' + name + ' - codecortexdigital.com',
-                    _template: 'table', _captcha: 'false', _replyto: email
-                })
-            }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
-              .then(function (res) {
-                  if (res.ok && (res.d.success === true || res.d.success === 'true')) {
-                      say('Thank you! Your message has been sent. We will reply to ' + email + ' soon.', true);
-                      contactForm.reset();
-                  } else { fail(res.d && res.d.message ? String(res.d.message).slice(0, 140) : 'server replied ' + (res.ok ? 'without confirmation' : 'with an error')); }
-              })
-              .catch(function () { fail('network blocked the request'); })
-              .then(function () { btn.disabled = false; btn.textContent = original; });
+            say('Sending your message…');
         });
     }
 
