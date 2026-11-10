@@ -1,21 +1,26 @@
 /**
- * CODE CORTEX - ONE-CLICK VOUCHER PRINT (Google Apps Script web app)
+ * CODE CORTEX - SINGLE-VOUCHER PRINT / PDF (Google Apps Script web app)
  *
- * Use with the Google Sheet version of the 'Voucher Register' sheet (same columns as the Excel file).
- * 1) Upload the Excel file to Google Drive and open it with Google Sheets (File > Save as Google Sheets).
- * 2) Extensions > Apps Script. Paste this whole file as Code.gs. Set LOGO_URL (optional).
- * 3) Deploy > New deployment > type "Web app" > Execute as: Me > Who has access: Only myself. Copy the web-app URL.
- * 4) Paste that URL in Assumptions!C32. Each row of the Voucher Register then shows
- *    "Print (web)" in column AA: click it, the voucher opens in the saved format and the print dialog starts.
- *    Choose "Save as PDF" or a printer.
+ * What it does: opens ONE voucher (the row you clicked) in the Code Cortex voucher format, with two buttons:
+ *   [Print]  and  [Download PDF]  (the PDF is also saved in your Drive folder "Code Cortex Vouchers").
+ *
+ * Setup (once):
+ * 1) Upload the Excel workbook to Google Drive, open it with Google Sheets (File > Save as Google Sheets).
+ * 2) Extensions > Apps Script. Delete the old code, paste this whole file as Code.gs. Save.
+ * 3) Run the function authorize() once and allow access (Drive + Sheets).
+ * 4) Deploy > New deployment > Web app > Execute as: Me > Who has access: Only myself > Deploy. Copy the URL.
+ * 5) In the sheet, paste the URL into Assumptions!C32. Done.
+ *    Voucher Register column X = "Print voucher", column AA = "Download PDF" (one click each, one voucher only).
+ *    After changing this code, use Deploy > Manage deployments > Edit > New version (the URL stays the same).
  *
  * Columns used on 'Voucher Register' (row = ?row=N):
  *  B date, C voucher no, D type, E party, F particulars, G Dr code, H Dr account, I funding source,
- *  J Cr code, K Cr account, L amount, M payment method, N supporting document, O bank rec, P prepared by, Q verified by,
- *  Z printed narration (formula column).
+ *  J Cr code, K Cr account, L amount, M payment method, N supporting document, O bank rec, P prepared by,
+ *  Q verified by, Z printed narration.
  */
-var LOGO_URL = '';            // optional: public URL of the company logo
+var LOGO_URL = '';   // optional: public https URL of the company logo (leave blank to omit)
 var SHEET_NAME = 'Voucher Register';
+var FOLDER_NAME = 'Code Cortex Vouchers';
 var CO = 'Code Cortex (SMC) (Private) Limited';
 var NTN = 'H223725', CUIN = '0303684';
 var BANNER = 'Audit Compliance: SECP Companies Act 2017 (Sec 237) | FBR Income Tax Ordinance 2001 (Sec 174)';
@@ -30,58 +35,93 @@ var FOOT = [
   'Generated for internal audit, SECP inspection, and FBR tax audit purposes.',
   'Prepared from books of accounts maintained under Section 237 of Companies Act 2017.'];
 
+function authorize() { DriveApp.getRootFolder(); SpreadsheetApp.getActive(); }
+
 function doGet(e) {
   var row = parseInt(e.parameter.row, 10);
-  var sh = SpreadsheetApp.getActive().getSheetByName(SHEET_NAME);
   if (!row || row < 5) return HtmlService.createHtmlOutput('Invalid row');
+  var d = readVoucher(row);
+  if (!d) return HtmlService.createHtmlOutput('No voucher on this row');
+  if (e.parameter.pdf) {
+    var blob = HtmlService.createHtmlOutput(voucherHtml(d, false)).getBlob().getAs('application/pdf').setName('Voucher-' + d.no + '.pdf');
+    var folder = getFolder();
+    var old = folder.getFilesByName(blob.getName());
+    while (old.hasNext()) old.next().setTrashed(true);
+    var file = folder.createFile(blob);
+    var url = 'https://drive.google.com/uc?export=download&id=' + file.getId();
+    return HtmlService.createHtmlOutput(
+      '<p style="font-family:Arial">Downloading <b>' + d.no + '.pdf</b> ... if it does not start, <a target="_top" href="' + url + '">click here</a>. ' +
+      'A copy is saved in your Drive folder "' + FOLDER_NAME + '".</p>' +
+      '<script>window.top.location.href="' + url + '";</script>').setTitle('Voucher PDF - ' + d.no);
+  }
+  var self = ScriptApp.getService().getUrl() + '?row=' + row;
+  var bar = '<div class="np" style="text-align:right;margin-bottom:10px">' +
+    '<button onclick="window.print()" style="padding:8px 16px;font-size:14px">Print</button> ' +
+    '<a target="_top" href="' + self + '&pdf=1"><button style="padding:8px 16px;font-size:14px">Download PDF</button></a></div>';
+  return HtmlService.createHtmlOutput(voucherHtml(d, true, bar)).setTitle('Voucher - ' + d.no);
+}
+
+function getFolder() {
+  var it = DriveApp.getFoldersByName(FOLDER_NAME);
+  return it.hasNext() ? it.next() : DriveApp.createFolder(FOLDER_NAME);
+}
+
+function readVoucher(row) {
+  var sh = SpreadsheetApp.getActive().getSheetByName(SHEET_NAME);
   var v = sh.getRange(row, 1, 1, 26).getDisplayValues()[0];
   var raw = sh.getRange(row, 1, 1, 26).getValues()[0];
-  var no = v[2];
-  if (!no) return HtmlService.createHtmlOutput('No voucher on this row');
-  var amount = Number(raw[11]) || 0;
-  var date = Utilities.formatDate(new Date(raw[1]), Session.getScriptTimeZone(), 'dd-MMM-yyyy');
-  var vtype = no.indexOf('RV') === 0 ? 'Receipt Voucher (RV)' : no.indexOf('PV') === 0 ? 'Payment Voucher (PV)' : no.indexOf('JV') === 0 ? 'Journal Voucher (JV)' : 'Voucher';
-  var entry = (v[3] === 'Contra' ? 'Contra Entry' : v[3] + ' Entry') + '<br>Dr ' + v[6] + ' ' + v[7] + '<br>Cr ' + v[9] + ' ' + v[10];
-  var rec = v[14] === 'Y' ? 'YES' : v[14] === 'N' ? 'NO' : v[14];
-  var now = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd-MMM-yyyy hh:mm a');
-  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
-  var html =
-    '<html><head><title>Voucher - ' + esc(no) + '</title><style>' +
-    'body{font-family:Arial,Helvetica,sans-serif;margin:24px auto;width:760px;color:#000}' +
-    '.h{display:flex;align-items:center;gap:20px;border-bottom:3px solid #1f3a8a;padding-bottom:12px}' +
-    '.h img{width:80px;height:80px}.t{flex:1;text-align:center;color:#1f3a8a}.t h1{margin:0;font-size:26px}' +
-    '.t div{font-size:13px;font-weight:bold;margin-top:4px}.t small{color:#555;font-weight:normal}' +
-    '.b{border-left:4px solid #1f3a8a;padding:6px 10px;margin:14px 0;font-size:12px;font-weight:bold}' +
-    'table{width:100%;border-collapse:collapse;margin-bottom:14px}td{border:1.5px solid #000;padding:9px 10px;font-size:13px}' +
-    'td.l{font-weight:bold;color:#1f3a8a;width:24%}td.c{text-align:center;font-weight:bold;color:#1b5e20}th{border:1.5px solid #000;padding:8px;color:#1f3a8a;font-size:13px}' +
-    '.n{border-left:4px solid #0b3d5c;padding:6px 10px;font-size:11.5px;line-height:1.5}' +
-    '.s{display:flex;gap:24px;margin-top:34px}.s div{flex:1;text-align:center;border-top:2px solid #000;padding-top:6px;font-size:12px}' +
-    '.f{border-top:1px dashed #999;margin-top:18px;padding-top:8px;text-align:center;font-size:10px;color:#555}' +
-    '@media print{.np{display:none}}</style></head><body>' +
-    '<div class="np" style="text-align:right"><button onclick="window.print()">Print / Save as PDF</button></div>' +
-    '<div class="h">' + (LOGO_URL ? '<img src="' + LOGO_URL + '">' : '') +
-    '<div class="t"><h1>' + esc(CO) + '</h1><div>' + vtype + ' (SECP &amp; FBR Compliant)</div><small>NTN: ' + NTN + ' | CUIN: ' + CUIN + '</small></div></div>' +
-    '<div class="b">&#128274; ' + esc(BANNER) + '</div>' +
-    '<table><tr><td class="l">Voucher Type</td><td>' + vtype + '</td><td class="l">Voucher No</td><td>' + esc(no) + '</td></tr>' +
-    '<tr><td class="l">Transaction Date</td><td>' + date + '</td><td class="l">Party / Payee</td><td>' + esc(v[4]) + '</td></tr></table>' +
-    '<table><tr><td class="l">Description / Purpose</td><td>' + esc(v[5]) + '</td></tr>' +
-    '<tr><td class="l">Category (COA Head)</td><td>' + esc(v[7]) + '</td></tr>' +
-    '<tr><td class="l">COA Code</td><td>' + esc(v[6]) + '</td></tr>' +
-    '<tr><td class="l">Payment Mode</td><td>' + esc(v[12]) + '</td></tr></table>' +
-    '<table><tr><th>Entry Type</th><th>Amount (PKR)</th><th>Amount in Words</th></tr>' +
-    '<tr><td class="c">' + entry + '</td><td class="c">PKR ' + amount.toLocaleString('en-US') + '</td><td class="c">' + amountWords(amount) + '</td></tr></table>' +
-    '<table><tr><td class="l">Narration / Remarks</td><td>' + esc(v[25]) + '</td></tr>' +
-    '<tr><td class="l">Supporting Document</td><td>' + esc(v[13]) + '</td></tr>' +
-    '<tr><td class="l">Bank Reconciliation</td><td>' + esc(rec) + '</td></tr>' +
-    '<tr><td class="l">Posting Status</td><td>POSTED</td></tr>' +
-    '<tr><td class="l">Printed On</td><td>' + now + '</td></tr></table>' +
-    '<div class="n">' + LINES.map(function (x) { return '&#10004; ' + esc(x); }).join('<br>') + '</div>' +
-    '<div class="s"><div><b>Prepared By</b><br>' + esc(v[15]) + '<br><small>Signature &amp; Date</small></div>' +
-    '<div><b>Verified By</b><br>' + esc(v[16]) + '<br><small>Signature &amp; Date</small></div>' +
-    '<div><b>CEO / Director</b><br>&nbsp;<br><small>Signature &amp; Company Stamp</small></div></div>' +
-    '<div class="f">' + FOOT.map(esc).join('<br>') + '<br><b>Document ID: ' + esc(no) + ' | Printed: ' + now + '</b></div>' +
-    '<script>window.onload=function(){setTimeout(function(){window.print()},400)}</script></body></html>';
-  return HtmlService.createHtmlOutput(html).setTitle('Voucher - ' + no);
+  if (!v[2]) return null;
+  var tz = Session.getScriptTimeZone();
+  return {
+    no: v[2], type: v[3], party: v[4], part: v[5], drCode: v[6], drAcc: v[7], crCode: v[9], crAcc: v[10],
+    amount: Number(raw[11]) || 0, method: v[12], support: v[13], rec: v[14], prep: v[15], ver: v[16], narr: v[25],
+    date: Utilities.formatDate(new Date(raw[1]), tz, 'dd-MMM-yyyy'),
+    now: Utilities.formatDate(new Date(), tz, 'dd-MMM-yyyy hh:mm a')
+  };
+}
+
+function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+function voucherHtml(d, auto, bar) {
+  var vtype = d.no.indexOf('RV') === 0 ? 'Receipt Voucher (RV)' : d.no.indexOf('PV') === 0 ? 'Payment Voucher (PV)' : d.no.indexOf('JV') === 0 ? 'Journal Voucher (JV)' : 'Voucher';
+  var entry = (d.type === 'Contra' ? 'Contra Entry' : d.type + ' Entry') + '<br>Dr ' + esc(d.drCode) + ' ' + esc(d.drAcc) + '<br>Cr ' + esc(d.crCode) + ' ' + esc(d.crAcc);
+  var rec = d.rec === 'Y' ? 'YES' : d.rec === 'N' ? 'NO' : d.rec;
+  var L = 'style="border:1.5px solid #000;padding:9px 10px;font-weight:bold;color:#1f3a8a;width:24%"';
+  var C = 'style="border:1.5px solid #000;padding:9px 10px"';
+  var G = 'style="border:1.5px solid #000;padding:12px 8px;text-align:center;font-weight:bold;color:#1b5e20"';
+  var H = 'style="border:1.5px solid #000;padding:8px;text-align:center;color:#1f3a8a"';
+  var T = 'width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-bottom:14px;font-size:13px"';
+  return '<html><head><title>Voucher - ' + esc(d.no) + '</title><style>' +
+    '@page{size:A4;margin:12mm}body{font-family:Arial,Helvetica,sans-serif;margin:0 auto;width:740px;color:#000}' +
+    '@media print{.np{display:none}}</style></head><body>' + (bar || '') +
+    '<table width="100%" cellspacing="0" cellpadding="0" style="border-bottom:3px solid #1f3a8a;margin-bottom:12px"><tr>' +
+    '<td width="100">' + (LOGO_URL ? '<img src="' + LOGO_URL + '" width="80" height="80">' : '') + '</td>' +
+    '<td align="center" style="color:#1f3a8a"><div style="font-size:26px;font-weight:bold">' + esc(CO) + '</div>' +
+    '<div style="font-size:13px;font-weight:bold;margin-top:4px">' + vtype + ' (SECP &amp; FBR Compliant)</div>' +
+    '<div style="font-size:11px;color:#555">NTN: ' + NTN + ' | CUIN: ' + CUIN + '</div></td><td width="100"></td></tr></table>' +
+    '<div style="border-left:4px solid #1f3a8a;padding:6px 10px;margin:14px 0;font-size:12px;font-weight:bold">&#128274; ' + esc(BANNER) + '</div>' +
+    '<table ' + T + '><tr><td ' + L + '>Voucher Type</td><td ' + C + '>' + vtype + '</td><td ' + L + '>Voucher No</td><td ' + C + '>' + esc(d.no) + '</td></tr>' +
+    '<tr><td ' + L + '>Transaction Date</td><td ' + C + '>' + d.date + '</td><td ' + L + '>Party / Payee</td><td ' + C + '>' + esc(d.party) + '</td></tr></table>' +
+    '<table ' + T + '><tr><td ' + L + '>Description / Purpose</td><td ' + C + '>' + esc(d.part) + '</td></tr>' +
+    '<tr><td ' + L + '>Category (COA Head)</td><td ' + C + '>' + esc(d.drAcc) + '</td></tr>' +
+    '<tr><td ' + L + '>COA Code</td><td ' + C + '>' + esc(d.drCode) + '</td></tr>' +
+    '<tr><td ' + L + '>Payment Mode</td><td ' + C + '>' + esc(d.method) + '</td></tr></table>' +
+    '<table ' + T + '><tr><td ' + H + '><b>Entry Type</b></td><td ' + H + '><b>Amount (PKR)</b></td><td ' + H + '><b>Amount in Words</b></td></tr>' +
+    '<tr><td ' + G + '>' + entry + '</td><td ' + G + '>PKR ' + Number(d.amount).toLocaleString('en-US') + '</td><td ' + G + '>' + amountWords(d.amount) + '</td></tr></table>' +
+    '<table ' + T + '><tr><td ' + L + '>Narration / Remarks</td><td ' + C + '>' + esc(d.narr) + '</td></tr>' +
+    '<tr><td ' + L + '>Supporting Document</td><td ' + C + '>' + esc(d.support) + '</td></tr>' +
+    '<tr><td ' + L + '>Bank Reconciliation</td><td ' + C + '>' + esc(rec) + '</td></tr>' +
+    '<tr><td ' + L + '>Posting Status</td><td ' + C + '>POSTED</td></tr>' +
+    '<tr><td ' + L + '>Printed On</td><td ' + C + '>' + d.now + '</td></tr></table>' +
+    '<div style="border-left:4px solid #0b3d5c;padding:6px 10px;font-size:11.5px;line-height:1.6">' +
+    LINES.map(function (x) { return '&#10004; ' + esc(x); }).join('<br>') + '</div>' +
+    '<table width="100%" cellspacing="12" style="margin-top:30px;font-size:12px;text-align:center"><tr>' +
+    '<td style="border-top:2px solid #000"><b>Prepared By</b><br>' + esc(d.prep) + '<br><span style="font-size:10px">Signature &amp; Date</span></td>' +
+    '<td style="border-top:2px solid #000"><b>Verified By</b><br>' + esc(d.ver) + '<br><span style="font-size:10px">Signature &amp; Date</span></td>' +
+    '<td style="border-top:2px solid #000"><b>CEO / Director</b><br>&nbsp;<br><span style="font-size:10px">Signature &amp; Company Stamp</span></td></tr></table>' +
+    '<div style="border-top:1px dashed #999;margin-top:14px;padding-top:8px;text-align:center;font-size:10px;color:#555">' +
+    FOOT.map(esc).join('<br>') + '<br><b>Document ID: ' + esc(d.no) + ' | Printed: ' + d.now + '</b></div>' +
+    (auto ? '<script>window.onload=function(){}</script>' : '') + '</body></html>';
 }
 
 var ONES = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen',
